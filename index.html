@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NAQCC - Heather Farm Park - HVAC Coordination Model</title>
-<meta name="description" content="Federated ARC + STR + HVAC coordination model with clash review for The New Aquatic &amp; Community Center at Heather Farm Park.">
+<meta name="description" content="Federated coordination model (architecture, structure, HVAC, plumbing, fire protection, electrical, technology, pool) with HVAC clash review for The New Aquatic &amp; Community Center at Heather Farm Park.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="NAQCC - HVAC Coordination Model">
 <meta property="og:description" content="3D coordination model of The New Aquatic &amp; Community Center at Heather Farm Park: structure, architecture and HVAC, with the clash review.">
@@ -325,6 +325,11 @@ body.has-sel #props { display: flex; }
 .disc-chip.ARC { background: #2a3440; color: #c9d3de; }
 .disc-chip.STR { background: #4a2216; color: #ffb59c; }
 .disc-chip.MEP { background: #142c4d; color: #9cc6ff; }
+.disc-chip.PLB { background: #102a5c; color: #a9c4ff; }
+.disc-chip.FP { background: #4d1414; color: #ffa3a3; }
+.disc-chip.ELE { background: #2e3136; color: #f1e3b5; }
+.disc-chip.TEL { background: #2c1d4f; color: #cdb8ff; }
+.disc-chip.POOL { background: #0f3a46; color: #9fe6f7; }
 #props-body { padding: 12px 14px 14px; overflow-y: auto; }
 #props-body .empty { margin: 4px 0; color: var(--ink-3); }
 .kv { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 6px 10px; margin: 0; font-size: 12px; }
@@ -583,8 +588,12 @@ const FT = 0.3048;                       // glTF metres per model foot
 const BIG = 1e6;                         // constant of a clipping plane that clips nothing
 const SEVS = ['critical', 'major', 'minor', 'info'];
 const SEV_HEX = { critical: 0xff4d4d, major: 0xffab2e, minor: 0xe5d24a, info: 0x4fa9ff };
-const DISC_LABEL = { ARC: 'Architecture', STR: 'Structure', MEP: 'HVAC' };
-const PLURAL = { canopy: 'Canopies', glazing: 'Glazing', trellis: 'Trellises', equipment: 'Equipment', vav: 'VAV boxes' };
+const DISC_LABEL = { ARC: 'Architecture', STR: 'Structure', MEP: 'HVAC', PLB: 'Plumbing', FP: 'Fire protection',
+  ELE: 'Electrical', TEL: 'Technology', POOL: 'Pool' };
+const DISC_ORDER = Object.keys(DISC_LABEL);
+const PLURAL = { canopy: 'Canopies', glazing: 'Glazing', trellis: 'Trellises', equipment: 'Equipment', vav: 'VAV boxes',
+  casework: 'Casework', fdc: 'FDCs', junction_box: 'Junction boxes', busway: 'Busways' };
+const SINGULAR = { vav: 'VAV box', fdc: 'FDC' };
 const PRIMARY = ['size', 'mark', 'service', 'system', 'tag'];
 const GLOW = /^(duct|duct_riser|duct_fitting|flex_duct|pipe)$/;
 const VIEWS = { 'iso-ne': [45, 30], 'iso-nw': [315, 30], 'iso-se': [135, 30], 'iso-sw': [225, 30], top: [180, 89.95], front: [180, 0] };
@@ -601,7 +610,7 @@ const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
 const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const catName = (c, n = 2) => (n === 1 ? (c === 'vav' ? 'VAV box' : cap(c.replace(/_/g, ' '))) : PLURAL[c] ?? `${cap(c.replace(/_/g, ' '))}s`);
+const catName = (c, n = 2) => (n === 1 ? SINGULAR[c] ?? cap(c.replace(/_/g, ' ')) : PLURAL[c] ?? `${cap(c.replace(/_/g, ' '))}s`);
 const num = (v) => (v === null || v === undefined || v === '' || !Number.isFinite(+v) ? null : +v);
 const nf = new Intl.NumberFormat('en-US');
 const inches = (v) => `${+(+v).toFixed(2)}"`;
@@ -1205,6 +1214,7 @@ function normIssue(r, k) {
     grid: String(r?.grid_location ?? r?.grid ?? ''),
     elevation: String(r?.elevation ?? (pt ? ftin(pt[2], 1) : '')),
     level: String(r?.level ?? ''),
+    trades: String(r?.trades ?? ''),
     confidence: String(r?.confidence ?? ''),
     resolution: String(r?.suggested_resolution ?? r?.resolution ?? ''),
     view: r?.view,
@@ -1344,7 +1354,7 @@ function showClashLabel(iss) {
     <div class="cl-card" role="dialog" aria-label="Clash ${esc(iss.id)}" hidden>
     <div class="cl-head"><span class="i-sev">${iss.severity}</span><b class="mono">${esc(iss.id)}</b><span class="cl-type">${esc(iss.type)}</span><button class="cl-x" aria-label="Close clash">&times;</button></div>
     <div class="cl-title">${esc(iss.title)}</div>
-    <dl class="kv"><dt>Penetration</dt><dd class="mono">${penText(iss)}</dd><dt>Grid</dt><dd class="mono">${esc(iss.grid || '-')}</dd>
+    <dl class="kv">${iss.trades ? `<dt>Trades</dt><dd>${esc(iss.trades)}</dd>` : ''}<dt>Penetration</dt><dd class="mono">${penText(iss)}</dd><dt>Grid</dt><dd class="mono">${esc(iss.grid || '-')}</dd>
       <dt>Elevation</dt><dd class="mono">${esc(iss.elevation || '-')}${iss.level ? ` · ${esc(iss.level)}` : ''}</dd><dt>Confidence</dt><dd>${conf}</dd></dl>
     <div class="cl-res"><b>Suggested resolution</b>${esc(iss.resolution || '-')}</div>
     ${missing.length ? `<div class="cl-missing">Not in this model: ${missing.map(esc).join(', ')}</div>` : ''}
@@ -1436,6 +1446,7 @@ function select(el) {
 
 function renderProps(el) {
   $('#props-disc').textContent = el ? el.disc : '';
+  $('#props-disc').title = el ? DISC_LABEL[el.disc] ?? el.disc : '';
   $('#props-disc').className = `disc-chip ${el ? el.disc : ''}`;
   $('#props-title').textContent = el ? String(el.ud.name ?? el.id) : 'Element';
   if (!el) { $('#props-body').innerHTML = '<p class="empty">Select an element in the model to see its properties.</p>'; return; }
@@ -1535,7 +1546,7 @@ function screenshot() {
 
 // ------------------------------------------------------------------ UI wiring
 function buildTree() {
-  const discs = [...new Set(['ARC', 'STR', 'MEP', ...[...cats.values()].map((c) => c.disc)])].filter((d) => [...cats.values()].some((c) => c.disc === d));
+  const discs = [...new Set([...DISC_ORDER, ...[...cats.values()].map((c) => c.disc)])].filter((d) => [...cats.values()].some((c) => c.disc === d));
   $('#el-count').textContent = nf.format(els.size);
   $('#disc-tree').innerHTML = discs.map((d) => {
     const cs = [...cats.values()].filter((c) => c.disc === d).sort((a, b) => b.n - a.n);
