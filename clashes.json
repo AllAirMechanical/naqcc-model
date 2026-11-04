@@ -1,20 +1,20 @@
 {
  "summary": {
   "project": "NAQCC - The New Aquatic & Community Center at Heather Farm Park (AAM 26.06)",
-  "generated": "2026-11-04T04:24:25Z",
+  "generated": "2026-11-04T15:35:52Z",
   "inputs": [
-   "data/model.json"
+   "trial/release/model.json"
   ],
-  "issues": 314,
-  "raw_count": 773,
+  "issues": 328,
+  "raw_count": 789,
   "by_severity": {
-   "critical": 2,
-   "major": 102,
-   "minor": 42,
-   "info": 168
+   "critical": 4,
+   "major": 111,
+   "minor": 44,
+   "info": 169
   },
   "by_type": {
-   "Wall penetration": 108,
+   "Wall penetration": 109,
    "Roof penetration": 48,
    "Duct x Wood joist/rafter": 39,
    "Duct x Glulam/header": 35,
@@ -22,33 +22,34 @@
    "Air terminal x Steel (relocate terminal)": 12,
    "Duct x Wood post": 10,
    "Riser x framed roof opening": 9,
+   "Duct x Steel plate": 8,
+   "Air terminal x Steel plate": 6,
    "Air terminal x member face (verify)": 6,
    "Duct x Steel beam": 5,
-   "Duct x Steel plate": 4,
+   "Duct x Steel column": 4,
+   "Duct x Steel header": 3,
    "Pipe x Rated wall": 3,
    "Rated ceiling penetration": 3,
-   "Duct x Steel column": 3,
-   "Duct x Steel header": 2,
+   "Equipment x Framing": 3,
    "Pipe x Glulam/header": 2,
    "Duct x Rated wall": 2,
    "Air terminal x Wood post": 2,
    "Pipe x Wood joist/rafter": 2,
-   "Equipment x Framing": 2,
    "Curb x Framing": 1,
    "Air terminal x Door": 1
   },
   "by_trade_pair": {
    "HVAC x Structure": {
-    "critical": 2,
-    "major": 78,
-    "minor": 42,
+    "critical": 4,
+    "major": 87,
+    "minor": 44,
     "info": 12
    },
    "HVAC x Architecture": {
     "critical": 0,
     "major": 24,
     "minor": 0,
-    "info": 156
+    "info": 157
    },
    "HVAC x Plumbing": {
     "critical": 0,
@@ -82,12 +83,12 @@
    }
   },
   "elements_checked": {
-   "MEP": 3145,
+   "MEP": 3162,
    "ARC": 1199,
-   "STR": 2954
+   "STR": 5962
   },
-  "candidate_pairs": 4939,
-  "runtime_s": 5.47,
+  "candidate_pairs": 5091,
+  "runtime_s": 7.93,
   "tolerances_in": {
    "hard_over": 0.5,
    "clearance_within": 1.0,
@@ -103,9 +104,9 @@
   "not_reported": {
    "wall_mounted": 4,
    "curb_bearing": 3,
-   "elevation_basis": 0,
+   "elevation_basis": 3,
    "riser_opening_clearance": 17,
-   "wall_position": 46,
+   "wall_position": 43,
    "attached": 0,
    "same_wall_face": 0
   },
@@ -121,6 +122,24 @@
     "mep": "MEP-M3.02-SA-002",
     "other": "ARC-A2.31-H034a",
     "penetration_in": 1.3
+   },
+   {
+    "rule": "elevation_basis",
+    "mep": "MEP-M3.04-RA-007",
+    "other": "STR-E1-STL-A156-1-p170-1",
+    "penetration_in": 0.94
+   },
+   {
+    "rule": "elevation_basis",
+    "mep": "MEP-M3.04-RA-007",
+    "other": "STR-E1-STL-A156-1-p170-2",
+    "penetration_in": 0.94
+   },
+   {
+    "rule": "elevation_basis",
+    "mep": "MEP-M3.04-RA-012",
+    "other": "STR-E1-STL-A156-1-p170-2",
+    "penetration_in": 0.55
    },
    {
     "rule": "riser_opening_clearance",
@@ -261,42 +280,6 @@
     "penetration_in": -0.65
    },
    {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-845d9169-3",
-    "other": "ARC-A2.31-W003",
-    "penetration_in": 3.45
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-845d9169-3",
-    "other": "ARC-A2.31-W019",
-    "penetration_in": 2.49
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-845d9169-4",
-    "other": "ARC-A2.31-W003",
-    "penetration_in": 3.45
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-15e48d9b-2",
-    "other": "ARC-A2.31-W023",
-    "penetration_in": 1.59
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-03381b0f-3",
-    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
-    "penetration_in": 1.61
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-03381b0f-4",
-    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
-    "penetration_in": 1.61
-   },
-   {
     "rule": "riser_opening_clearance",
     "mep": "FIT-riser_elbow-636a9059-2",
     "other": "STR-SWN-JOIST-0040",
@@ -313,18 +296,6 @@
     "mep": "FIT-gap-bc0cca0a",
     "other": "ARC-A2.31-H-C137.1a",
     "penetration_in": 0.64
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-ab9a010f-2",
-    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
-    "penetration_in": 1.52
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-ab9a010f-3",
-    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
-    "penetration_in": 1.52
    },
    {
     "rule": "wall_position",
@@ -364,6 +335,12 @@
    },
    {
     "rule": "wall_position",
+    "mep": "FIT-terminal_drop-24b8b060-2",
+    "other": "ARC-A2.31-W066",
+    "penetration_in": 1.14
+   },
+   {
+    "rule": "wall_position",
     "mep": "FIT-terminal_drop-5fea929c-1",
     "other": "ARC-A2.31-W074",
     "penetration_in": 3.66
@@ -379,6 +356,36 @@
     "mep": "FIT-terminal_drop-c12e7a4c-2",
     "other": "ARC-A2.22-W057",
     "penetration_in": 1.24
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-ab9a010f-2",
+    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
+    "penetration_in": 1.52
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-ab9a010f-3",
+    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
+    "penetration_in": 1.52
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-79554298-2",
+    "other": "ARC-A2.22-GF-DH-A108.2",
+    "penetration_in": 3.87
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-79554298-2",
+    "other": "ARC-A2.22-GF-ISFH-ISF1-A108-1",
+    "penetration_in": 1.8
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-79554298-3",
+    "other": "ARC-A2.22-GF-DH-A108.2",
+    "penetration_in": 3.87
    },
    {
     "rule": "wall_position",
@@ -412,24 +419,6 @@
    },
    {
     "rule": "wall_position",
-    "mep": "FIT-terminal_drop-cd184c64-1",
-    "other": "ARC-A2.31-H054-1a",
-    "penetration_in": 0.66
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-d54992f0-2",
-    "other": "ARC-A2.31-H054-2a",
-    "penetration_in": 0.7
-   },
-   {
-    "rule": "wall_position",
-    "mep": "FIT-terminal_drop-5abc1aea-2",
-    "other": "ARC-A2.31-W014",
-    "penetration_in": 0.72
-   },
-   {
-    "rule": "wall_position",
     "mep": "FIT-terminal_drop-747dabac-1",
     "other": "ARC-A2.31-W074",
     "penetration_in": 3.66
@@ -448,21 +437,21 @@
    },
    {
     "rule": "wall_position",
-    "mep": "FIT-terminal_drop-79554298-2",
-    "other": "ARC-A2.22-GF-DH-A108.2",
-    "penetration_in": 3.57
+    "mep": "FIT-terminal_drop-ec2129d5-2",
+    "other": "ARC-A2.22-GF-DH-C102.1",
+    "penetration_in": 1.43
    },
    {
     "rule": "wall_position",
-    "mep": "FIT-terminal_drop-79554298-2",
-    "other": "ARC-A2.22-GF-ISFH-ISF1-A108-1",
-    "penetration_in": 1.47
+    "mep": "FIT-terminal_drop-03381b0f-3",
+    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
+    "penetration_in": 1.76
    },
    {
     "rule": "wall_position",
-    "mep": "FIT-terminal_drop-79554298-3",
-    "other": "ARC-A2.22-GF-DH-A108.2",
-    "penetration_in": 3.57
+    "mep": "FIT-terminal_drop-03381b0f-4",
+    "other": "ARC-A3.11-GAP-W-EAST_K-5-UP",
+    "penetration_in": 1.76
    },
    {
     "rule": "wall_position",
@@ -475,6 +464,12 @@
     "mep": "FIT-terminal_drop-bd8a606c-3",
     "other": "ARC-A2.31-H042a",
     "penetration_in": 3.18
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-15e48d9b-2",
+    "other": "ARC-A2.31-W023",
+    "penetration_in": 1.37
    },
    {
     "rule": "wall_position",
@@ -517,6 +512,12 @@
     "mep": "FIT-terminal_drop-266512f9-3",
     "other": "ARC-A2.31-W010",
     "penetration_in": 3.36
+   },
+   {
+    "rule": "wall_position",
+    "mep": "FIT-terminal_drop-67b81c0a-2",
+    "other": "ARC-A2.31-W019",
+    "penetration_in": 5.29
    },
    {
     "rule": "wall_position",
@@ -578,9 +579,9 @@
    }
   ],
   "mesh_pieces": {
-   "convex": 265,
+   "convex": 694,
    "extruded": 142,
-   "hull_fallback": 125
+   "hull_fallback": 384
   },
   "skipped_count": 0,
   "skipped": [],
@@ -597,7 +598,7 @@
    "Resolutions are rule-based: drops/shifts are the exact moves that clear that element, plus 1\"; a drop is never proposed below the MEP's ceiling (+3\" assembly) or an ARC ceiling under it, and a terminal slide is re-tested against every structural member along its run.",
    "Grid offsets: + = east of a letter grid / north of a number grid (project north).",
    "Trade matrix: HVAC is tested against structure, architecture, plumbing, fire protection, electrical, technology and pool. Against the other trades a hard overlap > 0.5\" is major (critical stays HVAC x steel); clearance (< 1\") is reported only for HVAC vs pipe / tray / conduit / busway runs whose elevations are not assumed; sprinkler heads, light fixtures, devices and fixtures count only when they overlap (a duct above a recessed fixture is no clash); items attached to the unit they serve (disconnects, J-boxes, conduit naming its tag, duct smoke detectors on ducts, drain pipes at floor drains) and two wall-mounted items on one wall face (<= 1\") are not reported (counted below).",
-   "Not reported (tolerance rules, raw pairs): wall-mounted unit on its own wall (<= 1\"): 4; curb base bearing on the top of a horizontal member (<= 1\"): 3; assumed-elevation MEP hung tight under a horizontal member, <= 1\" into it: 0; riser within 1\" of the framing at its roof opening (opening fit): 17; duct/pipe alongside a wall face or ending in a wall, not through it, <= 6\" into it: 46; trade item attached to the HVAC element it serves (disconnect / J-box / conduit naming the unit, duct smoke detector on a duct, HVAC drain pipe at a floor drain): 0; two wall-mounted items on one wall face, <= 1\": 0",
+   "Not reported (tolerance rules, raw pairs): wall-mounted unit on its own wall (<= 1\"): 4; curb base bearing on the top of a horizontal member (<= 1\"): 3; assumed-elevation MEP hung tight under a horizontal member, <= 1\" into it: 3; riser within 1\" of the framing at its roof opening (opening fit): 17; duct/pipe alongside a wall face or ending in a wall, not through it, <= 6\" into it: 43; trade item attached to the HVAC element it serves (disconnect / J-box / conduit naming the unit, duct smoke detector on a duct, HVAC drain pipe at a floor drain): 0; two wall-mounted items on one wall face, <= 1\": 0",
    "Data warnings: 11 duct sliver(s) under 2\" wide skipped (MEP-M3.06-OA-003, MEP-M3.06-SA-016, MEP-M3.06-RA-017, MEP-M3.07-SA-009, MEP-M3.05-SA-002, MEP-M3.05-SA-030, FIT-elbow-1e270ea2-7, FIT-elbow-873fcb90-7, FIT-transition-4e903496, FIT-transition-1ab59331, FIT-transition-d914384d)"
   ]
  },
@@ -690,6 +691,96 @@
   },
   {
    "id": "CL-003",
+   "title": "SA 12ø through HSS6X6X1/2 column A34",
+   "type": "Duct x Steel column",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "critical",
+   "elements": [
+    "FIT-terminal_drop-67b81c0a-2",
+    "STR-E1-A34"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "A34 HSS6X6X1/2"
+   ],
+   "point": [
+    74.827,
+    12.884,
+    11.0
+   ],
+   "max_penetration_in": 4.62,
+   "min_clearance_in": null,
+   "grid": "J -0'-8 / 13 +0'-4",
+   "elevation": "11'-0\"",
+   "level": "GROUND-ROOF",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-67b81c0a-2"
+   ],
+   "resolution": "Reroute SA 12ø around HSS6X6X1/2 column A34: offset 6\" sideways (or transition the duct).",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-2",
+     "other": "STR-E1-A34",
+     "penetration_in": 4.62,
+     "point": [
+      74.827,
+      12.884,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-004",
+   "title": "SA 12ø riser through HSS16X8X1/2 header A364",
+   "type": "Duct x Steel header",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "critical",
+   "elements": [
+    "FIT-terminal_drop-67b81c0a-1",
+    "STR-E1-A364"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "A364 HSS16X8X1/2"
+   ],
+   "point": [
+    74.326,
+    13.568,
+    11.525
+   ],
+   "max_penetration_in": 0.6,
+   "min_clearance_in": null,
+   "grid": "J -1'-2 / 13 +1'-0",
+   "elevation": "11'-6\"",
+   "level": "LOWER HDR / CANOPY",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-67b81c0a-1"
+   ],
+   "resolution": "Relocate the drop 2.5\" north to fall between framing (re-tested against the neighbouring framing), or STR to header the framing at the opening; request opening.",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-1",
+     "other": "STR-E1-A364",
+     "penetration_in": 0.6,
+     "point": [
+      74.326,
+      13.568,
+      11.525
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-005",
    "title": "CF-C131-1 below C131 LAKESIDE ROOM FAC-1 high 21'-3.5\"..26'-0.93\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -734,7 +825,7 @@
    ]
   },
   {
-   "id": "CL-004",
+   "id": "CL-006",
    "title": "CF-C131-2 below C131 LAKESIDE ROOM FAC-1 high 18'-9.84\"..26'-1\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -779,7 +870,7 @@
    ]
   },
   {
-   "id": "CL-005",
+   "id": "CL-007",
    "title": "REF 3/8 (HP-IT) through Exterior wall (stud) t=16.09 ft",
    "type": "Pipe x Rated wall",
    "kind": "hard",
@@ -837,7 +928,7 @@
    ]
   },
   {
-   "id": "CL-006",
+   "id": "CL-008",
    "title": "CF-C131-1 below C131 LAKESIDE ROOM FAC-1 high 18'-9.79\"..26'-0.95\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -882,7 +973,7 @@
    ]
   },
   {
-   "id": "CL-007",
+   "id": "CL-009",
    "title": "CF-C131-2 below C131 LAKESIDE ROOM FAC-1 high 21'-3.51\"..26'-1\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -927,7 +1018,7 @@
    ]
   },
   {
-   "id": "CL-008",
+   "id": "CL-010",
    "title": "CF-C100-3 below C100 LOBBY WD-1 high 21'-10.33\"..26'-4.3\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -972,7 +1063,7 @@
    ]
   },
   {
-   "id": "CL-009",
+   "id": "CL-011",
    "title": "CF-C100-1 below C100 LOBBY WD-1 high 21'-10.37\"..26'-4.32\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1017,7 +1108,7 @@
    ]
   },
   {
-   "id": "CL-010",
+   "id": "CL-012",
    "title": "CF-C100-2 below C100 LOBBY WD-1 high 21'-10.37\"..26'-4.32\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1062,7 +1153,7 @@
    ]
   },
   {
-   "id": "CL-011",
+   "id": "CL-013",
    "title": "CF-C100-2 below C100 LOBBY WD-1 high 21'-10.33\"..26'-4.3\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1107,7 +1198,7 @@
    ]
   },
   {
-   "id": "CL-012",
+   "id": "CL-014",
    "title": "CF-C100-3 below C100 LOBBY WD-1 high 21'-10.37\"..26'-4.32\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1152,7 +1243,7 @@
    ]
   },
   {
-   "id": "CL-013",
+   "id": "CL-015",
    "title": "CF-C100-1 below C100 LOBBY WD-1 high 21'-10.33\"..26'-4.3\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1197,7 +1288,7 @@
    ]
   },
   {
-   "id": "CL-014",
+   "id": "CL-016",
    "title": "CF-C132 below C132 MULTIPURPOSE ROOM 1 FAC-1 high 18'-9.74\"..26'-0.99\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1242,7 +1333,7 @@
    ]
   },
   {
-   "id": "CL-015",
+   "id": "CL-017",
    "title": "CF-C132 below C132 MULTIPURPOSE ROOM 1 FAC-1 high 21'-3.44\"..26'-0.99\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1287,7 +1378,7 @@
    ]
   },
   {
-   "id": "CL-016",
+   "id": "CL-018",
    "title": "REF 5/8 (HP-ELEC1) through Partition (stud) t=0.69 ft",
    "type": "Pipe x Rated wall",
    "kind": "hard",
@@ -1345,7 +1436,7 @@
    ]
   },
   {
-   "id": "CL-017",
+   "id": "CL-019",
    "title": "SA 36x18(widthscaled,depthassumed) (RTU-2) through 5 1/4X14 PSL header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -1390,7 +1481,7 @@
    ]
   },
   {
-   "id": "CL-018",
+   "id": "CL-020",
    "title": "CF-A103-2 below A106 LIFEGUARD ACT-1 @10'-0\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1435,7 +1526,7 @@
    ]
   },
   {
-   "id": "CL-019",
+   "id": "CL-021",
    "title": "CF-C121 below C112 CC SHARED OFFICE ACT-1 @10'-0\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1480,7 +1571,7 @@
    ]
   },
   {
-   "id": "CL-020",
+   "id": "CL-022",
    "title": "CF-A103-1 below A103 AQ OPEN OFFICE ACT-1 @10'-0\" - does not fit",
    "type": "Equipment x Ceiling",
    "kind": "below",
@@ -1525,7 +1616,7 @@
    ]
   },
   {
-   "id": "CL-021",
+   "id": "CL-023",
    "title": "EA 12x12 through PSL 5-1/4x14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -1580,7 +1671,7 @@
    ]
   },
   {
-   "id": "CL-022",
+   "id": "CL-024",
    "title": "CLS-2 AT-019 through 2-C6X13 beam A308",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -1623,7 +1714,7 @@
    ]
   },
   {
-   "id": "CL-023",
+   "id": "CL-025",
    "title": "CLS-2 AT-010 through 2-C6X13 beam A324",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -1666,7 +1757,7 @@
    ]
   },
   {
-   "id": "CL-024",
+   "id": "CL-026",
    "title": "CLS-2 AT-004 through 2-C6X13 beam A308",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -1709,7 +1800,7 @@
    ]
   },
   {
-   "id": "CL-025",
+   "id": "CL-027",
    "title": "CLS-2 AT-022 through 2-C6X13 beam A308",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -1752,7 +1843,7 @@
    ]
   },
   {
-   "id": "CL-026",
+   "id": "CL-028",
    "title": "RATED CEILING PENETRATION: EA 10ø riser (chem storage A143 roof exhaust fan) through Chem storage A143 ceiling GYP-2 1HR (5/8\" type X gyp board)",
    "type": "Rated ceiling penetration",
    "kind": "ceil_pen",
@@ -1795,7 +1886,7 @@
    ]
   },
   {
-   "id": "CL-027",
+   "id": "CL-029",
    "title": "RATED CEILING PENETRATION: EA 10ø riser (chem storage A145 roof exhaust fan) through Chem storage A145 ceiling GYP-2 1HR (5/8\" type X gyp board)",
    "type": "Rated ceiling penetration",
    "kind": "ceil_pen",
@@ -1838,7 +1929,7 @@
    ]
   },
   {
-   "id": "CL-028",
+   "id": "CL-030",
    "title": "RATED CEILING PENETRATION: EA 10ø riser (chem storage A144 roof exhaust fan) through Chem storage A144 ceiling GYP-2 1HR (5/8\" type X gyp board)",
    "type": "Rated ceiling penetration",
    "kind": "ceil_pen",
@@ -1881,7 +1972,7 @@
    ]
   },
   {
-   "id": "CL-029",
+   "id": "CL-031",
    "title": "CLS-2 AT-028 through 2-C6X13 beam A305",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -1924,7 +2015,7 @@
    ]
   },
   {
-   "id": "CL-030",
+   "id": "CL-032",
    "title": "RA 66x18 (RTU-2) through 5 1/4X14 PSL header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -1969,7 +2060,7 @@
    ]
   },
   {
-   "id": "CL-031",
+   "id": "CL-033",
    "title": "RA 66x18 (RTU-2) through 5 1/4X14 PSL header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -2014,7 +2105,7 @@
    ]
   },
   {
-   "id": "CL-032",
+   "id": "CL-034",
    "title": "CLS-2 AT-001 through 2-C6X13 beam A303",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2057,7 +2148,7 @@
    ]
   },
   {
-   "id": "CL-033",
+   "id": "CL-035",
    "title": "CLS-2 AT-012 through 2-C6X13 beam A305",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2100,7 +2191,7 @@
    ]
   },
   {
-   "id": "CL-034",
+   "id": "CL-036",
    "title": "CLS-2 AT-006 through 2-C6X13 beam A305",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2143,7 +2234,7 @@
    ]
   },
   {
-   "id": "CL-035",
+   "id": "CL-037",
    "title": "REF 7/8 (HR-2) through GLB 5-1/8x21 beam",
    "type": "Pipe x Glulam/header",
    "kind": "hard",
@@ -2222,7 +2313,7 @@
    ]
   },
   {
-   "id": "CL-036",
+   "id": "CL-038",
    "title": "RA 24x24 (RTU-IT) through Exterior wall (stud) t=16.09 ft",
    "type": "Duct x Rated wall",
    "kind": "hard",
@@ -2280,7 +2371,7 @@
    ]
   },
   {
-   "id": "CL-037",
+   "id": "CL-039",
    "title": "SA 30x18 (RTU-IT) through Exterior wall (stud) t=16.09 ft",
    "type": "Duct x Rated wall",
    "kind": "hard",
@@ -2323,7 +2414,7 @@
    ]
   },
   {
-   "id": "CL-038",
+   "id": "CL-040",
    "title": "SA 20x12 through 6x6 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -2366,7 +2457,7 @@
    ]
   },
   {
-   "id": "CL-039",
+   "id": "CL-041",
    "title": "SA 18x14 (RTU-3) through 2 headers (LVL 1-3/4X14)",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -2459,7 +2550,7 @@
    ]
   },
   {
-   "id": "CL-040",
+   "id": "CL-042",
    "title": "SA 18x14 (RTU-3) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -2550,7 +2641,7 @@
    ]
   },
   {
-   "id": "CL-041",
+   "id": "CL-043",
    "title": "SA 18x14 (RTU-3) through 5 joists",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -2643,7 +2734,7 @@
    ]
   },
   {
-   "id": "CL-042",
+   "id": "CL-044",
    "title": "CLS-2 SA-AT007 through 2-54 CFS POST post",
    "type": "Air terminal x Wood post",
    "kind": "hard",
@@ -2689,7 +2780,7 @@
    ]
   },
   {
-   "id": "CL-043",
+   "id": "CL-045",
    "title": "SA 18x14SA riser (RTU-4) through PL1/4\"X3 plate A192",
    "type": "Duct x Steel plate",
    "kind": "hard",
@@ -2732,7 +2823,7 @@
    ]
   },
   {
-   "id": "CL-044",
+   "id": "CL-046",
    "title": "CLS-2 SA-AT010 through 2-54 CFS POST post",
    "type": "Air terminal x Wood post",
    "kind": "hard",
@@ -2778,7 +2869,7 @@
    ]
   },
   {
-   "id": "CL-045",
+   "id": "CL-047",
    "title": "CLS-2 AT-018 through 2-C6X13 beam A323",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2821,19 +2912,25 @@
    ]
   },
   {
-   "id": "CL-046",
-   "title": "RA 12ø (RTU-6) through PL1/4X3 plate",
+   "id": "CL-048",
+   "title": "RA 12ø (RTU-6) through 3 plates",
    "type": "Duct x Steel plate",
    "kind": "hard",
    "trades": "HVAC x Structure",
    "severity": "major",
    "elements": [
     "MEP-M3.04-RA-007",
-    "STR-S1.04-PS-10"
+    "MEP-M3.04-RA-012",
+    "STR-S1.04-PS-10",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A155-1-p171"
    ],
    "names": [
     "RA 12\"ø lined",
-    "Plate strap PL1/4x3 x 21'-0\""
+    "RA 12\"ø lined",
+    "Plate strap PL1/4x3 x 21'-0\"",
+    "A155/p171 PL1/4\"X3\"x6'-0\"",
+    "A155/p171 PL1/4\"X3\"x6'-0\""
    ],
    "point": [
     19.0,
@@ -2849,9 +2946,12 @@
    "confidence": "assumed",
    "assumed_elements": [
     "MEP-M3.04-RA-007",
-    "STR-S1.04-PS-10"
+    "MEP-M3.04-RA-012",
+    "STR-S1.04-PS-10",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A155-1-p171"
    ],
-   "resolution": "Offset duct below PL1/4X3 plate: lower 7\" (BOD to EL. 12'-7\") incl. 1\" clearance; verify ceiling space, else reroute.",
+   "resolution": "Offset duct below 3 plates: lower 7\" (BOD to EL. 12'-7\") incl. 1\" clearance; verify ceiling space, else reroute.",
    "view": "below",
    "pairs": [
     {
@@ -2863,11 +2963,31 @@
       -35.366,
       13.685
      ]
+    },
+    {
+     "mep": "MEP-M3.04-RA-007",
+     "other": "STR-E1-STL-A155-2-p171",
+     "penetration_in": 4.69,
+     "point": [
+      18.505,
+      -35.366,
+      13.755
+     ]
+    },
+    {
+     "mep": "MEP-M3.04-RA-012",
+     "other": "STR-E1-STL-A155-1-p171",
+     "penetration_in": 2.61,
+     "point": [
+      19.431,
+      -35.366,
+      13.755
+     ]
     }
    ]
   },
   {
-   "id": "CL-047",
+   "id": "CL-049",
    "title": "RA 20x16 (RTU-6) through 6x8 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -2912,7 +3032,7 @@
    ]
   },
   {
-   "id": "CL-048",
+   "id": "CL-050",
    "title": "CLS-2 AT-009 through 2-C6X13 beam A450",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2955,7 +3075,7 @@
    ]
   },
   {
-   "id": "CL-049",
+   "id": "CL-051",
    "title": "CLS-2 AT-008 through 2-C6X13 beam A305",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -2998,7 +3118,7 @@
    ]
   },
   {
-   "id": "CL-050",
+   "id": "CL-052",
    "title": "HR-2 support platform through PSL 3-1/2X14 joist",
    "type": "Curb x Framing",
    "kind": "hard",
@@ -3043,7 +3163,7 @@
    ]
   },
   {
-   "id": "CL-051",
+   "id": "CL-053",
    "title": "CLS-2 AT-017 through 2-C6X13 beam A302",
    "type": "Air terminal x Steel (relocate terminal)",
    "kind": "hard",
@@ -3086,7 +3206,7 @@
    ]
   },
   {
-   "id": "CL-052",
+   "id": "CL-054",
    "title": "SA 36x18(widthscaled,depthassumed) (RTU-2) through 11 joists",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -3445,7 +3565,7 @@
    ]
   },
   {
-   "id": "CL-053",
+   "id": "CL-055",
    "title": "SA 24x14 riser through LVL 1-3/4x14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -3488,7 +3608,7 @@
    ]
   },
   {
-   "id": "CL-054",
+   "id": "CL-056",
    "title": "OA 22x14 (ERV-1) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -3543,7 +3663,7 @@
    ]
   },
   {
-   "id": "CL-055",
+   "id": "CL-057",
    "title": "OA 22x14 (ERV-1) through 2 joists (LVL 1-3/4X14)",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -3632,7 +3752,7 @@
    ]
   },
   {
-   "id": "CL-056",
+   "id": "CL-058",
    "title": "EA 8ø through 3-1/2X14 PSL beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -3690,7 +3810,7 @@
    ]
   },
   {
-   "id": "CL-057",
+   "id": "CL-059",
    "title": "REF 7/8 (HR-2) through PSL 5-1/4x14 beam",
    "type": "Pipe x Glulam/header",
    "kind": "hard",
@@ -3745,7 +3865,66 @@
    ]
   },
   {
-   "id": "CL-058",
+   "id": "CL-060",
+   "title": "RA 12ø through 2 plates",
+   "type": "Duct x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "FIT-damper-d6d6636e",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A156-1-p170-1"
+   ],
+   "names": [
+    "RA damper 12\"ø",
+    "A155/p171 PL1/4\"X3\"x6'-0\"",
+    "A156/p170 PL1/4\"X3\"x10'-6\""
+   ],
+   "point": [
+    18.505,
+    -35.366,
+    13.755
+   ],
+   "max_penetration_in": 3.98,
+   "min_clearance_in": null,
+   "grid": "G.7 +1'-8 / 22 +4'-7",
+   "elevation": "13'-9\"",
+   "level": "",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-damper-d6d6636e",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A156-1-p170-1"
+   ],
+   "resolution": "Offset duct below 2 plates: lower 6.5\" (BOD to EL. 12'-7\") incl. 1\" clearance; verify ceiling space, else reroute.",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-damper-d6d6636e",
+     "other": "STR-E1-STL-A155-2-p171",
+     "penetration_in": 3.98,
+     "point": [
+      18.505,
+      -35.366,
+      13.755
+     ]
+    },
+    {
+     "mep": "FIT-damper-d6d6636e",
+     "other": "STR-E1-STL-A156-1-p170-1",
+     "penetration_in": 1.44,
+     "point": [
+      18.618,
+      -35.366,
+      14.068
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-061",
    "title": "REF 5/8 (HP-ELEC1) through Exterior wall (stud) t=16.09 ft",
    "type": "Pipe x Rated wall",
    "kind": "hard",
@@ -3803,7 +3982,7 @@
    ]
   },
   {
-   "id": "CL-059",
+   "id": "CL-062",
    "title": "RA 18x14RA riser (RTU-3) through 1-3/4X14 LVL header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -3846,7 +4025,7 @@
    ]
   },
   {
-   "id": "CL-060",
+   "id": "CL-063",
    "title": "EA 10ø riser (chem storage A143 roof exhaust fan) through GLB 5-1/8X21 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -3889,7 +4068,7 @@
    ]
   },
   {
-   "id": "CL-061",
+   "id": "CL-064",
    "title": "RA 18x18 (RTU-7) through 3 1/2X14 PSL beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -3932,7 +4111,7 @@
    ]
   },
   {
-   "id": "CL-062",
+   "id": "CL-065",
    "title": "RA 18x18 (RTU-7) through PSL 5-1/4X14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -3975,7 +4154,7 @@
    ]
   },
   {
-   "id": "CL-063",
+   "id": "CL-066",
    "title": "RA 18x18 (RTU-7) through 2x full depth (14.00 in) joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4018,7 +4197,7 @@
    ]
   },
   {
-   "id": "CL-064",
+   "id": "CL-067",
    "title": "RA 18x18 (RTU-7) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4061,7 +4240,7 @@
    ]
   },
   {
-   "id": "CL-065",
+   "id": "CL-068",
    "title": "RA 18x18 (RTU-7) through 5-1/2 full depth (14.00 in) joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4104,8 +4283,8 @@
    ]
   },
   {
-   "id": "CL-066",
-   "title": "EA 8ø through PL1/4X3 plate",
+   "id": "CL-069",
+   "title": "EA 8ø through 3 plates",
    "type": "Duct x Steel plate",
    "kind": "hard",
    "trades": "HVAC x Structure",
@@ -4113,12 +4292,20 @@
    "elements": [
     "MEP-M3.04-EA-001",
     "MEP-M3.04-EA-003",
-    "STR-S1.04-PS-10"
+    "MEP-M3.04-EA-006",
+    "MEP-M3.04-EA-002",
+    "STR-S1.04-PS-10",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A156-1-p170-1"
    ],
    "names": [
     "EA 8\"ø",
     "EA 8\"ø",
-    "Plate strap PL1/4x3 x 21'-0\""
+    "EA 16\"x12\" (width scaled, depth assumed)",
+    "EA 8\"ø",
+    "Plate strap PL1/4x3 x 21'-0\"",
+    "A155/p171 PL1/4\"X3\"x6'-0\"",
+    "A156/p170 PL1/4\"X3\"x10'-6\""
    ],
    "point": [
     19.0,
@@ -4135,9 +4322,13 @@
    "assumed_elements": [
     "MEP-M3.04-EA-001",
     "MEP-M3.04-EA-003",
-    "STR-S1.04-PS-10"
+    "MEP-M3.04-EA-006",
+    "MEP-M3.04-EA-002",
+    "STR-S1.04-PS-10",
+    "STR-E1-STL-A155-2-p171",
+    "STR-E1-STL-A156-1-p170-1"
    ],
-   "resolution": "Offset duct below PL1/4X3 plate: lower 4.5\" (BOD to EL. 12'-11\") incl. 1\" clearance; verify ceiling space, else reroute.",
+   "resolution": "Offset duct below 3 plates: lower 6.5\" (BOD to EL. 12'-9\") incl. 1\" clearance; verify ceiling space, else reroute.",
    "view": "below",
    "pairs": [
     {
@@ -4159,11 +4350,41 @@
       -32.967,
       13.685
      ]
+    },
+    {
+     "mep": "MEP-M3.04-EA-006",
+     "other": "STR-E1-STL-A155-2-p171",
+     "penetration_in": 2.73,
+     "point": [
+      18.5,
+      -33.524,
+      13.755
+     ]
+    },
+    {
+     "mep": "MEP-M3.04-EA-002",
+     "other": "STR-E1-STL-A156-1-p170-1",
+     "penetration_in": 1.46,
+     "point": [
+      18.707,
+      -32.967,
+      14.068
+     ]
+    },
+    {
+     "mep": "MEP-M3.04-EA-006",
+     "other": "STR-E1-STL-A156-1-p170-1",
+     "penetration_in": 1.15,
+     "point": [
+      18.573,
+      -32.971,
+      14.068
+     ]
     }
    ]
   },
   {
-   "id": "CL-067",
+   "id": "CL-070",
    "title": "OA 12ø through PSL 5-1/4X14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -4218,7 +4439,7 @@
    ]
   },
   {
-   "id": "CL-068",
+   "id": "CL-071",
    "title": "EA 10ø (chem storage A143 roof exhaust fan) through GLB 5-1/8X21 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -4263,7 +4484,7 @@
    ]
   },
   {
-   "id": "CL-069",
+   "id": "CL-072",
    "title": "EA 6ø riser through LVL 1-3/4x14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4308,7 +4529,7 @@
    ]
   },
   {
-   "id": "CL-070",
+   "id": "CL-073",
    "title": "EA 10ø through PSL 5-1/4X14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -4379,7 +4600,7 @@
    ]
   },
   {
-   "id": "CL-071",
+   "id": "CL-074",
    "title": "EA 6ø through 6x6 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -4450,7 +4671,7 @@
    ]
   },
   {
-   "id": "CL-072",
+   "id": "CL-075",
    "title": "RA 32x13RA riser (RTU-IT) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4495,7 +4716,7 @@
    ]
   },
   {
-   "id": "CL-073",
+   "id": "CL-076",
    "title": "SA 36x25SA riser (MUA-1) through PSL 3-1/2X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4538,50 +4759,105 @@
    ]
   },
   {
-   "id": "CL-074",
-   "title": "SA 12x16 through LVL 1-3/4X14 joist",
-   "type": "Duct x Wood joist/rafter",
+   "id": "CL-077",
+   "title": "CLS-2 AT-009 through PL1/4\"X3 1/2\"x0'-3 1/2\" plate A117/p30",
+   "type": "Air terminal x Steel plate",
    "kind": "hard",
    "trades": "HVAC x Structure",
    "severity": "major",
    "elements": [
-    "FIT-damper-bccc7a00",
-    "STR-SWN-JOIST-0018"
+    "MEP-M3.02-AT-009",
+    "STR-E1-A117-2-p30-1"
    ],
    "names": [
-    "SA damper 12\"x16\"",
-    "opening header/trimmer (LVL typ) Y=-35.0"
+    "CLS-2 365 CFM",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
    ],
    "point": [
-    37.404,
-    -35.007,
-    12.566
+    21.934,
+    23.077,
+    10.625
    ],
-   "max_penetration_in": 2.58,
+   "max_penetration_in": 2.45,
    "min_clearance_in": null,
-   "grid": "I.2 -19'-11 / 22 +5'-0",
-   "elevation": "12'-7\"",
-   "level": "ROOF",
+   "grid": "H +1'-11 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
    "status": "New",
    "confidence": "derived",
    "assumed_elements": [],
-   "resolution": "Offset duct below LVL 1-3/4X14 joist: lower 4\" (BOD to EL. 11'-0\") incl. 1\" clearance; verify ceiling space, else reroute.",
-   "view": "below",
+   "resolution": "Slide CLS-2 AT-009 about 6\" east along its run to fall between members (coordinate the RCP with the architect); 4'-7.5\" west also clears. Only 5.7\" from the ceiling face to the underside of PL1/4\"X3 1/2\"x0'-3 1/2\" plate A117/p30 - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
    "pairs": [
     {
-     "mep": "FIT-damper-bccc7a00",
-     "other": "STR-SWN-JOIST-0018",
-     "penetration_in": 2.58,
+     "mep": "MEP-M3.02-AT-009",
+     "other": "STR-E1-A117-2-p30-1",
+     "penetration_in": 2.45,
      "point": [
-      37.404,
-      -35.007,
-      12.566
+      21.934,
+      23.077,
+      10.625
      ]
     }
    ]
   },
   {
-   "id": "CL-075",
+   "id": "CL-078",
+   "title": "CLS-2 AT-028 through 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\")",
+   "type": "Air terminal x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-M3.02-AT-028",
+    "STR-E1-A117-3-p30-4",
+    "STR-E1-A119-1-p30-1"
+   ],
+   "names": [
+    "CLS-2 360 CFM",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\"",
+    "A119/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
+   ],
+   "point": [
+    61.13,
+    18.955,
+    10.625
+   ],
+   "max_penetration_in": 2.4,
+   "min_clearance_in": null,
+   "grid": "I.5 -5'-10 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Slide CLS-2 AT-028 about 2'-7\" west along its run to fall between members (coordinate the RCP with the architect); 5'-11.5\" east also clears. Only 5.7\" from the ceiling face to the underside of 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\") - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.02-AT-028",
+     "other": "STR-E1-A117-3-p30-4",
+     "penetration_in": 2.4,
+     "point": [
+      61.13,
+      18.955,
+      10.625
+     ]
+    },
+    {
+     "mep": "MEP-M3.02-AT-028",
+     "other": "STR-E1-A119-1-p30-1",
+     "penetration_in": 2.4,
+     "point": [
+      61.689,
+      18.896,
+      10.625
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-079",
    "title": "CLR-2 AT-040 through Door C127.1 INT-7 10'-3\" x 10'-5\"",
    "type": "Air terminal x Door",
    "kind": "hard",
@@ -4636,7 +4912,7 @@
    ]
   },
   {
-   "id": "CL-076",
+   "id": "CL-080",
    "title": "SA 36x25SA riser (MUA-1) through PL1/4\"X3 plate A153",
    "type": "Duct x Steel plate",
    "kind": "hard",
@@ -4679,7 +4955,7 @@
    ]
   },
   {
-   "id": "CL-077",
+   "id": "CL-081",
    "title": "OA 16x10 through 4 joists (LVL 1-3/4X14)",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4758,7 +5034,7 @@
    ]
   },
   {
-   "id": "CL-078",
+   "id": "CL-082",
    "title": "SA 12x16 (RTU-6) through 2 joists",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4837,7 +5113,7 @@
    ]
   },
   {
-   "id": "CL-079",
+   "id": "CL-083",
    "title": "SA 12x16 (RTU-6) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4880,7 +5156,7 @@
    ]
   },
   {
-   "id": "CL-080",
+   "id": "CL-084",
    "title": "SA 12x16 (RTU-6) through LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -4923,7 +5199,7 @@
    ]
   },
   {
-   "id": "CL-081",
+   "id": "CL-085",
    "title": "SA 12x16 (RTU-7) through 4 joists (LVL 1-3/4X14)",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -5050,7 +5326,7 @@
    ]
   },
   {
-   "id": "CL-082",
+   "id": "CL-086",
    "title": "SA 12x16 (RTU-7) through PSL 5-1/4X14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -5093,7 +5369,7 @@
    ]
   },
   {
-   "id": "CL-083",
+   "id": "CL-087",
    "title": "RA 16ø (RTU-7) through 3-1/2X14 PSL beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -5136,7 +5412,7 @@
    ]
   },
   {
-   "id": "CL-084",
+   "id": "CL-088",
    "title": "REF 7/8 (HR-2) through 16 joists (LVL 1-3/4x14)",
    "type": "Pipe x Wood joist/rafter",
    "kind": "hard",
@@ -5845,7 +6121,7 @@
    ]
   },
   {
-   "id": "CL-085",
+   "id": "CL-089",
    "title": "REF 7/8 (HR-2) through LVL 1-3/4x14 joist",
    "type": "Pipe x Wood joist/rafter",
    "kind": "hard",
@@ -5924,7 +6200,50 @@
    ]
   },
   {
-   "id": "CL-086",
+   "id": "CL-090",
+   "title": "CLS-2 AT-008 through PL1/4\"X3 1/2\"x0'-3 1/2\" plate A117/p30",
+   "type": "Air terminal x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-M3.02-AT-008",
+    "STR-E1-A117-2-p30-3"
+   ],
+   "names": [
+    "CLS-2 360 CFM",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
+   ],
+   "point": [
+    31.879,
+    22.011,
+    10.625
+   ],
+   "max_penetration_in": 1.96,
+   "min_clearance_in": null,
+   "grid": "H +11'-11 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Slide CLS-2 AT-008 about 6\" east along its run to fall between members (coordinate the RCP with the architect); 4'-6\" west also clears. Only 5.7\" from the ceiling face to the underside of PL1/4\"X3 1/2\"x0'-3 1/2\" plate A117/p30 - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.02-AT-008",
+     "other": "STR-E1-A117-2-p30-3",
+     "penetration_in": 1.96,
+     "point": [
+      31.879,
+      22.011,
+      10.625
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-091",
    "title": "CF-C120-2 through 3-1/2X14 PSL beam",
    "type": "Equipment x Framing",
    "kind": "hard",
@@ -5969,7 +6288,7 @@
    ]
   },
   {
-   "id": "CL-087",
+   "id": "CL-092",
    "title": "SA 10ø through 6x6 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -6014,7 +6333,172 @@
    ]
   },
   {
-   "id": "CL-088",
+   "id": "CL-093",
+   "title": "CLS-2 AT-006 through 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\")",
+   "type": "Air terminal x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-M3.02-AT-006",
+    "STR-E1-A117-2-p30-4",
+    "STR-E1-A117-3-p30-1"
+   ],
+   "names": [
+    "CLS-2 360 CFM",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\"",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
+   ],
+   "point": [
+    41.25,
+    21.024,
+    10.625
+   ],
+   "max_penetration_in": 1.91,
+   "min_clearance_in": null,
+   "grid": "I.2 -10'-3 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Slide CLS-2 AT-006 about 22\" east along its run to fall between members (coordinate the RCP with the architect); 3'-2\" west also clears. Only 5.7\" from the ceiling face to the underside of 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\") - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.02-AT-006",
+     "other": "STR-E1-A117-2-p30-4",
+     "penetration_in": 1.91,
+     "point": [
+      41.25,
+      21.024,
+      10.625
+     ]
+    },
+    {
+     "mep": "MEP-M3.02-AT-006",
+     "other": "STR-E1-A117-3-p30-1",
+     "penetration_in": 1.91,
+     "point": [
+      41.807,
+      20.965,
+      10.625
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-094",
+   "title": "CLS-2 AT-012 through 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\")",
+   "type": "Air terminal x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-M3.02-AT-012",
+    "STR-E1-A117-3-p30-2",
+    "STR-E1-A117-3-p30-3"
+   ],
+   "names": [
+    "CLS-2 360 CFM",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\"",
+    "A117/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
+   ],
+   "point": [
+    51.184,
+    19.979,
+    10.625
+   ],
+   "max_penetration_in": 1.9,
+   "min_clearance_in": null,
+   "grid": "I.2 -0'-6 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Slide CLS-2 AT-012 about 23.5\" east along its run to fall between members (coordinate the RCP with the architect); 3'-0.5\" west also clears. Only 5.7\" from the ceiling face to the underside of 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\") - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.02-AT-012",
+     "other": "STR-E1-A117-3-p30-2",
+     "penetration_in": 1.9,
+     "point": [
+      51.184,
+      19.979,
+      10.625
+     ]
+    },
+    {
+     "mep": "MEP-M3.02-AT-012",
+     "other": "STR-E1-A117-3-p30-3",
+     "penetration_in": 1.89,
+     "point": [
+      51.753,
+      19.919,
+      10.625
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-095",
+   "title": "CLS-2 AT-001 through 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\")",
+   "type": "Air terminal x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-M3.02-AT-001",
+    "STR-E1-A119-1-p30-2",
+    "STR-E1-A118-1-p30-1"
+   ],
+   "names": [
+    "CLS-2 390 CFM",
+    "A119/p30 PL1/4\"X3 1/2\"x0'-3 1/2\"",
+    "A118/p30 PL1/4\"X3 1/2\"x0'-3 1/2\""
+   ],
+   "point": [
+    81.014,
+    16.842,
+    10.625
+   ],
+   "max_penetration_in": 1.86,
+   "min_clearance_in": null,
+   "grid": "J +5'-7 / 13 +4'-11",
+   "elevation": "10'-8\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Slide CLS-2 AT-001 about 11.5\" east along its run to fall between members (coordinate the RCP with the architect); 4'-0\" west also clears. Only 5.7\" from the ceiling face to the underside of 2 plates (PL1/4\"X3 1/2\"x0'-3 1/2\") - too low for a plenum with the 10\"ø neck.",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.02-AT-001",
+     "other": "STR-E1-A119-1-p30-2",
+     "penetration_in": 1.86,
+     "point": [
+      81.014,
+      16.842,
+      10.625
+     ]
+    },
+    {
+     "mep": "MEP-M3.02-AT-001",
+     "other": "STR-E1-A118-1-p30-1",
+     "penetration_in": 1.86,
+     "point": [
+      81.237,
+      16.818,
+      10.625
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-096",
    "title": "OA 8ø (ERV-1) through LVL 1-3/4X14 header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6069,7 +6553,7 @@
    ]
   },
   {
-   "id": "CL-089",
+   "id": "CL-097",
    "title": "SA 12x10 through (2) LVL 1-3/4X14 joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -6114,7 +6598,7 @@
    ]
   },
   {
-   "id": "CL-090",
+   "id": "CL-098",
    "title": "CO2 sensor through 6x6 post",
    "type": "Equipment x Framing",
    "kind": "hard",
@@ -6157,7 +6641,7 @@
    ]
   },
   {
-   "id": "CL-091",
+   "id": "CL-099",
    "title": "RA 8ø through 6x6 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -6202,7 +6686,7 @@
    ]
   },
   {
-   "id": "CL-092",
+   "id": "CL-100",
    "title": "RA 18x18 riser (RTU-7) through 2x full depth (14.00 in) joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -6245,7 +6729,7 @@
    ]
   },
   {
-   "id": "CL-093",
+   "id": "CL-101",
    "title": "RA 18x18 (RTU-7) through LVL 1-3/4X14 header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6288,7 +6772,53 @@
    ]
   },
   {
-   "id": "CL-094",
+   "id": "CL-102",
+   "title": "CF-C120-2 through PL1/4\"X3\"x10'-6\" plate A156/p99",
+   "type": "Equipment x Framing",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "MEP-A2.41-CF-C120-2",
+    "STR-E1-STL-A156-1-p99-1"
+   ],
+   "names": [
+    "CF-C120-2 BIGASSFANS HAIKU 84\" ceiling fan",
+    "A156/p99 PL1/4\"X3\"x10'-6\""
+   ],
+   "point": [
+    18.65,
+    -25.424,
+    14.068
+   ],
+   "max_penetration_in": 1.29,
+   "min_clearance_in": null,
+   "grid": "G.7 +1'-10 / 22 +14'-7",
+   "elevation": "14'-1\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "MEP-A2.41-CF-C120-2",
+    "STR-E1-STL-A156-1-p99-1"
+   ],
+   "resolution": "Relocate CF-C120-2 clear of PL1/4\"X3\"x10'-6\" plate A156/p99, or STR to revise framing/support at the unit.",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "MEP-A2.41-CF-C120-2",
+     "other": "STR-E1-STL-A156-1-p99-1",
+     "penetration_in": 1.29,
+     "point": [
+      18.65,
+      -25.424,
+      14.068
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-103",
    "title": "OA 8ø through PSL 5-1/4X14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6331,7 +6861,7 @@
    ]
   },
   {
-   "id": "CL-095",
+   "id": "CL-104",
    "title": "OA 8ø through 2x full depth (14.00 in) joist",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -6374,7 +6904,7 @@
    ]
   },
   {
-   "id": "CL-096",
+   "id": "CL-105",
    "title": "OA 8ø through 2 joists (LVL 1-3/4X14)",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -6479,7 +7009,7 @@
    ]
   },
   {
-   "id": "CL-097",
+   "id": "CL-106",
    "title": "RA 10ø through PSL 5-1/4X11-7/8 header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6524,7 +7054,7 @@
    ]
   },
   {
-   "id": "CL-098",
+   "id": "CL-107",
    "title": "RA 10ø riser through PSL 5-1/4X11-7/8 header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6569,7 +7099,7 @@
    ]
   },
   {
-   "id": "CL-099",
+   "id": "CL-108",
    "title": "SA 20x12 through PSL 5-1/4x14 beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6612,7 +7142,7 @@
    ]
   },
   {
-   "id": "CL-100",
+   "id": "CL-109",
    "title": "SA 4x4 through 6x8 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -6657,7 +7187,7 @@
    ]
   },
   {
-   "id": "CL-101",
+   "id": "CL-110",
    "title": "SA 12x16 (RTU-6) through 3 1/2X14 PSL beam",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6700,7 +7230,7 @@
    ]
   },
   {
-   "id": "CL-102",
+   "id": "CL-111",
    "title": "RA 36x18 (RTU-2) through LVL 1-3/4X14 header",
    "type": "Duct x Glulam/header",
    "kind": "hard",
@@ -6743,7 +7273,7 @@
    ]
   },
   {
-   "id": "CL-103",
+   "id": "CL-112",
    "title": "RA 36x18 (RTU-2) through 8 joists",
    "type": "Duct x Wood joist/rafter",
    "kind": "hard",
@@ -7062,7 +7592,52 @@
    ]
   },
   {
-   "id": "CL-104",
+   "id": "CL-113",
+   "title": "SA 10ø through PL3/8\"X11 7/16\" plate A342/p62",
+   "type": "Duct x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "FIT-terminal_drop-171724a7-2",
+    "STR-E3-STL-A342-2-p62-1"
+   ],
+   "names": [
+    "SA terminal drop 10\"ø",
+    "A342/p62 PL3/8\"X11 7/16\""
+   ],
+   "point": [
+    54.555,
+    -68.424,
+    11.405
+   ],
+   "max_penetration_in": 0.69,
+   "min_clearance_in": null,
+   "grid": "I.2 -6'-4 / 23 -0'-5",
+   "elevation": "11'-5\"",
+   "level": "",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-171724a7-2"
+   ],
+   "resolution": "Offset duct below PL3/8\"X11 7/16\" plate A342/p62: lower 3\" (BOD to EL. 10'-6\") incl. 1\" clearance; verify ceiling space, else reroute.",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-171724a7-2",
+     "other": "STR-E3-STL-A342-2-p62-1",
+     "penetration_in": 0.69,
+     "point": [
+      54.555,
+      -68.424,
+      11.405
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-114",
    "title": "RA 18x12 through 6x6 post",
    "type": "Duct x Wood post",
    "kind": "hard",
@@ -7105,7 +7680,52 @@
    ]
   },
   {
-   "id": "CL-105",
+   "id": "CL-115",
+   "title": "SA 12ø riser through PL1/2\"X8\" x 1'-4\" plate A364/p304",
+   "type": "Duct x Steel plate",
+   "kind": "hard",
+   "trades": "HVAC x Structure",
+   "severity": "major",
+   "elements": [
+    "FIT-terminal_drop-67b81c0a-1",
+    "STR-E1-STL-A364-1-p304-2"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "A364/p304 PL1/2\"X8\" x 1'-4\""
+   ],
+   "point": [
+    74.637,
+    13.187,
+    11.525
+   ],
+   "max_penetration_in": 0.6,
+   "min_clearance_in": null,
+   "grid": "J -0'-10 / 13 +0'-7",
+   "elevation": "11'-6\"",
+   "level": "",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-67b81c0a-1"
+   ],
+   "resolution": "Relocate the drop 2.5\" north to fall between framing (re-tested against the neighbouring framing), or STR to header the framing at the opening; request opening.",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-1",
+     "other": "STR-E1-STL-A364-1-p304-2",
+     "penetration_in": 0.6,
+     "point": [
+      74.637,
+      13.187,
+      11.525
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-116",
    "title": "CLS-2 SA-AT023 against the face of 6x6 post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7150,7 +7770,7 @@
    ]
   },
   {
-   "id": "CL-106",
+   "id": "CL-117",
    "title": "CLS-2 SA-AT007 against the face of 2-54 CFS POST post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7196,7 +7816,7 @@
    ]
   },
   {
-   "id": "CL-107",
+   "id": "CL-118",
    "title": "KEX 24øKEX(18øMetal-Fab3G)+1-HRwrap riser (KEF-1) overruns the framing of its roof opening: 2 headers (LVL 1-3/4X14)",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7253,7 +7873,7 @@
    ]
   },
   {
-   "id": "CL-108",
+   "id": "CL-119",
    "title": "SA 18x14SA riser (RTU-4) overruns the framing of its roof opening: PSL 3-1/2X14 joist",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7296,7 +7916,7 @@
    ]
   },
   {
-   "id": "CL-109",
+   "id": "CL-120",
    "title": "RA 18x14RA riser (RTU-3) overruns the framing of its roof opening: LVL 1-3/4X14 joist",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7339,7 +7959,7 @@
    ]
   },
   {
-   "id": "CL-110",
+   "id": "CL-121",
    "title": "CLR-2 AT-047 against the face of 6x6 post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7384,7 +8004,7 @@
    ]
   },
   {
-   "id": "CL-111",
+   "id": "CL-122",
    "title": "RA 18x18RA riser (RTU-7) overruns the framing of its roof opening: 2x full depth (14.00 in) joist",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7427,7 +8047,7 @@
    ]
   },
   {
-   "id": "CL-112",
+   "id": "CL-123",
    "title": "EA 60x30 riser (EF-2 / GRV-1) overruns the framing of its roof opening: GLB 3-1/8X15 beam",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7470,7 +8090,7 @@
    ]
   },
   {
-   "id": "CL-113",
+   "id": "CL-124",
    "title": "SA 24-1/2x36SA riser (RTU-1) overruns the framing of its roof opening: PSL 3-1/2X14 joist",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7513,7 +8133,7 @@
    ]
   },
   {
-   "id": "CL-114",
+   "id": "CL-125",
    "title": "CLS-2 AT-064 against the face of 6x8 post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7558,7 +8178,7 @@
    ]
   },
   {
-   "id": "CL-115",
+   "id": "CL-126",
    "title": "RA 32x13RA riser (RTU-5) overruns the framing of its roof opening: 2 joists (LVL 1-3/4X14)",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7613,7 +8233,7 @@
    ]
   },
   {
-   "id": "CL-116",
+   "id": "CL-127",
    "title": "SA 30x18SA riser (RTU-IT) overruns the framing of its roof opening: 2 headers (LVL 1-3/4X14)",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7670,7 +8290,7 @@
    ]
   },
   {
-   "id": "CL-117",
+   "id": "CL-128",
    "title": "CLS-2 AT-071 against the face of 6x8 post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7715,7 +8335,7 @@
    ]
   },
   {
-   "id": "CL-118",
+   "id": "CL-129",
    "title": "RA 16x20RA riser (RTU-6) overruns the framing of its roof opening: 1-3/4X14 LVL header",
    "type": "Riser x framed roof opening",
    "kind": "opening_fit",
@@ -7758,7 +8378,7 @@
    ]
   },
   {
-   "id": "CL-119",
+   "id": "CL-130",
    "title": "CLR-2 AT-014 against the face of 6x6 post - verify terminal vs member face",
    "type": "Air terminal x member face (verify)",
    "kind": "face",
@@ -7803,7 +8423,7 @@
    ]
   },
   {
-   "id": "CL-120",
+   "id": "CL-131",
    "title": "SA 36x18(widthscaled,depthassumed) (RTU-2) within 0.7\" of 1-3/4X14 LVL header (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -7858,7 +8478,7 @@
    ]
   },
   {
-   "id": "CL-121",
+   "id": "CL-132",
    "title": "RA 18x18 (RTU-7) within 0.1\" of LVL 1-3/4X14 header (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -7901,7 +8521,7 @@
    ]
   },
   {
-   "id": "CL-122",
+   "id": "CL-133",
    "title": "RA within 0.5\" of 3 1/2X14 PSL beam (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -7944,7 +8564,7 @@
    ]
   },
   {
-   "id": "CL-123",
+   "id": "CL-134",
    "title": "SA 18x14 (RTU-3) within 0.3\" of LVL 1-3/4X14 header (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -8011,7 +8631,7 @@
    ]
   },
   {
-   "id": "CL-124",
+   "id": "CL-135",
    "title": "RA 10x10(widthscaled,depthassumed) (RTU-7) within 0.6\" of PSL 5-1/4X14 beam (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -8078,7 +8698,7 @@
    ]
   },
   {
-   "id": "CL-125",
+   "id": "CL-136",
    "title": "RA 10x10(widthscaled,depthassumed) within 0.1\" of PSL 5-1/4X14 beam (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -8121,7 +8741,7 @@
    ]
   },
   {
-   "id": "CL-126",
+   "id": "CL-137",
    "title": "30x30 within 0.2\" of GLB 3-1/8X15 beam (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -8164,7 +8784,7 @@
    ]
   },
   {
-   "id": "CL-127",
+   "id": "CL-138",
    "title": "EA 30x30 (EF-2 / GRV-1) within 0.2\" of GLB 3-1/8X15 beam (1\" min clearance)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -8207,7 +8827,7 @@
    ]
   },
   {
-   "id": "CL-128",
+   "id": "CL-139",
    "title": "SA 18x14 (RTU-4) within 0.3\" of W21X111 (C=3/4\") beam A352 (1\" min clearance)",
    "type": "Duct x Steel beam",
    "kind": "clearance",
@@ -8250,7 +8870,7 @@
    ]
   },
   {
-   "id": "CL-129",
+   "id": "CL-140",
    "title": "OA 64x48 within 0.5\" of HSS6X6X1/4 column A31 (1\" min clearance)",
    "type": "Duct x Steel column",
    "kind": "clearance",
@@ -8293,7 +8913,7 @@
    ]
   },
   {
-   "id": "CL-130",
+   "id": "CL-141",
    "title": "RA 36x18 (RTU-4) within 0.5\" of HSS16X8X1/2 header A364 (1\" min clearance)",
    "type": "Duct x Steel header",
    "kind": "clearance",
@@ -8336,7 +8956,50 @@
    ]
   },
   {
-   "id": "CL-131",
+   "id": "CL-142",
+   "title": "OA 64x48 within 0.0\" of PL1/4\"X7\" plate A31/p34 (1\" min clearance)",
+   "type": "Duct x Steel plate",
+   "kind": "clearance",
+   "trades": "HVAC x Structure",
+   "severity": "minor",
+   "elements": [
+    "MEP-M3.04-OA-006",
+    "STR-E3-STL-A31-2-p34"
+   ],
+   "names": [
+    "OA 46\"x10\" duct",
+    "A31/p34 PL1/4\"X7\" x 0'-7\""
+   ],
+   "point": [
+    181.494,
+    -108.026,
+    14.62
+   ],
+   "max_penetration_in": 0.0,
+   "min_clearance_in": 0.03,
+   "grid": "S -1'-0 / 41.5 -5'-9",
+   "elevation": "14'-7\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Provide 1\" min clearance to PL1/4\"X7\" plate A31/p34: offset OA 64x48 1\" (now 0.0\" clear).",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "MEP-M3.04-OA-006",
+     "other": "STR-E3-STL-A31-2-p34",
+     "penetration_in": -0.03,
+     "point": [
+      181.494,
+      -108.026,
+      14.62
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-143",
    "title": "SA 12x12(widthscaled,depthassumed) within 0.5\" of LVL 1-3/4X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8393,7 +9056,7 @@
    ]
   },
   {
-   "id": "CL-132",
+   "id": "CL-144",
    "title": "SA 12ø (RTU-2) within 0.0\" of 2 joists (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8452,7 +9115,50 @@
    ]
   },
   {
-   "id": "CL-133",
+   "id": "CL-145",
+   "title": "SA 10ø(scaled) within 0.5\" of LVL 1-3/4X14 joist (1\" min clearance)",
+   "type": "Duct x Wood joist/rafter",
+   "kind": "clearance",
+   "trades": "HVAC x Structure",
+   "severity": "minor",
+   "elements": [
+    "FIT-damper-bccc7a00",
+    "STR-SWN-JOIST-0018"
+   ],
+   "names": [
+    "SA damper 10\"ø (scaled)",
+    "opening header/trimmer (LVL typ) Y=-35.0"
+   ],
+   "point": [
+    36.897,
+    -35.012,
+    12.42
+   ],
+   "max_penetration_in": 0.0,
+   "min_clearance_in": 0.47,
+   "grid": "G.7 +20'-1 / 22 +5'-0",
+   "elevation": "12'-5\"",
+   "level": "ROOF",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Provide 1\" min clearance to LVL 1-3/4X14 joist: offset SA 10ø(scaled) 1\" (now 0.5\" clear).",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-damper-bccc7a00",
+     "other": "STR-SWN-JOIST-0018",
+     "penetration_in": -0.47,
+     "point": [
+      36.897,
+      -35.012,
+      12.42
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-146",
    "title": "SA 12x16 (RTU-6) within 0.2\" of 2 joists (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8521,7 +9227,7 @@
    ]
   },
   {
-   "id": "CL-134",
+   "id": "CL-147",
    "title": "SA 10ø(scaled) within 0.7\" of LVL 1-3/4X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8576,7 +9282,7 @@
    ]
   },
   {
-   "id": "CL-135",
+   "id": "CL-148",
    "title": "SA 36x18(widthscaled,depthassumed) (RTU-2) within 0.5\" of PSL 3-1/2X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8619,7 +9325,7 @@
    ]
   },
   {
-   "id": "CL-136",
+   "id": "CL-149",
    "title": "SA 36x18(widthscaled,depthassumed) (RTU-2) within 0.7\" of LVL 1-3/4X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8662,7 +9368,7 @@
    ]
   },
   {
-   "id": "CL-137",
+   "id": "CL-150",
    "title": "SA 16x14 within 0.7\" of LVL 1-3/4x14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8705,7 +9411,7 @@
    ]
   },
   {
-   "id": "CL-138",
+   "id": "CL-151",
    "title": "OA 8ø (ERV-1) within 0.0\" of 2 joists (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8784,7 +9490,7 @@
    ]
   },
   {
-   "id": "CL-139",
+   "id": "CL-152",
    "title": "OA 8ø within 0.1\" of 2 joists (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8863,7 +9569,7 @@
    ]
   },
   {
-   "id": "CL-140",
+   "id": "CL-153",
    "title": "SA 18x14 (RTU-3) within 0.0\" of LVL 1-3/4X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -8942,7 +9648,7 @@
    ]
   },
   {
-   "id": "CL-141",
+   "id": "CL-154",
    "title": "OA 8ø within 0.4\" of LVL 1-3/4X14 joist (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -9009,7 +9715,7 @@
    ]
   },
   {
-   "id": "CL-142",
+   "id": "CL-155",
    "title": "RA within 0.7\" of LVL 1-3/4X14 rafter (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -9052,7 +9758,7 @@
    ]
   },
   {
-   "id": "CL-143",
+   "id": "CL-156",
    "title": "RA within 0.7\" of LVL 1-3/4X14 rafter (1\" min clearance)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -9095,7 +9801,7 @@
    ]
   },
   {
-   "id": "CL-144",
+   "id": "CL-157",
    "title": "RA 24x14 within 0.7\" of 6x6 post (1\" min clearance)",
    "type": "Duct x Wood post",
    "kind": "clearance",
@@ -9138,7 +9844,7 @@
    ]
   },
   {
-   "id": "CL-145",
+   "id": "CL-158",
    "title": "SA 14x16 (RTU-2) within 0.3\" of 8x10 post (1\" min clearance)",
    "type": "Duct x Wood post",
    "kind": "clearance",
@@ -9181,7 +9887,7 @@
    ]
   },
   {
-   "id": "CL-146",
+   "id": "CL-159",
    "title": "SA 14x16->12ø within 0.5\" of 8x10 post (1\" min clearance)",
    "type": "Duct x Wood post",
    "kind": "clearance",
@@ -9224,7 +9930,7 @@
    ]
   },
   {
-   "id": "CL-147",
+   "id": "CL-160",
    "title": "Wall penetration: REF 1/2 (HR-1) through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9282,7 +9988,7 @@
    ]
   },
   {
-   "id": "CL-148",
+   "id": "CL-161",
    "title": "ROOF PENETRATION - opening required: EA 8ø riser (boiler #1 direct-vent flue) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -9327,7 +10033,7 @@
    ]
   },
   {
-   "id": "CL-149",
+   "id": "CL-162",
    "title": "ROOF PENETRATION - opening required: EA 8ø riser (boiler #2 direct-vent flue) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -9372,7 +10078,7 @@
    ]
   },
   {
-   "id": "CL-150",
+   "id": "CL-163",
    "title": "ROOF PENETRATION - opening required: EA 8ø riser (boiler #3 direct-vent flue) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -9417,7 +10123,7 @@
    ]
   },
   {
-   "id": "CL-151",
+   "id": "CL-164",
    "title": "ROOF PENETRATION - opening required: EA 8ø riser (boiler #4 direct-vent flue) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -9462,7 +10168,7 @@
    ]
   },
   {
-   "id": "CL-152",
+   "id": "CL-165",
    "title": "Wall penetration: EA 10ø through Partition (stud) t=13.69 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9728,7 +10434,7 @@
    ]
   },
   {
-   "id": "CL-153",
+   "id": "CL-166",
    "title": "Wall penetration: RA 12ø (RTU-6) through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9798,7 +10504,7 @@
    ]
   },
   {
-   "id": "CL-154",
+   "id": "CL-167",
    "title": "Wall penetration: REF 5/8 (HP-IT) through Partition (stud) t=0.56 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9856,7 +10562,7 @@
    ]
   },
   {
-   "id": "CL-155",
+   "id": "CL-168",
    "title": "Wall penetration: REF 5/8 (HP-IT) through Exterior wall (stud) t=16.09 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9914,7 +10620,7 @@
    ]
   },
   {
-   "id": "CL-156",
+   "id": "CL-169",
    "title": "Wall penetration: EA 16ø (EF-6 / EAL-1) through Pool Storage & Park Restroom interior wall U/UX 8\" CMU partition",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9957,7 +10663,7 @@
    ]
   },
   {
-   "id": "CL-157",
+   "id": "CL-170",
    "title": "Wall penetration: SA 12ø(scaled) (RTU-6) through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -9968,6 +10674,8 @@
     "MEP-M3.03-SA-047",
     "MEP-M3.03-SA-017",
     "MEP-M3.03-SA-029",
+    "FIT-damper-28244cad",
+    "FIT-damper-674a1fa5",
     "MEP-M3.03-SA-069",
     "FIT-transition-6b4c1f65",
     "MEP-M3.03-SA-074",
@@ -10020,6 +10728,8 @@
     "SA 12\"ø (scaled)",
     "SA 16\"x12\"",
     "SA 16\"x12\"",
+    "SA damper 12\"ø (scaled)",
+    "SA damper 12\"ø (scaled)",
     "SA 12\"ø (scaled)",
     "SA transition 16\"x12\" -> 12\"ø (scaled)",
     "SA 12\"ø (scaled)",
@@ -10084,6 +10794,8 @@
     "MEP-M3.03-SA-047",
     "MEP-M3.03-SA-017",
     "MEP-M3.03-SA-029",
+    "FIT-damper-28244cad",
+    "FIT-damper-674a1fa5",
     "MEP-M3.03-SA-069",
     "FIT-transition-6b4c1f65",
     "MEP-M3.03-SA-074",
@@ -10169,6 +10881,26 @@
       33.311,
       -24.067,
       12.415
+     ]
+    },
+    {
+     "mep": "FIT-damper-28244cad",
+     "other": "ARC-A2.31-W066",
+     "penetration_in": 34.92,
+     "point": [
+      31.26,
+      -27.739,
+      12.621
+     ]
+    },
+    {
+     "mep": "FIT-damper-674a1fa5",
+     "other": "ARC-A2.31-W066",
+     "penetration_in": 34.92,
+     "point": [
+      31.248,
+      -24.053,
+      12.622
      ]
     },
     {
@@ -10624,7 +11356,7 @@
    ]
   },
   {
-   "id": "CL-158",
+   "id": "CL-171",
    "title": "Wall penetration: EA 16ø (EF-6 / EAL-1) through Pool Storage & Park Restroom interior wall A 6 wood partition",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -10667,7 +11399,7 @@
    ]
   },
   {
-   "id": "CL-159",
+   "id": "CL-172",
    "title": "Wall penetration: RA 20x16 (RTU-6) through 3 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -10687,6 +11419,7 @@
     "MEP-M3.03-RA-024",
     "MEP-M3.03-RA-014",
     "FIT-terminal_drop-35bc0468-1",
+    "FIT-terminal_drop-24b8b060-2",
     "MEP-M3.03-RA-080",
     "ARC-A2.31-W066",
     "ARC-A2.31-W026",
@@ -10705,6 +11438,7 @@
     "RA terminal drop 22\"x22\"",
     "RA 20\"x16\" lined",
     "RA 20\"x16\" (riser 16x20 turned)",
+    "RA terminal drop 22\"x22\"",
     "RA terminal drop 22\"x22\"",
     "RA 20\"x16\" lined",
     "Partition (stud) t=13.69 ft",
@@ -10736,6 +11470,7 @@
     "MEP-M3.03-RA-024",
     "MEP-M3.03-RA-014",
     "FIT-terminal_drop-35bc0468-1",
+    "FIT-terminal_drop-24b8b060-2",
     "MEP-M3.03-RA-080"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
@@ -10882,6 +11617,16 @@
      ]
     },
     {
+     "mep": "FIT-terminal_drop-24b8b060-2",
+     "other": "ARC-A2.31-W026",
+     "penetration_in": 2.0,
+     "point": [
+      29.826,
+      -34.086,
+      11.417
+     ]
+    },
+    {
      "mep": "MEP-M3.03-RA-080",
      "other": "ARC-A2.31-W022",
      "penetration_in": 0.81,
@@ -10894,7 +11639,7 @@
    ]
   },
   {
-   "id": "CL-160",
+   "id": "CL-173",
    "title": "ROOF PENETRATION - opening required: EA 6ø riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -10939,7 +11684,7 @@
    ]
   },
   {
-   "id": "CL-161",
+   "id": "CL-174",
    "title": "Wall penetration: REF 1/2 (HR-2) through Int wall wing t=9.0in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11023,7 +11768,7 @@
    ]
   },
   {
-   "id": "CL-162",
+   "id": "CL-175",
    "title": "Wall penetration: SA 34x10 through Int wall wing t=8.4in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11066,7 +11811,7 @@
    ]
   },
   {
-   "id": "CL-163",
+   "id": "CL-176",
    "title": "Wall penetration: RA 18x14 (RTU-IT) through Partition (stud) t=0.59 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11109,7 +11854,7 @@
    ]
   },
   {
-   "id": "CL-164",
+   "id": "CL-177",
    "title": "ROOF PENETRATION - opening required: RA 26x12 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11154,7 +11899,7 @@
    ]
   },
   {
-   "id": "CL-165",
+   "id": "CL-178",
    "title": "ROOF PENETRATION - opening required: SA 12x26 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11197,7 +11942,7 @@
    ]
   },
   {
-   "id": "CL-166",
+   "id": "CL-179",
    "title": "ROOF PENETRATION - opening required: RA 24x14 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11240,7 +11985,7 @@
    ]
   },
   {
-   "id": "CL-167",
+   "id": "CL-180",
    "title": "ROOF PENETRATION - opening required: SA 24x14 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11283,7 +12028,7 @@
    ]
   },
   {
-   "id": "CL-168",
+   "id": "CL-181",
    "title": "ROOF PENETRATION - opening required: EA 16x10 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11328,7 +12073,7 @@
    ]
   },
   {
-   "id": "CL-169",
+   "id": "CL-182",
    "title": "ROOF PENETRATION - opening required: OA 16x10 riser through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11373,7 +12118,7 @@
    ]
   },
   {
-   "id": "CL-170",
+   "id": "CL-183",
    "title": "Wall penetration: REF 1/2 (HR-2) through Int wall wing t=6.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11431,7 +12176,7 @@
    ]
   },
   {
-   "id": "CL-171",
+   "id": "CL-184",
    "title": "ROOF PENETRATION - opening required: OA 8ø riser (boiler #1 direct-vent intake) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11476,7 +12221,7 @@
    ]
   },
   {
-   "id": "CL-172",
+   "id": "CL-185",
    "title": "ROOF PENETRATION - opening required: OA 8ø riser (boiler #2 direct-vent intake) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11521,7 +12266,7 @@
    ]
   },
   {
-   "id": "CL-173",
+   "id": "CL-186",
    "title": "ROOF PENETRATION - opening required: OA 8ø riser (boiler #3 direct-vent intake) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11566,7 +12311,7 @@
    ]
   },
   {
-   "id": "CL-174",
+   "id": "CL-187",
    "title": "ROOF PENETRATION - opening required: OA 8ø riser (boiler #4 direct-vent intake) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -11611,7 +12356,7 @@
    ]
   },
   {
-   "id": "CL-175",
+   "id": "CL-188",
    "title": "Wall penetration: EA 10x6 through Exterior wall (stud) t=11.00 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11656,7 +12401,7 @@
    ]
   },
   {
-   "id": "CL-176",
+   "id": "CL-189",
    "title": "Wall penetration: SA 18x14 (RTU-3) through Partition (stud) t=0.59 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11699,7 +12444,7 @@
    ]
   },
   {
-   "id": "CL-177",
+   "id": "CL-190",
    "title": "Wall penetration: REF 1/4 (HR-2) through Wall above door A107.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11783,7 +12528,7 @@
    ]
   },
   {
-   "id": "CL-178",
+   "id": "CL-191",
    "title": "Wall penetration: RA 8ø through Int wall wing t=7.2in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11791,14 +12536,10 @@
    "severity": "info",
    "elements": [
     "FIT-terminal_drop-53500e24-2",
-    "FIT-terminal_drop-4f8250f0-3",
-    "FIT-terminal_drop-4f8250f0-2",
     "ARC-A2.22-W111"
    ],
    "names": [
     "RA terminal drop 8\"ø",
-    "RA terminal drop 10\"ø",
-    "RA terminal drop 10\"ø",
     "Int wall wing t=7.2in"
    ],
    "point": [
@@ -11814,9 +12555,7 @@
    "status": "New",
    "confidence": "assumed",
    "assumed_elements": [
-    "FIT-terminal_drop-53500e24-2",
-    "FIT-terminal_drop-4f8250f0-3",
-    "FIT-terminal_drop-4f8250f0-2"
+    "FIT-terminal_drop-53500e24-2"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
    "view": "above",
@@ -11830,31 +12569,11 @@
       -76.27,
       11.833
      ]
-    },
-    {
-     "mep": "FIT-terminal_drop-4f8250f0-3",
-     "other": "ARC-A2.22-W111",
-     "penetration_in": 11.82,
-     "point": [
-      30.694,
-      -73.576,
-      11.75
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-4f8250f0-2",
-     "other": "ARC-A2.22-W111",
-     "penetration_in": 8.41,
-     "point": [
-      30.616,
-      -75.714,
-      11.75
-     ]
     }
    ]
   },
   {
-   "id": "CL-179",
+   "id": "CL-192",
    "title": "Wall penetration: RA 16x12 through Int wall wing t=7.9in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11899,7 +12618,7 @@
    ]
   },
   {
-   "id": "CL-180",
+   "id": "CL-193",
    "title": "Wall penetration: EA 16x10 through 4 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -11911,10 +12630,8 @@
     "MEP-M3.06-OA-017",
     "MEP-M3.06-OA-073",
     "MEP-M3.06-EA-007",
-    "FIT-terminal_drop-2490bec8-2",
     "MEP-M3.06-EA-005",
     "MEP-M3.06-EA-004",
-    "FIT-terminal_drop-2490bec8-1",
     "FIT-tee-002282e9-1",
     "MEP-M3.06-OA-016",
     "FIT-tee-002282e9-2",
@@ -11930,10 +12647,8 @@
     "OA 10\"x10\" duct",
     "OA 7\"x7\" duct",
     "EA 16\"x10\" lined duct",
-    "EA terminal drop 10\"ø",
     "EA 16\"x10\" duct fitting",
     "EA 16\"x10\" duct fitting",
-    "EA terminal drop 10\"ø",
     "OA tee 10\"x10\"",
     "OA 10\"x10\" duct",
     "OA tee 10\"x10\"",
@@ -11961,10 +12676,8 @@
     "MEP-M3.06-OA-017",
     "MEP-M3.06-OA-073",
     "MEP-M3.06-EA-007",
-    "FIT-terminal_drop-2490bec8-2",
     "MEP-M3.06-EA-005",
     "MEP-M3.06-EA-004",
-    "FIT-terminal_drop-2490bec8-1",
     "FIT-tee-002282e9-1",
     "MEP-M3.06-OA-016",
     "FIT-tee-002282e9-2",
@@ -12024,16 +12737,6 @@
      ]
     },
     {
-     "mep": "FIT-terminal_drop-2490bec8-2",
-     "other": "ARC-A2.22-GF-DH-A106.2",
-     "penetration_in": 4.98,
-     "point": [
-      70.629,
-      -95.62,
-      11.75
-     ]
-    },
-    {
      "mep": "MEP-M3.06-EA-005",
      "other": "ARC-A2.22-W066",
      "penetration_in": 4.6,
@@ -12051,16 +12754,6 @@
       72.643,
       -93.503,
       12.583
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-2490bec8-1",
-     "other": "ARC-A2.22-GF-DH-A106.2",
-     "penetration_in": 3.71,
-     "point": [
-      70.665,
-      -95.463,
-      11.958
      ]
     },
     {
@@ -12146,7 +12839,7 @@
    ]
   },
   {
-   "id": "CL-181",
+   "id": "CL-194",
    "title": "Wall penetration: TA 16x14 through Ext wall wing t=14.6in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12189,7 +12882,7 @@
    ]
   },
   {
-   "id": "CL-182",
+   "id": "CL-195",
    "title": "Wall penetration: RA 24x14 through Int wall wing RR C102 east chase wall P 6-6 A",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12232,7 +12925,7 @@
    ]
   },
   {
-   "id": "CL-183",
+   "id": "CL-196",
    "title": "Wall penetration: EA 10ø through Int wall wing t=7.9in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12275,138 +12968,7 @@
    ]
   },
   {
-   "id": "CL-184",
-   "title": "Wall penetration: RA 10ø through 4 walls",
-   "type": "Wall penetration",
-   "kind": "wall_pen",
-   "trades": "HVAC x Architecture",
-   "severity": "info",
-   "elements": [
-    "FIT-terminal_drop-03e2e0dc-3",
-    "FIT-terminal_drop-a1bc8ada-3",
-    "FIT-terminal_drop-a1bc8ada-2",
-    "MEP-M3.06-RA-010",
-    "MEP-M3.06-RA-026",
-    "ARC-A2.22-GF-DH-C102.1",
-    "ARC-A2.22-W087",
-    "ARC-A2.22-W101",
-    "ARC-A2.22-W113"
-   ],
-   "names": [
-    "RA terminal drop 10\"ø",
-    "RA terminal drop 10\"ø",
-    "RA terminal drop 10\"ø",
-    "RA 24\"x14\" lined duct",
-    "RA 24\"x14\" lined duct fitting",
-    "Wall above door C102.1",
-    "Int wall wing t=7.9in",
-    "Int wall wing t=7.5in",
-    "Int wall wing t=6.8in"
-   ],
-   "point": [
-    46.126,
-    -76.979,
-    11.31
-   ],
-   "max_penetration_in": 15.81,
-   "min_clearance_in": null,
-   "grid": "M +22'-3 / 32.5 -1'-9",
-   "elevation": "11'-4\"",
-   "level": "GROUND",
-   "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-03e2e0dc-3",
-    "FIT-terminal_drop-a1bc8ada-3",
-    "FIT-terminal_drop-a1bc8ada-2"
-   ],
-   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
-   "view": "above",
-   "pairs": [
-    {
-     "mep": "FIT-terminal_drop-03e2e0dc-3",
-     "other": "ARC-A2.22-GF-DH-C102.1",
-     "penetration_in": 15.81,
-     "point": [
-      46.126,
-      -76.979,
-      11.31
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-a1bc8ada-3",
-     "other": "ARC-A2.22-GF-DH-C102.1",
-     "penetration_in": 11.01,
-     "point": [
-      46.025,
-      -77.386,
-      11.31
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-a1bc8ada-2",
-     "other": "ARC-A2.22-GF-DH-C102.1",
-     "penetration_in": 9.86,
-     "point": [
-      46.152,
-      -78.528,
-      11.31
-     ]
-    },
-    {
-     "mep": "MEP-M3.06-RA-010",
-     "other": "ARC-A2.22-W087",
-     "penetration_in": 6.99,
-     "point": [
-      46.931,
-      -75.524,
-      12.309
-     ]
-    },
-    {
-     "mep": "MEP-M3.06-RA-010",
-     "other": "ARC-A2.22-W101",
-     "penetration_in": 5.38,
-     "point": [
-      47.954,
-      -75.358,
-      12.309
-     ]
-    },
-    {
-     "mep": "MEP-M3.06-RA-026",
-     "other": "ARC-A2.22-W101",
-     "penetration_in": 3.56,
-     "point": [
-      47.169,
-      -75.078,
-      12.309
-     ]
-    },
-    {
-     "mep": "MEP-M3.06-RA-026",
-     "other": "ARC-A2.22-W087",
-     "penetration_in": 3.1,
-     "point": [
-      46.831,
-      -75.289,
-      12.309
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-a1bc8ada-2",
-     "other": "ARC-A2.22-W113",
-     "penetration_in": 0.95,
-     "point": [
-      46.52,
-      -79.197,
-      11.31
-     ]
-    }
-   ]
-  },
-  {
-   "id": "CL-185",
+   "id": "CL-197",
    "title": "Wall penetration: EA 16x10 through Int wall wing t=6.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12449,7 +13011,7 @@
    ]
   },
   {
-   "id": "CL-186",
+   "id": "CL-198",
    "title": "Wall penetration: RA 10ø through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12611,7 +13173,7 @@
    ]
   },
   {
-   "id": "CL-187",
+   "id": "CL-199",
    "title": "ROOF PENETRATION - opening required: EA 60x30 riser (EF-2 / GRV-1) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -12654,7 +13216,7 @@
    ]
   },
   {
-   "id": "CL-188",
+   "id": "CL-200",
    "title": "ROOF PENETRATION - opening required: REF 1/4 riser (HP-ELEC2) through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -12712,7 +13274,7 @@
    ]
   },
   {
-   "id": "CL-189",
+   "id": "CL-201",
    "title": "Wall penetration: TA 12ø through Header over C125.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12783,7 +13345,7 @@
    ]
   },
   {
-   "id": "CL-190",
+   "id": "CL-202",
    "title": "Wall penetration: EA 16x12 through Partition (stud) t=0.74 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12828,7 +13390,7 @@
    ]
   },
   {
-   "id": "CL-191",
+   "id": "CL-203",
    "title": "Wall penetration: SA 10ø(scaled) (RTU-6) through Exterior wall (stud) t=0.69 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12871,7 +13433,7 @@
    ]
   },
   {
-   "id": "CL-192",
+   "id": "CL-204",
    "title": "Wall penetration: SA 18x14 (RTU-IT) through Partition (stud) t=1.22 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12914,7 +13476,7 @@
    ]
   },
   {
-   "id": "CL-193",
+   "id": "CL-205",
    "title": "Wall penetration: OA 10ø through Int wall wing t=6.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -12957,7 +13519,7 @@
    ]
   },
   {
-   "id": "CL-194",
+   "id": "CL-206",
    "title": "Wall penetration: SA 36x18 (RTU-1) through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13026,7 +13588,7 @@
    ]
   },
   {
-   "id": "CL-195",
+   "id": "CL-207",
    "title": "Wall penetration: REF 1/2 (HR-2) through Partition above interior storefront ISF1-A106-1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13084,7 +13646,7 @@
    ]
   },
   {
-   "id": "CL-196",
+   "id": "CL-208",
    "title": "Wall penetration: SA 20x12 through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13139,7 +13701,7 @@
    ]
   },
   {
-   "id": "CL-197",
+   "id": "CL-209",
    "title": "Wall penetration: OA 18x18 through Int wall chg Men's/women's changing chase wall P 6-6",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13147,12 +13709,10 @@
    "severity": "info",
    "elements": [
     "MEP-M3.04-OA-008",
-    "FIT-damper-746cab68",
     "ARC-A2.22-W205"
    ],
    "names": [
     "OA 18\"x18\" duct",
-    "OA damper 18\"x18\"",
     "Int wall chg Men's/women's changing chase wall P 6-6"
    ],
    "point": [
@@ -13168,8 +13728,7 @@
    "status": "New",
    "confidence": "assumed",
    "assumed_elements": [
-    "MEP-M3.04-OA-008",
-    "FIT-damper-746cab68"
+    "MEP-M3.04-OA-008"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
    "view": "above",
@@ -13183,21 +13742,11 @@
       -102.7,
       12.477
      ]
-    },
-    {
-     "mep": "FIT-damper-746cab68",
-     "other": "ARC-A2.22-W205",
-     "penetration_in": 1.48,
-     "point": [
-      178.644,
-      -101.902,
-      12.477
-     ]
     }
    ]
   },
   {
-   "id": "CL-198",
+   "id": "CL-210",
    "title": "Wall penetration: RA 66x18 (RTU-2) through Header over C134.2",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13240,7 +13789,7 @@
    ]
   },
   {
-   "id": "CL-199",
+   "id": "CL-211",
    "title": "Wall penetration: SA 12ø through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13323,7 +13872,7 @@
    ]
   },
   {
-   "id": "CL-200",
+   "id": "CL-212",
    "title": "ROOF PENETRATION - opening required: EA 18x18 riser through Changing rooms roof R6 E (1\":12 to valley)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -13366,7 +13915,7 @@
    ]
   },
   {
-   "id": "CL-201",
+   "id": "CL-213",
    "title": "ROOF PENETRATION - opening required: EA 18x18 riser through Changing rooms roof R6 E (1\":12 to valley)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -13409,7 +13958,7 @@
    ]
   },
   {
-   "id": "CL-202",
+   "id": "CL-214",
    "title": "Wall penetration: SA 18x14 (RTU-4) through Partition (stud) t=1.13 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13464,7 +14013,7 @@
    ]
   },
   {
-   "id": "CL-203",
+   "id": "CL-215",
    "title": "Wall penetration: RA 26x12 through Int wall wing RR C104 west chase wall P 6-6 A",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13509,7 +14058,7 @@
    ]
   },
   {
-   "id": "CL-204",
+   "id": "CL-216",
    "title": "Wall penetration: TA 14x10 through Int wall wing Family Rm A110 east chase wall P 6-6 A",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13566,7 +14115,78 @@
    ]
   },
   {
-   "id": "CL-205",
+   "id": "CL-217",
+   "title": "Wall penetration: SA 12ø through Exterior wall (stud) t=1.55 ft",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "FIT-terminal_drop-67b81c0a-2",
+    "FIT-terminal_drop-67b81c0a-1",
+    "FIT-terminal_drop-67b81c0a-3",
+    "ARC-A2.31-W003"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "SA terminal drop 12\"ø",
+    "SA terminal drop 12\"ø",
+    "Exterior wall (stud) t=1.55 ft"
+   ],
+   "point": [
+    74.553,
+    13.074,
+    11.0
+   ],
+   "max_penetration_in": 12.53,
+   "min_clearance_in": null,
+   "grid": "J -0'-11 / 13 +0'-6",
+   "elevation": "11'-0\"",
+   "level": "GROUND",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-67b81c0a-2",
+    "FIT-terminal_drop-67b81c0a-1",
+    "FIT-terminal_drop-67b81c0a-3"
+   ],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-2",
+     "other": "ARC-A2.31-W003",
+     "penetration_in": 12.53,
+     "point": [
+      74.553,
+      13.074,
+      11.0
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-1",
+     "other": "ARC-A2.31-W003",
+     "penetration_in": 4.34,
+     "point": [
+      74.704,
+      13.308,
+      11.025
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-67b81c0a-3",
+     "other": "ARC-A2.31-W003",
+     "penetration_in": 1.15,
+     "point": [
+      74.4,
+      12.441,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-218",
    "title": "Wall penetration: TA 16x14 through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13621,7 +14241,7 @@
    ]
   },
   {
-   "id": "CL-206",
+   "id": "CL-219",
    "title": "Wall penetration: SA 34x10 through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13740,7 +14360,7 @@
    ]
   },
   {
-   "id": "CL-207",
+   "id": "CL-220",
    "title": "Wall penetration: EA 16x12 through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13797,7 +14417,7 @@
    ]
   },
   {
-   "id": "CL-208",
+   "id": "CL-221",
    "title": "Wall penetration: TA 14ø through Wall over door C126.1 (8.00-12.46)",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13868,7 +14488,7 @@
    ]
   },
   {
-   "id": "CL-209",
+   "id": "CL-222",
    "title": "Wall penetration: REF 1/2 (HR-2) through Int wall wing t=9.4in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13926,7 +14546,7 @@
    ]
   },
   {
-   "id": "CL-210",
+   "id": "CL-223",
    "title": "Wall penetration: EA 8ø through Int wall wing t=7.2in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -13969,7 +14589,7 @@
    ]
   },
   {
-   "id": "CL-211",
+   "id": "CL-224",
    "title": "Wall penetration: EA 16x10 through Int wall wing t=6.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14012,7 +14632,7 @@
    ]
   },
   {
-   "id": "CL-212",
+   "id": "CL-225",
    "title": "Wall penetration: OA 10ø through Partition above interior storefront ISF2-A105-1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14057,7 +14677,7 @@
    ]
   },
   {
-   "id": "CL-213",
+   "id": "CL-226",
    "title": "Wall penetration: SA 10x10 through Int wall wing t=13.1in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14102,7 +14722,7 @@
    ]
   },
   {
-   "id": "CL-214",
+   "id": "CL-227",
    "title": "Wall penetration: OA 16x10 through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14159,7 +14779,7 @@
    ]
   },
   {
-   "id": "CL-215",
+   "id": "CL-228",
    "title": "Wall penetration: SA 20x12 through Int wall wing t=7.9in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14202,7 +14822,7 @@
    ]
   },
   {
-   "id": "CL-216",
+   "id": "CL-229",
    "title": "Wall penetration: EA 8x10 through Int wall wing t=6.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14211,14 +14831,12 @@
    "elements": [
     "MEP-M3.06-EA-039",
     "FIT-terminal_drop-eaa25e87-2",
-    "FIT-damper-f9c10153",
     "FIT-terminal_drop-eaa25e87-1",
     "ARC-A2.22-W118"
    ],
    "names": [
     "EA 8\"x10\" duct",
     "EA terminal drop 6\"ø",
-    "EA damper 8\"x10\"",
     "EA terminal drop 6\"ø",
     "Int wall wing t=6.8in"
    ],
@@ -14237,7 +14855,6 @@
    "assumed_elements": [
     "MEP-M3.06-EA-039",
     "FIT-terminal_drop-eaa25e87-2",
-    "FIT-damper-f9c10153",
     "FIT-terminal_drop-eaa25e87-1"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
@@ -14264,16 +14881,6 @@
      ]
     },
     {
-     "mep": "FIT-damper-f9c10153",
-     "other": "ARC-A2.22-W118",
-     "penetration_in": 1.81,
-     "point": [
-      77.158,
-      -74.365,
-      12.583
-     ]
-    },
-    {
      "mep": "FIT-terminal_drop-eaa25e87-1",
      "other": "ARC-A2.22-W118",
      "penetration_in": 1.81,
@@ -14286,7 +14893,7 @@
    ]
   },
   {
-   "id": "CL-217",
+   "id": "CL-230",
    "title": "Wall penetration: RA 66x18 through Header over C131.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14329,7 +14936,7 @@
    ]
   },
   {
-   "id": "CL-218",
+   "id": "CL-231",
    "title": "Wall penetration: EA 12x12 through Int wall wing t=8.4in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14396,7 +15003,7 @@
    ]
   },
   {
-   "id": "CL-219",
+   "id": "CL-232",
    "title": "Wall penetration: RA 36x18 (RTU-IT) through Header over C137.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14439,7 +15046,91 @@
    ]
   },
   {
-   "id": "CL-220",
+   "id": "CL-233",
+   "title": "Wall penetration: SA 12ø through Int wall wing Family Rm A111 west wall Q 8-4 A",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "FIT-terminal_drop-ba8697e8-2",
+    "FIT-terminal_drop-ba8697e8-3",
+    "FIT-terminal_drop-e925db1a-2",
+    "FIT-terminal_drop-e925db1a-3",
+    "ARC-A2.22-W204"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "SA terminal drop 12\"ø",
+    "SA terminal drop 9\"ø",
+    "SA terminal drop 9\"ø",
+    "Int wall wing Family Rm A111 west wall Q 8-4 A"
+   ],
+   "point": [
+    29.004,
+    -116.639,
+    10.0
+   ],
+   "max_penetration_in": 10.53,
+   "min_clearance_in": null,
+   "grid": "M +1'-1 / 34 +4'-5",
+   "elevation": "10'-0\"",
+   "level": "GROUND",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-ba8697e8-2",
+    "FIT-terminal_drop-ba8697e8-3",
+    "FIT-terminal_drop-e925db1a-2",
+    "FIT-terminal_drop-e925db1a-3"
+   ],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-ba8697e8-2",
+     "other": "ARC-A2.22-W204",
+     "penetration_in": 10.53,
+     "point": [
+      29.004,
+      -116.639,
+      10.0
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-ba8697e8-3",
+     "other": "ARC-A2.22-W204",
+     "penetration_in": 8.33,
+     "point": [
+      29.053,
+      -116.714,
+      10.0
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-e925db1a-2",
+     "other": "ARC-A2.22-W204",
+     "penetration_in": 7.04,
+     "point": [
+      27.866,
+      -104.893,
+      10.635
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-e925db1a-3",
+     "other": "ARC-A2.22-W204",
+     "penetration_in": 5.21,
+     "point": [
+      27.647,
+      -104.708,
+      10.255
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-234",
    "title": "Wall penetration: EA 8x8 through Int wall wing t=7.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14509,91 +15200,7 @@
    ]
   },
   {
-   "id": "CL-221",
-   "title": "Wall penetration: SA 9ø through Int wall wing Family Rm A111 west wall Q 8-4 A",
-   "type": "Wall penetration",
-   "kind": "wall_pen",
-   "trades": "HVAC x Architecture",
-   "severity": "info",
-   "elements": [
-    "FIT-terminal_drop-e925db1a-2",
-    "FIT-terminal_drop-157145bb-3",
-    "FIT-terminal_drop-157145bb-4",
-    "FIT-terminal_drop-e925db1a-3",
-    "ARC-A2.22-W204"
-   ],
-   "names": [
-    "SA terminal drop 9\"ø",
-    "SA terminal drop 12\"ø",
-    "SA terminal drop 12\"ø",
-    "SA terminal drop 9\"ø",
-    "Int wall wing Family Rm A111 west wall Q 8-4 A"
-   ],
-   "point": [
-    27.905,
-    -104.886,
-    10.635
-   ],
-   "max_penetration_in": 10.21,
-   "min_clearance_in": null,
-   "grid": "M +1'-2 / 33 -7'-2",
-   "elevation": "10'-8\"",
-   "level": "GROUND",
-   "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-e925db1a-2",
-    "FIT-terminal_drop-157145bb-3",
-    "FIT-terminal_drop-157145bb-4",
-    "FIT-terminal_drop-e925db1a-3"
-   ],
-   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
-   "view": "above",
-   "pairs": [
-    {
-     "mep": "FIT-terminal_drop-e925db1a-2",
-     "other": "ARC-A2.22-W204",
-     "penetration_in": 10.21,
-     "point": [
-      27.905,
-      -104.886,
-      10.635
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-157145bb-3",
-     "other": "ARC-A2.22-W204",
-     "penetration_in": 9.36,
-     "point": [
-      29.083,
-      -116.746,
-      10.51
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-157145bb-4",
-     "other": "ARC-A2.22-W204",
-     "penetration_in": 8.33,
-     "point": [
-      29.053,
-      -116.714,
-      10.255
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-e925db1a-3",
-     "other": "ARC-A2.22-W204",
-     "penetration_in": 5.21,
-     "point": [
-      27.647,
-      -104.708,
-      10.255
-     ]
-    }
-   ]
-  },
-  {
-   "id": "CL-222",
+   "id": "CL-235",
    "title": "Wall penetration: SA 10ø (ERV-1) through Exterior wall (stud) t=1.43 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14636,7 +15243,7 @@
    ]
   },
   {
-   "id": "CL-223",
+   "id": "CL-236",
    "title": "Wall penetration: SA 36x18(widthscaled,depthassumed) (RTU-2) through Header over C134.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14715,7 +15322,7 @@
    ]
   },
   {
-   "id": "CL-224",
+   "id": "CL-237",
    "title": "Wall penetration: EA 8ø through Header over C121.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14773,7 +15380,7 @@
    ]
   },
   {
-   "id": "CL-225",
+   "id": "CL-238",
    "title": "Wall penetration: RA 36x18 (RTU-4) through Header over C132.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -14816,7 +15423,7 @@
    ]
   },
   {
-   "id": "CL-226",
+   "id": "CL-239",
    "title": "ROOF PENETRATION - opening required: EA 10ø riser (chem storage A145 roof exhaust fan) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -14871,7 +15478,7 @@
    ]
   },
   {
-   "id": "CL-227",
+   "id": "CL-240",
    "title": "ROOF PENETRATION - opening required: EA 10ø riser (chem storage A144 roof exhaust fan) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -14926,7 +15533,7 @@
    ]
   },
   {
-   "id": "CL-228",
+   "id": "CL-241",
    "title": "ROOF PENETRATION - opening required: EA 10ø riser (chem storage A143 roof exhaust fan) through Pool Mechanical & Trash Enclosure roof R6 standing seam over metal deck, 1\"/12\" to north gutter",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -14981,65 +15588,7 @@
    ]
   },
   {
-   "id": "CL-229",
-   "title": "Wall penetration: RA 12ø through Exterior wall (stud) t=11.00 ft",
-   "type": "Wall penetration",
-   "kind": "wall_pen",
-   "trades": "HVAC x Architecture",
-   "severity": "info",
-   "elements": [
-    "FIT-terminal_drop-abe43489",
-    "MEP-M3.04-PL-G01",
-    "ARC-A2.31-W055"
-   ],
-   "names": [
-    "RA terminal drop 12\"ø",
-    "RA CLR-2 500 plenum box",
-    "Exterior wall (stud) t=11.00 ft"
-   ],
-   "point": [
-    6.039,
-    -31.489,
-    13.729
-   ],
-   "max_penetration_in": 8.95,
-   "min_clearance_in": null,
-   "grid": "G.7 -10'-9 / 22 +8'-6",
-   "elevation": "13'-9\"",
-   "level": "GROUND",
-   "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-abe43489",
-    "MEP-M3.04-PL-G01"
-   ],
-   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
-   "view": "above",
-   "pairs": [
-    {
-     "mep": "FIT-terminal_drop-abe43489",
-     "other": "ARC-A2.31-W055",
-     "penetration_in": 8.95,
-     "point": [
-      6.039,
-      -31.489,
-      13.729
-     ]
-    },
-    {
-     "mep": "MEP-M3.04-PL-G01",
-     "other": "ARC-A2.31-W055",
-     "penetration_in": 3.6,
-     "point": [
-      4.99,
-      -31.488,
-      13.83
-     ]
-    }
-   ]
-  },
-  {
-   "id": "CL-230",
+   "id": "CL-242",
    "title": "Wall penetration: SA 10ø through Lobby high wall grid 23",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15097,7 +15646,7 @@
    ]
   },
   {
-   "id": "CL-231",
+   "id": "CL-243",
    "title": "Wall penetration: OA 6ø through Int wall wing t=6.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15142,7 +15691,7 @@
    ]
   },
   {
-   "id": "CL-232",
+   "id": "CL-244",
    "title": "Wall penetration: SA 12x10 through Int wall wing t=7.2in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15150,16 +15699,10 @@
    "severity": "info",
    "elements": [
     "MEP-M3.07-SA-017",
-    "FIT-terminal_drop-3d5eeb49-2",
-    "FIT-terminal_drop-3d5eeb49-1",
-    "FIT-damper-175ea402",
     "ARC-A2.22-W110"
    ],
    "names": [
     "SA 12\"x10\" duct",
-    "SA terminal drop 12\"ø",
-    "SA terminal drop 12\"ø",
-    "SA damper 12\"x10\"",
     "Int wall wing t=7.2in"
    ],
    "point": [
@@ -15173,11 +15716,8 @@
    "elevation": "11'-5\"",
    "level": "CEILING",
    "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-3d5eeb49-2",
-    "FIT-terminal_drop-3d5eeb49-1"
-   ],
+   "confidence": "derived",
+   "assumed_elements": [],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
    "view": "above",
    "pairs": [
@@ -15190,41 +15730,11 @@
       -85.691,
       11.407
      ]
-    },
-    {
-     "mep": "FIT-terminal_drop-3d5eeb49-2",
-     "other": "ARC-A2.22-W110",
-     "penetration_in": 6.05,
-     "point": [
-      26.936,
-      -85.735,
-      11.0
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-3d5eeb49-1",
-     "other": "ARC-A2.22-W110",
-     "penetration_in": 4.72,
-     "point": [
-      27.021,
-      -85.67,
-      10.912
-     ]
-    },
-    {
-     "mep": "FIT-damper-175ea402",
-     "other": "ARC-A2.22-W110",
-     "penetration_in": 2.9,
-     "point": [
-      27.23,
-      -85.933,
-      11.407
-     ]
     }
    ]
   },
   {
-   "id": "CL-233",
+   "id": "CL-245",
    "title": "Wall penetration: EA 6ø(scaled) through Partition (stud) t=2.43 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15269,7 +15779,7 @@
    ]
   },
   {
-   "id": "CL-234",
+   "id": "CL-246",
    "title": "Wall penetration: SA 6ø (RTU-IT) through Partition (stud) t=2.66 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15314,7 +15824,7 @@
    ]
   },
   {
-   "id": "CL-235",
+   "id": "CL-247",
    "title": "Wall penetration: REF 1/4 (HR-2) through Int wall wing t=8.4in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15372,7 +15882,7 @@
    ]
   },
   {
-   "id": "CL-236",
+   "id": "CL-248",
    "title": "Wall penetration: SA 10x10 through Int wall wing t=6.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15417,7 +15927,7 @@
    ]
   },
   {
-   "id": "CL-237",
+   "id": "CL-249",
    "title": "Wall penetration: SA 10ø through 3 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15427,13 +15937,11 @@
     "FIT-terminal_drop-02d62073-3",
     "FIT-terminal_drop-195f493d-3",
     "FIT-terminal_drop-1dffe357-2",
-    "FIT-terminal_drop-6bb16902-2",
     "ARC-A2.22-W070",
     "ARC-A2.22-GF-W134",
     "ARC-A2.22-W082"
    ],
    "names": [
-    "SA terminal drop 10\"ø",
     "SA terminal drop 10\"ø",
     "SA terminal drop 10\"ø",
     "SA terminal drop 10\"ø",
@@ -15456,8 +15964,7 @@
    "assumed_elements": [
     "FIT-terminal_drop-02d62073-3",
     "FIT-terminal_drop-195f493d-3",
-    "FIT-terminal_drop-1dffe357-2",
-    "FIT-terminal_drop-6bb16902-2"
+    "FIT-terminal_drop-1dffe357-2"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
    "view": "above",
@@ -15511,21 +16018,251 @@
       -84.988,
       10.917
      ]
+    }
+   ]
+  },
+  {
+   "id": "CL-250",
+   "title": "Wall penetration: SA 10ø through Lobby high wall grid 23",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "FIT-terminal_drop-2fd3deba-2",
+    "FIT-terminal_drop-171724a7-2",
+    "FIT-terminal_drop-36d4f5b7-2",
+    "FIT-terminal_drop-0df0c00e-2",
+    "FIT-terminal_drop-271cb121-2",
+    "FIT-terminal_drop-c8d85e7b-2",
+    "FIT-terminal_drop-15dbd9e8-2",
+    "FIT-terminal_drop-171724a7-3",
+    "FIT-terminal_drop-2fd3deba-3",
+    "FIT-terminal_drop-271cb121-3",
+    "FIT-terminal_drop-36d4f5b7-3",
+    "FIT-terminal_drop-f62a9011-2",
+    "FIT-terminal_drop-15dbd9e8-3",
+    "FIT-terminal_drop-0df0c00e-3",
+    "FIT-terminal_drop-c8d85e7b-3",
+    "FIT-terminal_drop-f62a9011-3",
+    "ARC-A2.24-W139"
+   ],
+   "names": [
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "SA terminal drop 10\"ø",
+    "Lobby high wall grid 23"
+   ],
+   "point": [
+    59.772,
+    -68.69,
+    11.16
+   ],
+   "max_penetration_in": 7.96,
+   "min_clearance_in": null,
+   "grid": "I.2 -1'-2 / 23 -0'-9",
+   "elevation": "11'-2\"",
+   "level": "HIGH",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-2fd3deba-2",
+    "FIT-terminal_drop-171724a7-2",
+    "FIT-terminal_drop-36d4f5b7-2",
+    "FIT-terminal_drop-0df0c00e-2",
+    "FIT-terminal_drop-271cb121-2",
+    "FIT-terminal_drop-c8d85e7b-2",
+    "FIT-terminal_drop-15dbd9e8-2",
+    "FIT-terminal_drop-171724a7-3",
+    "FIT-terminal_drop-2fd3deba-3",
+    "FIT-terminal_drop-271cb121-3",
+    "FIT-terminal_drop-36d4f5b7-3",
+    "FIT-terminal_drop-f62a9011-2",
+    "FIT-terminal_drop-15dbd9e8-3",
+    "FIT-terminal_drop-0df0c00e-3",
+    "FIT-terminal_drop-c8d85e7b-3",
+    "FIT-terminal_drop-f62a9011-3"
+   ],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-2fd3deba-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 7.96,
+     "point": [
+      59.772,
+      -68.69,
+      11.16
+     ]
     },
     {
-     "mep": "FIT-terminal_drop-6bb16902-2",
-     "other": "ARC-A2.22-W070",
-     "penetration_in": 0.5,
+     "mep": "FIT-terminal_drop-171724a7-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 7.91,
      "point": [
-      88.899,
-      -81.063,
-      10.917
+      54.674,
+      -68.691,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-36d4f5b7-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 7.12,
+     "point": [
+      48.423,
+      -68.725,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-0df0c00e-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 7.1,
+     "point": [
+      70.125,
+      -68.725,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-271cb121-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.96,
+     "point": [
+      43.149,
+      -68.731,
+      11.75
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-c8d85e7b-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.94,
+     "point": [
+      80.21,
+      -68.732,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-15dbd9e8-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.94,
+     "point": [
+      63.472,
+      -68.732,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-171724a7-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.5,
+     "point": [
+      54.022,
+      -68.75,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-2fd3deba-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.49,
+     "point": [
+      59.188,
+      -68.751,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-271cb121-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.48,
+     "point": [
+      43.036,
+      -68.751,
+      11.333
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-36d4f5b7-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.48,
+     "point": [
+      48.129,
+      -68.751,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-f62a9011-2",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.44,
+     "point": [
+      75.014,
+      -68.753,
+      11.16
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-15dbd9e8-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.42,
+     "point": [
+      63.621,
+      -68.753,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-0df0c00e-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.42,
+     "point": [
+      69.947,
+      -68.753,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-c8d85e7b-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.42,
+     "point": [
+      80.116,
+      -68.753,
+      11.038
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-f62a9011-3",
+     "other": "ARC-A2.24-W139",
+     "penetration_in": 6.42,
+     "point": [
+      75.016,
+      -68.753,
+      11.038
      ]
     }
    ]
   },
   {
-   "id": "CL-238",
+   "id": "CL-251",
    "title": "Wall penetration: EA 10ø through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15570,7 +16307,7 @@
    ]
   },
   {
-   "id": "CL-239",
+   "id": "CL-252",
    "title": "Wall penetration: RA 16ø through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15615,7 +16352,7 @@
    ]
   },
   {
-   "id": "CL-240",
+   "id": "CL-253",
    "title": "Wall penetration: SA 10x10 through Int wall wing t=9.6in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15660,7 +16397,7 @@
    ]
   },
   {
-   "id": "CL-241",
+   "id": "CL-254",
    "title": "Wall penetration: SA 34x10 through Int wall wing t=8.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -15783,273 +16520,7 @@
    ]
   },
   {
-   "id": "CL-242",
-   "title": "Wall penetration: SA 10ø through Lobby high wall grid 23",
-   "type": "Wall penetration",
-   "kind": "wall_pen",
-   "trades": "HVAC x Architecture",
-   "severity": "info",
-   "elements": [
-    "FIT-terminal_drop-4346d566-2",
-    "FIT-terminal_drop-36d4f5b7-2",
-    "FIT-terminal_drop-0df0c00e-2",
-    "FIT-terminal_drop-271cb121-2",
-    "FIT-terminal_drop-c8d85e7b-2",
-    "FIT-terminal_drop-15dbd9e8-2",
-    "FIT-terminal_drop-2fd3deba-2",
-    "FIT-terminal_drop-171724a7-2",
-    "FIT-terminal_drop-171724a7-3",
-    "FIT-terminal_drop-2fd3deba-3",
-    "FIT-terminal_drop-271cb121-3",
-    "FIT-terminal_drop-36d4f5b7-3",
-    "FIT-terminal_drop-f62a9011-2",
-    "FIT-terminal_drop-15dbd9e8-3",
-    "FIT-terminal_drop-4346d566-3",
-    "FIT-terminal_drop-0df0c00e-3",
-    "FIT-terminal_drop-c8d85e7b-3",
-    "FIT-terminal_drop-f62a9011-3",
-    "ARC-A2.24-W139"
-   ],
-   "names": [
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "SA terminal drop 10\"ø",
-    "Lobby high wall grid 23"
-   ],
-   "point": [
-    64.002,
-    -68.703,
-    11.16
-   ],
-   "max_penetration_in": 7.63,
-   "min_clearance_in": null,
-   "grid": "I.5 -3'-0 / 23 -0'-9",
-   "elevation": "11'-2\"",
-   "level": "HIGH",
-   "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-4346d566-2",
-    "FIT-terminal_drop-36d4f5b7-2",
-    "FIT-terminal_drop-0df0c00e-2",
-    "FIT-terminal_drop-271cb121-2",
-    "FIT-terminal_drop-c8d85e7b-2",
-    "FIT-terminal_drop-15dbd9e8-2",
-    "FIT-terminal_drop-2fd3deba-2",
-    "FIT-terminal_drop-171724a7-2",
-    "FIT-terminal_drop-171724a7-3",
-    "FIT-terminal_drop-2fd3deba-3",
-    "FIT-terminal_drop-271cb121-3",
-    "FIT-terminal_drop-36d4f5b7-3",
-    "FIT-terminal_drop-f62a9011-2",
-    "FIT-terminal_drop-15dbd9e8-3",
-    "FIT-terminal_drop-4346d566-3",
-    "FIT-terminal_drop-0df0c00e-3",
-    "FIT-terminal_drop-c8d85e7b-3",
-    "FIT-terminal_drop-f62a9011-3"
-   ],
-   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
-   "view": "below",
-   "pairs": [
-    {
-     "mep": "FIT-terminal_drop-4346d566-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 7.63,
-     "point": [
-      64.002,
-      -68.703,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-36d4f5b7-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 7.12,
-     "point": [
-      48.423,
-      -68.725,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-0df0c00e-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 7.1,
-     "point": [
-      70.125,
-      -68.725,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-271cb121-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.96,
-     "point": [
-      43.149,
-      -68.731,
-      11.75
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-c8d85e7b-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.94,
-     "point": [
-      80.21,
-      -68.732,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-15dbd9e8-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.94,
-     "point": [
-      63.472,
-      -68.732,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-2fd3deba-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.73,
-     "point": [
-      59.265,
-      -68.741,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-171724a7-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.71,
-     "point": [
-      54.101,
-      -68.742,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-171724a7-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.5,
-     "point": [
-      54.022,
-      -68.75,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-2fd3deba-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.49,
-     "point": [
-      59.188,
-      -68.751,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-271cb121-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.48,
-     "point": [
-      43.036,
-      -68.751,
-      11.333
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-36d4f5b7-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.48,
-     "point": [
-      48.129,
-      -68.751,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-f62a9011-2",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.44,
-     "point": [
-      75.014,
-      -68.753,
-      11.16
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-15dbd9e8-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.42,
-     "point": [
-      63.621,
-      -68.753,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-4346d566-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.42,
-     "point": [
-      63.621,
-      -68.753,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-0df0c00e-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.42,
-     "point": [
-      69.947,
-      -68.753,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-c8d85e7b-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.42,
-     "point": [
-      80.116,
-      -68.753,
-      11.038
-     ]
-    },
-    {
-     "mep": "FIT-terminal_drop-f62a9011-3",
-     "other": "ARC-A2.24-W139",
-     "penetration_in": 6.42,
-     "point": [
-      75.016,
-      -68.753,
-      11.038
-     ]
-    }
-   ]
-  },
-  {
-   "id": "CL-243",
+   "id": "CL-255",
    "title": "Wall penetration: EA 12x8 (EF-6 / EAL-1) through Pool Storage & Park Restroom interior wall U/UX 8\" CMU partition",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -16092,7 +16563,7 @@
    ]
   },
   {
-   "id": "CL-244",
+   "id": "CL-256",
    "title": "ROOF PENETRATION - opening required: REF 3/4 riser (HR-1) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16150,7 +16621,7 @@
    ]
   },
   {
-   "id": "CL-245",
+   "id": "CL-257",
    "title": "ROOF PENETRATION - opening required: REF 3/8 riser (HP-IT) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16208,7 +16679,7 @@
    ]
   },
   {
-   "id": "CL-246",
+   "id": "CL-258",
    "title": "ROOF PENETRATION - opening required: REF 3/8 riser (HP-ELEC1) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16266,7 +16737,7 @@
    ]
   },
   {
-   "id": "CL-247",
+   "id": "CL-259",
    "title": "Wall penetration: EA (EF-6 / EAL-1) through Pool Storage & Park Restroom interior wall U/UX 8\" CMU partition",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -16309,7 +16780,7 @@
    ]
   },
   {
-   "id": "CL-248",
+   "id": "CL-260",
    "title": "Wall penetration: SA 8x8 through Int wall wing t=8.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -16317,10 +16788,14 @@
    "severity": "info",
    "elements": [
     "MEP-M3.06-SA-056",
+    "FIT-terminal_drop-2e64f76d-2",
+    "FIT-terminal_drop-2e64f76d-1",
     "ARC-A2.22-W074"
    ],
    "names": [
     "SA 8\"x8\" duct",
+    "SA terminal drop 8\"ø",
+    "SA terminal drop 8\"ø",
     "Int wall wing t=8.8in"
    ],
    "point": [
@@ -16336,7 +16811,9 @@
    "status": "New",
    "confidence": "assumed",
    "assumed_elements": [
-    "MEP-M3.06-SA-056"
+    "MEP-M3.06-SA-056",
+    "FIT-terminal_drop-2e64f76d-2",
+    "FIT-terminal_drop-2e64f76d-1"
    ],
    "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
    "view": "above",
@@ -16350,11 +16827,31 @@
       -102.984,
       12.716
      ]
+    },
+    {
+     "mep": "FIT-terminal_drop-2e64f76d-2",
+     "other": "ARC-A2.22-W074",
+     "penetration_in": 6.85,
+     "point": [
+      81.417,
+      -102.829,
+      12.049
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-2e64f76d-1",
+     "other": "ARC-A2.22-W074",
+     "penetration_in": 5.74,
+     "point": [
+      81.56,
+      -102.924,
+      12.216
+     ]
     }
    ]
   },
   {
-   "id": "CL-249",
+   "id": "CL-261",
    "title": "ROOF PENETRATION - opening required: EA 8øEA riser (EF-9) through R3 roof MP2 / CC west (1\"/12\" to east, over exposed acoustic deck)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16397,7 +16894,7 @@
    ]
   },
   {
-   "id": "CL-250",
+   "id": "CL-262",
    "title": "ROOF PENETRATION - opening required: REF 1-1/8 riser (HR-2) through Mechanical well R1 (RTU-8/RTU-9/ERV-2/HR-2/HP)",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16455,7 +16952,7 @@
    ]
   },
   {
-   "id": "CL-251",
+   "id": "CL-263",
    "title": "Wall penetration: OA 8ø through Int wall wing t=9.0in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -16513,7 +17010,7 @@
    ]
   },
   {
-   "id": "CL-252",
+   "id": "CL-264",
    "title": "Wall penetration: SA 8x6 through Int wall chg t=11.2in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -16556,7 +17053,7 @@
    ]
   },
   {
-   "id": "CL-253",
+   "id": "CL-265",
    "title": "ROOF PENETRATION - opening required: SA 18x36SA riser (RTU-2) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16611,7 +17108,7 @@
    ]
   },
   {
-   "id": "CL-254",
+   "id": "CL-266",
    "title": "ROOF PENETRATION - opening required: RA 44x14RA riser (RTU-2) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16666,7 +17163,7 @@
    ]
   },
   {
-   "id": "CL-255",
+   "id": "CL-267",
    "title": "ROOF PENETRATION - opening required: SA 24-1/2x36SA riser (RTU-1) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16721,7 +17218,7 @@
    ]
   },
   {
-   "id": "CL-256",
+   "id": "CL-268",
    "title": "ROOF PENETRATION - opening required: RA 13-1/2x44-1/2RA riser (RTU-1) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16776,7 +17273,7 @@
    ]
   },
   {
-   "id": "CL-257",
+   "id": "CL-269",
    "title": "ROOF PENETRATION - opening required: KEX 24øKEX(18øMetal-Fab3G)+1-HRwrap riser (KEF-1) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16834,7 +17331,7 @@
    ]
   },
   {
-   "id": "CL-258",
+   "id": "CL-270",
    "title": "ROOF PENETRATION - opening required: SA 36x25SA riser (MUA-1) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16889,7 +17386,7 @@
    ]
   },
   {
-   "id": "CL-259",
+   "id": "CL-271",
    "title": "ROOF PENETRATION - opening required: RA 45x14RA riser (MUA-1) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16944,7 +17441,7 @@
    ]
   },
   {
-   "id": "CL-260",
+   "id": "CL-272",
    "title": "ROOF PENETRATION - opening required: SA 18x14SA riser (RTU-4) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -16999,7 +17496,7 @@
    ]
   },
   {
-   "id": "CL-261",
+   "id": "CL-273",
    "title": "ROOF PENETRATION - opening required: RA 14x18RA riser (RTU-4) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17054,7 +17551,7 @@
    ]
   },
   {
-   "id": "CL-262",
+   "id": "CL-274",
    "title": "ROOF PENETRATION - opening required: SA 24x18-1/4SA riser (RTU-3) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17109,7 +17606,7 @@
    ]
   },
   {
-   "id": "CL-263",
+   "id": "CL-275",
    "title": "ROOF PENETRATION - opening required: RA 18x14RA riser (RTU-3) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17164,7 +17661,7 @@
    ]
   },
   {
-   "id": "CL-264",
+   "id": "CL-276",
    "title": "ROOF PENETRATION - opening required: RA 32x13RA riser (RTU-IT) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17222,7 +17719,7 @@
    ]
   },
   {
-   "id": "CL-265",
+   "id": "CL-277",
    "title": "ROOF PENETRATION - opening required: SA 30x18SA riser (RTU-IT) through North mechanical roof well floor (R1 single-ply) - RTU-2/3/IT, KEF-1, MUA-1, HP-ELEC/IT",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17280,7 +17777,65 @@
    ]
   },
   {
-   "id": "CL-266",
+   "id": "CL-278",
+   "title": "Wall penetration: RA 12ø riser through Exterior wall (stud) t=11.00 ft",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "FIT-terminal_drop-71c23323",
+    "MEP-M3.04-PL-G01",
+    "ARC-A2.31-W055"
+   ],
+   "names": [
+    "RA terminal drop 12\"ø",
+    "RA CLR-2 500 plenum box",
+    "Exterior wall (stud) t=11.00 ft"
+   ],
+   "point": [
+    4.989,
+    -31.309,
+    13.622
+   ],
+   "max_penetration_in": 7.07,
+   "min_clearance_in": null,
+   "grid": "G.7 -11'-10 / 22 +8'-8",
+   "elevation": "13'-7\"",
+   "level": "GROUND",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-71c23323",
+    "MEP-M3.04-PL-G01"
+   ],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-71c23323",
+     "other": "ARC-A2.31-W055",
+     "penetration_in": 7.07,
+     "point": [
+      4.989,
+      -31.309,
+      13.622
+     ]
+    },
+    {
+     "mep": "MEP-M3.04-PL-G01",
+     "other": "ARC-A2.31-W055",
+     "penetration_in": 3.6,
+     "point": [
+      4.99,
+      -31.488,
+      13.83
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-279",
    "title": "Wall penetration: EA 6ø through Int wall wing t=6.8in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -17325,7 +17880,7 @@
    ]
   },
   {
-   "id": "CL-267",
+   "id": "CL-280",
    "title": "Wall penetration: OA 6ø through Int wall wing t=8.4in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -17370,7 +17925,84 @@
    ]
   },
   {
-   "id": "CL-268",
+   "id": "CL-281",
+   "title": "Wall penetration: RA 24x14 through 2 walls",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "MEP-M3.06-RA-010",
+    "MEP-M3.06-RA-026",
+    "ARC-A2.22-W087",
+    "ARC-A2.22-W101"
+   ],
+   "names": [
+    "RA 24\"x14\" lined duct",
+    "RA 24\"x14\" lined duct fitting",
+    "Int wall wing t=7.9in",
+    "Int wall wing t=7.5in"
+   ],
+   "point": [
+    46.931,
+    -75.524,
+    12.309
+   ],
+   "max_penetration_in": 6.99,
+   "min_clearance_in": null,
+   "grid": "M +23'-2 / 32.5 -0'-5",
+   "elevation": "12'-4\"",
+   "level": "CEILING",
+   "status": "New",
+   "confidence": "derived",
+   "assumed_elements": [],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "above",
+   "pairs": [
+    {
+     "mep": "MEP-M3.06-RA-010",
+     "other": "ARC-A2.22-W087",
+     "penetration_in": 6.99,
+     "point": [
+      46.931,
+      -75.524,
+      12.309
+     ]
+    },
+    {
+     "mep": "MEP-M3.06-RA-010",
+     "other": "ARC-A2.22-W101",
+     "penetration_in": 5.38,
+     "point": [
+      47.954,
+      -75.358,
+      12.309
+     ]
+    },
+    {
+     "mep": "MEP-M3.06-RA-026",
+     "other": "ARC-A2.22-W101",
+     "penetration_in": 3.56,
+     "point": [
+      47.169,
+      -75.078,
+      12.309
+     ]
+    },
+    {
+     "mep": "MEP-M3.06-RA-026",
+     "other": "ARC-A2.22-W087",
+     "penetration_in": 3.1,
+     "point": [
+      46.831,
+      -75.289,
+      12.309
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-282",
    "title": "Wall penetration: EA 12x10 through Int wall wing t=6.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -17415,7 +18047,7 @@
    ]
   },
   {
-   "id": "CL-269",
+   "id": "CL-283",
    "title": "Wall penetration: SA 8x8 through Int wall chg t=8.5in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -17460,7 +18092,7 @@
    ]
   },
   {
-   "id": "CL-270",
+   "id": "CL-284",
    "title": "Wall penetration: EA 10ø through Int wall wing t=6.7in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -17503,7 +18135,7 @@
    ]
   },
   {
-   "id": "CL-271",
+   "id": "CL-285",
    "title": "ROOF PENETRATION - opening required: RA 16x20RA riser (RTU-6) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17558,7 +18190,7 @@
    ]
   },
   {
-   "id": "CL-272",
+   "id": "CL-286",
    "title": "ROOF PENETRATION - opening required: SA 16x20SA riser (RTU-6) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17613,7 +18245,7 @@
    ]
   },
   {
-   "id": "CL-273",
+   "id": "CL-287",
    "title": "ROOF PENETRATION - opening required: SA 16x20SA riser (RTU-7) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17668,7 +18300,7 @@
    ]
   },
   {
-   "id": "CL-274",
+   "id": "CL-288",
    "title": "ROOF PENETRATION - opening required: RA 32x13RA riser (RTU-5) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17723,7 +18355,7 @@
    ]
   },
   {
-   "id": "CL-275",
+   "id": "CL-289",
    "title": "ROOF PENETRATION - opening required: SA 24-7/8x21-5/8SA riser (RTU-5) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17778,7 +18410,7 @@
    ]
   },
   {
-   "id": "CL-276",
+   "id": "CL-290",
    "title": "ROOF PENETRATION - opening required: RA 18x18RA riser (RTU-7) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17833,7 +18465,7 @@
    ]
   },
   {
-   "id": "CL-277",
+   "id": "CL-291",
    "title": "ROOF PENETRATION - opening required: EA 24x10EA riser (ERV-1) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17890,7 +18522,7 @@
    ]
   },
   {
-   "id": "CL-278",
+   "id": "CL-292",
    "title": "ROOF PENETRATION - opening required: SA 24x10SA riser (ERV-1) through CC mechanical roof well + north lobby flat roof (R1) - RTU-1/4/5/6/7, ERV-1, HR-1",
    "type": "Roof penetration",
    "kind": "roof_pen",
@@ -17947,7 +18579,7 @@
    ]
   },
   {
-   "id": "CL-279",
+   "id": "CL-293",
    "title": "Wall penetration: OA 8ø through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18029,7 +18661,7 @@
    ]
   },
   {
-   "id": "CL-280",
+   "id": "CL-294",
    "title": "Wall penetration: SA 26x12 through Int wall wing t=7.2in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18084,7 +18716,7 @@
    ]
   },
   {
-   "id": "CL-281",
+   "id": "CL-295",
    "title": "Wall penetration: OA 12ø through Partition (stud) t=0.89 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18139,7 +18771,7 @@
    ]
   },
   {
-   "id": "CL-282",
+   "id": "CL-296",
    "title": "Wall penetration: RA 16ø riser through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18184,7 +18816,7 @@
    ]
   },
   {
-   "id": "CL-283",
+   "id": "CL-297",
    "title": "Wall penetration: SA 8x8 through Int wall chg t=17.5in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18242,7 +18874,7 @@
    ]
   },
   {
-   "id": "CL-284",
+   "id": "CL-298",
    "title": "Wall penetration: SA 10ø through Lobby high wall grid 23",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18313,7 +18945,7 @@
    ]
   },
   {
-   "id": "CL-285",
+   "id": "CL-299",
    "title": "Wall penetration: RA 12ø (RTU-7) through Exterior wall (stud) t=0.72 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18392,7 +19024,7 @@
    ]
   },
   {
-   "id": "CL-286",
+   "id": "CL-300",
    "title": "Wall penetration: SA 16x14 (RTU-3) through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18521,7 +19153,7 @@
    ]
   },
   {
-   "id": "CL-287",
+   "id": "CL-301",
    "title": "Wall penetration: REF 3/8 (HR-2) through Ext wall head over/under glazing wing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18600,7 +19232,7 @@
    ]
   },
   {
-   "id": "CL-288",
+   "id": "CL-302",
    "title": "Wall penetration: SA 8ø through Soffit bulkhead wall women's (A120) changing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18681,7 +19313,7 @@
    ]
   },
   {
-   "id": "CL-289",
+   "id": "CL-303",
    "title": "Wall penetration: EA 6x14 through Soffit bulkhead wall women's (A120) changing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18724,7 +19356,7 @@
    ]
   },
   {
-   "id": "CL-290",
+   "id": "CL-304",
    "title": "Wall penetration: EA 5x5 through Int wall wing t=7.3in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18795,7 +19427,7 @@
    ]
   },
   {
-   "id": "CL-291",
+   "id": "CL-305",
    "title": "Wall penetration: REF 5/8 (HP-ELEC1) through Partition (stud) t=2.66 ft",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18853,7 +19485,7 @@
    ]
   },
   {
-   "id": "CL-292",
+   "id": "CL-306",
    "title": "Wall penetration: SA 18x8WS-1boot through Soffit bulkhead wall men's (A121) changing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18896,7 +19528,7 @@
    ]
   },
   {
-   "id": "CL-293",
+   "id": "CL-307",
    "title": "Wall penetration: SA 18x8WS-1boot through Soffit bulkhead wall men's (A121) changing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -18951,7 +19583,7 @@
    ]
   },
   {
-   "id": "CL-294",
+   "id": "CL-308",
    "title": "Wall penetration: OA 18x18 through Int wall chg t=5.6in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19009,7 +19641,7 @@
    ]
   },
   {
-   "id": "CL-295",
+   "id": "CL-309",
    "title": "Wall penetration: SA 12ø through Wall above door A115.1",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19054,52 +19686,7 @@
    ]
   },
   {
-   "id": "CL-296",
-   "title": "Wall penetration: SA 12ø through Header over glazing",
-   "type": "Wall penetration",
-   "kind": "wall_pen",
-   "trades": "HVAC x Architecture",
-   "severity": "info",
-   "elements": [
-    "FIT-terminal_drop-0012fd0c-2",
-    "ARC-A2.31-H043-3a"
-   ],
-   "names": [
-    "SA terminal drop 12\"ø",
-    "Header over glazing"
-   ],
-   "point": [
-    74.836,
-    3.07,
-    10.89
-   ],
-   "max_penetration_in": 2.66,
-   "min_clearance_in": null,
-   "grid": "J -0'-8 / 21 +3'-1",
-   "elevation": "10'-11\"",
-   "level": "GROUND",
-   "status": "New",
-   "confidence": "assumed",
-   "assumed_elements": [
-    "FIT-terminal_drop-0012fd0c-2"
-   ],
-   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
-   "view": "below",
-   "pairs": [
-    {
-     "mep": "FIT-terminal_drop-0012fd0c-2",
-     "other": "ARC-A2.31-H043-3a",
-     "penetration_in": 2.66,
-     "point": [
-      74.836,
-      3.07,
-      10.89
-     ]
-    }
-   ]
-  },
-  {
-   "id": "CL-297",
+   "id": "CL-310",
    "title": "Wall penetration: RA 10ø through Int wall wing t=15.0in",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19144,7 +19731,7 @@
    ]
   },
   {
-   "id": "CL-298",
+   "id": "CL-311",
    "title": "Wall penetration: EA 6x14 through Soffit bulkhead wall men's (A121) changing",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19187,7 +19774,65 @@
    ]
   },
   {
-   "id": "CL-299",
+   "id": "CL-312",
+   "title": "Wall penetration: SA 12ø through Header over glazing",
+   "type": "Wall penetration",
+   "kind": "wall_pen",
+   "trades": "HVAC x Architecture",
+   "severity": "info",
+   "elements": [
+    "FIT-terminal_drop-94ecaf09-2",
+    "FIT-terminal_drop-29c6efa8-2",
+    "ARC-A2.31-H043-3a"
+   ],
+   "names": [
+    "SA terminal drop 12\"ø",
+    "SA terminal drop 12\"ø",
+    "Header over glazing"
+   ],
+   "point": [
+    74.838,
+    5.983,
+    10.89
+   ],
+   "max_penetration_in": 1.28,
+   "min_clearance_in": null,
+   "grid": "J -0'-8 / 21 +6'-0",
+   "elevation": "10'-11\"",
+   "level": "GROUND",
+   "status": "New",
+   "confidence": "assumed",
+   "assumed_elements": [
+    "FIT-terminal_drop-94ecaf09-2",
+    "FIT-terminal_drop-29c6efa8-2"
+   ],
+   "resolution": "Request wall opening/sleeve; seal the penetration per spec (confirm the wall is not rated).",
+   "view": "below",
+   "pairs": [
+    {
+     "mep": "FIT-terminal_drop-94ecaf09-2",
+     "other": "ARC-A2.31-H043-3a",
+     "penetration_in": 1.28,
+     "point": [
+      74.838,
+      5.983,
+      10.89
+     ]
+    },
+    {
+     "mep": "FIT-terminal_drop-29c6efa8-2",
+     "other": "ARC-A2.31-H043-3a",
+     "penetration_in": 1.28,
+     "point": [
+      74.836,
+      2.057,
+      10.89
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CL-313",
    "title": "Wall penetration: RA 10ø through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19257,7 +19902,7 @@
    ]
   },
   {
-   "id": "CL-300",
+   "id": "CL-314",
    "title": "Wall penetration: REF 1/4 (HR-2) through 2 walls",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19317,7 +19962,7 @@
    ]
   },
   {
-   "id": "CL-301",
+   "id": "CL-315",
    "title": "Wall penetration: REF 7/8 (HR-2) through Clerestory storefront head above GL-3 glass (DT1-A120.1)",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19372,7 +20017,7 @@
    ]
   },
   {
-   "id": "CL-302",
+   "id": "CL-316",
    "title": "Wall penetration: REF 7/8 (HR-2) through Clerestory storefront head above GL-3 glass (DT1-A121.1)",
    "type": "Wall penetration",
    "kind": "wall_pen",
@@ -19451,7 +20096,7 @@
    ]
   },
   {
-   "id": "CL-303",
+   "id": "CL-317",
    "title": "SA 12x16 (RTU-7) within 1.0\" of 3 1/2X14 PSL beam (1\" min clearance, at the limit)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -19494,7 +20139,7 @@
    ]
   },
   {
-   "id": "CL-304",
+   "id": "CL-318",
    "title": "OA 8ø within 0.9\" of LVL 1-3/4X14 header (1\" min clearance, at the limit)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -19537,7 +20182,7 @@
    ]
   },
   {
-   "id": "CL-305",
+   "id": "CL-319",
    "title": "SA 34x10 (FCU-5) within 1.0\" of 3-1/2X14 PSL beam (1\" min clearance, at the limit)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -19580,7 +20225,7 @@
    ]
   },
   {
-   "id": "CL-306",
+   "id": "CL-320",
    "title": "OA 64x48 within 0.8\" of GLB 5-1/8x21 beam (1\" min clearance, at the limit)",
    "type": "Duct x Glulam/header",
    "kind": "clearance",
@@ -19635,7 +20280,7 @@
    ]
   },
   {
-   "id": "CL-307",
+   "id": "CL-321",
    "title": "EA 6x14 within 0.9\" of HSS6X4X1/4 (FLAT) beam A63 (1\" min clearance, at the limit)",
    "type": "Duct x Steel beam",
    "kind": "clearance",
@@ -19678,7 +20323,7 @@
    ]
   },
   {
-   "id": "CL-308",
+   "id": "CL-322",
    "title": "EA 6x14 within 0.9\" of HSS6X4X1/4 (FLAT) beam A67 (1\" min clearance, at the limit)",
    "type": "Duct x Steel beam",
    "kind": "clearance",
@@ -19721,7 +20366,7 @@
    ]
   },
   {
-   "id": "CL-309",
+   "id": "CL-323",
    "title": "EA 6x14 within 1.0\" of HSS6X4X1/4 (FLAT) beam A75 (1\" min clearance, at the limit)",
    "type": "Duct x Steel beam",
    "kind": "clearance",
@@ -19764,7 +20409,7 @@
    ]
   },
   {
-   "id": "CL-310",
+   "id": "CL-324",
    "title": "EA 6x14 within 1.0\" of HSS6X6X1/2 column A334 (1\" min clearance, at the limit)",
    "type": "Duct x Steel column",
    "kind": "clearance",
@@ -19807,7 +20452,7 @@
    ]
   },
   {
-   "id": "CL-311",
+   "id": "CL-325",
    "title": "EA 6x14 within 0.9\" of HSS6X6X1/2 column A30 (1\" min clearance, at the limit)",
    "type": "Duct x Steel column",
    "kind": "clearance",
@@ -19850,7 +20495,7 @@
    ]
   },
   {
-   "id": "CL-312",
+   "id": "CL-326",
    "title": "RA 16x14(widthscaled,depthassumed) (RTU-2) within 1.0\" of LVL 1-3/4X14 joist (1\" min clearance, at the limit)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -19893,7 +20538,7 @@
    ]
   },
   {
-   "id": "CL-313",
+   "id": "CL-327",
    "title": "RA 18x18 (RTU-7) within 0.9\" of LVL 1-3/4X14 joist (1\" min clearance, at the limit)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -19948,7 +20593,7 @@
    ]
   },
   {
-   "id": "CL-314",
+   "id": "CL-328",
    "title": "RA 24x12 within 0.8\" of 5-1/2 full depth (14.00 in) joist (1\" min clearance, at the limit)",
    "type": "Duct x Wood joist/rafter",
    "kind": "clearance",
@@ -19991,5 +20636,5 @@
    ]
   }
  ],
- "raw_count": 773
+ "raw_count": 789
 }
