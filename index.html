@@ -257,6 +257,7 @@ body.measuring #viewport canvas { cursor: crosshair; }
   background: transparent; color: var(--ink-2);
 }
 #toolbar button:hover { background: var(--surface-3); color: var(--ink); }
+@media (pointer: coarse) { #toolbar [data-act="full"] { display: none; } }   /* the keyboard fix is for desktops */
 #toolbar button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); }
 #toolbar svg, #navpad svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 #toolbar button span {
@@ -517,6 +518,7 @@ body.has-sel #props { display: flex; }
     <button data-act="grids" title="Grid lines (G)" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M8 6v15M16 6v15M3 11h18M3 18h18"/><circle cx="8" cy="3.8" r="1.8"/><circle cx="16" cy="3.8" r="1.8"/></svg><span>Grids</span></button>
     <button data-act="measure" title="Measure (M)" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m3 16.5 13.5-13.5 4.5 4.5L7.5 21z"/><path d="m7 12.5 2 2M10 9.5l2 2M13 6.5l2 2"/></svg><span>Measure</span></button>
     <button data-act="shot" title="Save screenshot (PNG)"><svg viewBox="0 0 24 24"><path d="M4 7.5h3.2L9 5h6l1.8 2.5H20V19H4z"/><circle cx="12" cy="13" r="3.6"/></svg><span>Shot</span></button>
+    <button data-act="full" title="Full screen: Ctrl (down) works without the browser closing the tab" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5M4 4l5.5 5.5M20 4l-5.5 5.5M20 20l-5.5-5.5M4 20l5.5-5.5"/></svg><span>Full</span></button>
   </div>
   <div id="navpad" role="group" aria-label="Zoom">
     <button data-nav="in" title="Zoom in  +" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></svg></button>
@@ -527,22 +529,23 @@ body.has-sel #props { display: flex; }
   <section id="keyhelp" class="card" aria-label="Keys and mouse" hidden>
     <h3>Moving around</h3>
     <dl>
-      <dt>W A S D</dt><dd>Move forward / left / back / right</dd>
-      <dt>Q / E</dt><dd>Down / up</dd>
-      <dt>Shift</dt><dd>Move 3&times; faster</dd>
-      <dt>Hold key + drag</dt><dd>Look around while moving</dd>
-      <dt>Wheel</dt><dd>Zoom to the cursor</dd>
-      <dt>Left-drag</dt><dd>Orbit what you grab</dd>
-      <dt>Right-drag</dt><dd>Pan (middle-drag too)</dd>
+      <dt>W A S D &middot; arrows</dt><dd>Move forward / left / back / right</dd>
+      <dt>Shift / Ctrl</dt><dd>Up / down (E / Q too)</dd>
+      <dt>Hold Space</dt><dd>Move 3&times; faster</dd>
+      <dt>Left-drag</dt><dd>Look around</dd>
+      <dt>Wheel</dt><dd>Zoom to the cursor, on through walls</dd>
+      <dt>Right-drag</dt><dd>Pan</dd>
+      <dt>Middle / Alt + drag</dt><dd>Orbit what you grab</dd>
       <dt>Double-click</dt><dd>Focus a spot</dd>
-      <dt>+ / - &middot; arrows</dt><dd>Zoom &middot; pan</dd>
+      <dt>+ / -</dt><dd>Zoom</dd>
+      <dt>Full</dt><dd>Full screen: Ctrl + W cannot close the tab</dd>
       <dt>F &middot; H</dt><dd>Frame clash / selection &middot; home</dd>
       <dt>[ &middot; ]</dt><dd>Model panel &middot; clash list</dd>
       <dt>X &middot; C &middot; G</dt><dd>X-ray &middot; clash mode &middot; grids</dd>
     </dl>
   </section>
   <div id="loader" role="status"><div class="ld"><div class="ld-t">Loading coordination model</div><div class="ld-bar"><i id="ld-bar"></i></div><div class="ld-msg mono" id="ld-msg">starting</div></div></div>
-  <div id="status"><span id="hint">Wheel: zoom to cursor · Left-drag: orbit · Right / middle-drag: pan · Double-click: focus</span><span id="perf" class="mono"></span></div>
+  <div id="status"><span id="hint">WASD: move · Shift / Ctrl: up / down · Left-drag: look · Wheel: zoom · Right-drag: pan · Middle-drag: orbit</span><span id="perf" class="mono"></span></div>
   <section id="props" class="card" aria-label="Element properties">
     <header class="props-head"><span id="props-disc" class="disc-chip"></span><h3 id="props-title">Element</h3><button class="icon-btn" id="props-close" aria-label="Clear selection">&times;</button></header>
     <div id="props-body"></div>
@@ -644,11 +647,12 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 5000);
 camera.position.set(80, 60, 80);
 const controls = new OrbitControls(camera, renderer.domElement);
-// Wheel zoom is ours (zoomAt: toward the surface under the cursor); OrbitControls keeps orbit, pan and touch pinch.
-// AutoCAD-style buttons: left = orbit, middle / right = pan.
+// Free navigation (Raj 2026-11-04: "proper control freedom"): the wheel (zoomAt), left-drag look (lookStart) and
+// W A S D / Shift / Ctrl flying (stepFly) are ours; OrbitControls keeps orbit (middle or Alt + left-drag), pan
+// (right-drag) and touch.
 Object.assign(controls, { enableDamping: true, dampingFactor: 0.12, screenSpacePanning: true, rotateSpeed: 0.75,
   minDistance: 0.05, maxDistance: 3000 });
-controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.PAN };
+controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.ROTATE, RIGHT: THREE.MOUSE.PAN };
 scene.add(new THREE.HemisphereLight(0xcfe0ff, 0x30261c, 1.2));
 const sun = new THREE.DirectionalLight(0xfff0de, 1.75);
 sun.position.set(-0.55, 1, 0.4);
@@ -997,32 +1001,36 @@ function focusPoint(p, size = 4) {
   flyTo(p.clone().addScaledVector(off.normalize(), d), p, 650);
 }
 
-// ------------------------------------------------------------------ navigation: zoom to the cursor, pivot at depth
-// Wheel / +/- / arrows queue a camera+target translation ("glide") eased over a few frames: translating both
-// keeps the view direction, so the point under the cursor stays under the cursor while you zoom.
+// ------------------------------------------------------------------ navigation: free zoom, look and fly
+// Wheel / + / - queue a camera translation ("glide") along the ray under the cursor, eased over a few frames, so
+// the point under the cursor stays under it. Each notch moves a share of the distance to that point but never
+// less than ZOOM_MIN, so the zoom never stalls in front of a surface: it carries on through it (Raj 2026-11-04:
+// "at some points it stops zooming"). The orbit target is re-anchored at that depth on the view axis: the view
+// direction stays, and updateNearFar() pulls the near plane in as you get close, so nothing is clipped away.
 const glide = new THREE.Vector3();
-let zoomPivot = null;                    // surface point cached while the wheel keeps turning at one spot
+const ZOOM_SHARE = 0.2, ZOOM_MIN = 0.15, ZOOM_MAX = 60;   // per wheel notch (100 px): share of the distance; metres
+let zoomHit = null;                      // surface point cached while the wheel keeps turning at one spot
 
 function zoomAt(x, y, dy) {
   tween = null;
   const now = performance.now(), eye = camera.position.clone().add(glide);
-  const stale = !zoomPivot || now - zoomPivot.t > 350 || Math.hypot(x - zoomPivot.x, y - zoomPivot.y) > 4
-    || zoomPivot.p.clone().sub(eye).dot(camera.getWorldDirection(new THREE.Vector3())) <= 0;   // pivot now behind us
-  if (stale) {
+  const ray = rayAt(x, y).direction.clone(), view = camera.getWorldDirection(new THREE.Vector3());
+  if (!zoomHit || now - zoomHit.t > 250 || Math.hypot(x - zoomHit.x, y - zoomHit.y) > 4) {
     const h = surfaceHit(x, y);
-    const p = h ? h.point.clone() : raycaster.ray.at(Math.max(camera.position.distanceTo(controls.target), 2), new THREE.Vector3());
-    zoomPivot = { p, x, y };
+    zoomHit = { x, y, p: h ? h.point.clone() : null };
   }
-  zoomPivot.t = now;
-  const k = Math.exp(THREE.MathUtils.clamp(dy, -500, 500) * 0.0012);     // < 1 zooms in
-  const toP = zoomPivot.p.clone().sub(eye), dist = toP.length();
-  if (k > 1 && camera.position.distanceTo(homeBox.getCenter(new THREE.Vector3())) > controls.maxDistance) return;
-  if (k < 1 && dist * k < 0.25) {        // nearly touching: step through the surface and look for the next one
-    glide.addScaledVector(toP.normalize(), dist + 0.3);
-    zoomPivot = null;
-    return;
+  zoomHit.t = now;
+  const dist = zoomHit.p ? zoomHit.p.clone().sub(eye).dot(ray) : -1;
+  if (zoomHit.p && dist < 0.05) zoomHit = null;                        // just went through it: look again next notch
+  const notches = THREE.MathUtils.clamp(dy, -500, 500) / 100;          // < 0 = in
+  if (notches > 0 && eye.distanceTo(homeBox.getCenter(new THREE.Vector3())) > controls.maxDistance) return;
+  const d = dist >= 0.05 ? dist : Math.max(aheadDistance(), 1);        // nothing under the cursor: what is ahead
+  const s = -Math.sign(notches) * THREE.MathUtils.clamp(d * ZOOM_SHARE, ZOOM_MIN, ZOOM_MAX) * Math.abs(notches);
+  glide.addScaledVector(ray, s);
+  if (dist >= 0.05) {
+    const depth = zoomHit.p.clone().sub(eye).dot(view) - s * ray.dot(view);
+    controls.target.copy(camera.position).addScaledVector(view, Math.max(depth, 0.4));
   }
-  glide.addScaledVector(toP, 1 - k);
 }
 
 function zoomCenter(sign) {
@@ -1036,32 +1044,78 @@ function aheadDistance() {
   return surfaceHit(r.left + r.width / 2, r.top + r.height / 2)?.distance ?? camera.position.distanceTo(controls.target);
 }
 
-// WASD fly: W/S along the view, A/D sideways, Q/E down/up, Shift = 3x. Speed follows the distance to what is
-// ahead (re-probed 5x a second): quick over the site, slow beside a duct.
-const MOVE_KEYS = { w: [0, 0, 1], s: [0, 0, -1], a: [-1, 0, 0], d: [1, 0, 0], q: [0, -1, 0], e: [0, 1, 0] };
+// Fly, on physical keys (e.code): W A S D or the arrows move along the view / sideways, Shift / Ctrl go up / down
+// (Q / E and PageUp / PageDown too), holding Space = 3x. Speed follows the distance to what is ahead, re-probed
+// 5x a second, and the orbit target is kept at that depth: quick over the site, slow beside a duct.
+const MOVE = { KeyW: [0, 0, 1], ArrowUp: [0, 0, 1], KeyS: [0, 0, -1], ArrowDown: [0, 0, -1],
+  KeyA: [-1, 0, 0], ArrowLeft: [-1, 0, 0], KeyD: [1, 0, 0], ArrowRight: [1, 0, 0],
+  ShiftLeft: [0, 1, 0], ShiftRight: [0, 1, 0], KeyE: [0, 1, 0], PageUp: [0, 1, 0],
+  ControlLeft: [0, -1, 0], ControlRight: [0, -1, 0], KeyQ: [0, -1, 0], PageDown: [0, -1, 0] };
+const BOOST = 'Space';
 const held = new Set();
-const moving = () => [...held].some((k) => MOVE_KEYS[k]);
-let flySpeed = 10, flyProbeT = -1e9;
+let flySpeed = 10, flyProbeT = -1e9, lastMoveT = -1e9;
 
 function stepFly(dt, now) {
-  if (!moving()) return;
-  if (now - flyProbeT > 200) { flyProbeT = now; flySpeed = THREE.MathUtils.clamp(aheadDistance() * 0.5, 1.5, 60); }
   const v = [0, 0, 0];
-  for (const k of held) if (MOVE_KEYS[k]) MOVE_KEYS[k].forEach((c, i) => { v[i] += c; });
-  const step = new THREE.Vector3().addScaledVector(new THREE.Vector3().setFromMatrixColumn(camera.matrix, 0), v[0])
-    .addScaledVector(camera.getWorldDirection(new THREE.Vector3()), v[2]).add(new THREE.Vector3(0, v[1], 0));
-  if (step.lengthSq() < 1e-9) return;
+  for (const k of held) MOVE[k]?.forEach((c, i) => { v[i] += c; });
+  if (!v[0] && !v[1] && !v[2]) return;
   tween = null;
-  step.setLength(flySpeed * (held.has('shift') ? 3 : 1) * dt);
+  lastMoveT = now;
+  const fwd = camera.getWorldDirection(new THREE.Vector3());
+  if (now - flyProbeT > 200) {
+    flyProbeT = now;
+    const ahead = aheadDistance();
+    flySpeed = THREE.MathUtils.clamp(ahead * 0.5, 0.6, 80);
+    controls.target.copy(camera.position).addScaledVector(fwd, THREE.MathUtils.clamp(ahead, 0.4, 300));
+  }
+  const step = new THREE.Vector3().addScaledVector(new THREE.Vector3().setFromMatrixColumn(camera.matrix, 0), v[0])
+    .addScaledVector(fwd, v[2]).add(new THREE.Vector3(0, v[1], 0));
+  if (step.lengthSq() < 1e-9) return;
+  step.setLength(flySpeed * (held.has(BOOST) ? 3 : 1) * dt);
   camera.position.add(step);
   controls.target.add(step);
 }
 
-function panBy(fx, fy) {
+// Left-drag = look around where you stand (first person): drag right / up turns the view right / up. The orbit
+// target moves on a sphere round the camera, so OrbitControls (off for this drag) agrees with the view afterwards.
+const LOOK_RAD_PER_PX = 0.0045;
+const look = { id: null, x: 0, y: 0 };
+
+function lookStart(e) {
   tween = null;
-  const d = aheadDistance() * 0.08;
-  glide.addScaledVector(new THREE.Vector3().setFromMatrixColumn(camera.matrix, 0), fx * d)
-    .addScaledVector(new THREE.Vector3().setFromMatrixColumn(camera.matrix, 1), fy * d);
+  camera.position.add(glide);
+  controls.target.add(glide);
+  glide.set(0, 0, 0);
+  controls.enableDamping = false;          // drop any orbit inertia
+  controls.update();
+  controls.enableDamping = true;
+  controls.enabled = false;
+  Object.assign(look, { id: e.pointerId, x: e.clientX, y: e.clientY });
+}
+
+function lookMove(e) {
+  if (e.pointerId !== look.id) return;
+  const dx = e.clientX - look.x, dy = e.clientY - look.y;
+  look.x = e.clientX;
+  look.y = e.clientY;
+  const s = new THREE.Spherical().setFromVector3(controls.target.clone().sub(camera.position));
+  s.theta -= dx * LOOK_RAD_PER_PX;
+  s.phi = THREE.MathUtils.clamp(s.phi + dy * LOOK_RAD_PER_PX, 0.01, Math.PI - 0.01);
+  controls.target.copy(camera.position).add(new THREE.Vector3().setFromSpherical(s));
+  camera.lookAt(controls.target);
+}
+
+function lookEnd(e) {
+  if (e.pointerId !== look.id) return;
+  look.id = null;
+  controls.enabled = true;
+}
+
+// Touch pinch dollies toward the orbit target and would stop there: once it is close, move the target on.
+const touches = new Set();
+function stepPinch() {
+  if (touches.size > 1 && camera.position.distanceTo(controls.target) < 0.6)
+    controls.target.addScaledVector(camera.getWorldDirection(new THREE.Vector3()), 2.5);
 }
 
 function stepGlide() {
@@ -1080,10 +1134,6 @@ function pivotToCursorDepth(e) {
   controls.target.add(glide);
   glide.set(0, 0, 0);
   const dir = controls.target.clone().sub(camera.position).normalize();
-  if (moving()) {                          // dragging while WASD is held = look around in place (first person)
-    controls.target.copy(camera.position).addScaledVector(dir, 0.6);
-    return;
-  }
   const h = surfaceHit(e.clientX, e.clientY);
   if (!h) return;
   const depth = h.point.clone().sub(camera.position).dot(dir);
@@ -1507,7 +1557,7 @@ function setHint() {
     ? (n === 1 ? 'Measure: click the second point' : n === 2 ? 'Measure: click to start a new measurement · Esc to finish' : 'Measure: click the first point')
     : matchMedia('(pointer: coarse)').matches
       ? 'One finger: orbit · Two fingers: pan, pinch to zoom · Double-tap: focus'
-      : 'WASD: move · Q/E: down / up · Wheel: zoom to cursor · Left-drag: orbit · Right-drag: pan · ?: all keys';
+      : 'WASD: move · Shift / Ctrl: up / down · Left-drag: look · Wheel: zoom · Right-drag: pan · Middle-drag: orbit · ?: all keys';
   document.body.classList.toggle('hint-off', !state.measure && hintFaded);
 }
 let hintFaded = false;
@@ -1574,6 +1624,18 @@ function setSheet(name) {
   for (const b of $$('#tabs [data-sheet]')) b.setAttribute('aria-selected', b.dataset.sheet === name);
 }
 
+// Full screen + keyboard lock (Chrome / Edge): Ctrl, Shift and W A S D reach the viewer, so Ctrl (down) + W
+// (forward) is never the browser's close-tab key there.
+async function toggleFull() {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else {
+      await document.documentElement.requestFullscreen({ navigationUI: 'hide' });
+      await navigator.keyboard?.lock?.([...Object.keys(MOVE), BOOST]);
+    }
+  } catch (err) { console.warn('NAQCC viewer: full screen not available here', err?.message || err); }
+}
+
 const ACTIONS = {
   home: () => setView(HOME),
   xray: () => { state.xray = !state.xray; refresh(); },
@@ -1582,6 +1644,7 @@ const ACTIONS = {
   grids: () => { state.grids = !state.grids; applyGrids(); refresh(); },
   measure: () => setMeasure(!state.measure),
   shot: screenshot,
+  full: toggleFull,
   'panel-left': () => setPanels(!panelOn('left'), panelOn('right')),
   'panel-right': () => setPanels(panelOn('left'), !panelOn('right')),
 };
@@ -1594,7 +1657,6 @@ const KEYS = {
   h: ACTIONS.home, x: ACTIONS.xray, c: ACTIONS.clash, b: ACTIONS.box, g: ACTIONS.grids, m: ACTIONS.measure, escape: clearAll,
   f: frameCurrent, '[': ACTIONS['panel-left'], ']': ACTIONS['panel-right'], '?': () => toggleKeyHelp(),
   '+': NAV.in, '=': NAV.in, '-': NAV.out, _: NAV.out,
-  arrowleft: () => panBy(-1, 0), arrowright: () => panBy(1, 0), arrowup: () => panBy(0, 1), arrowdown: () => panBy(0, -1),
 };
 
 function wireUI() {
@@ -1608,12 +1670,22 @@ function wireUI() {
     e.preventDefault();
     e.stopPropagation();                                 // OrbitControls never sees the wheel (pinch still works)
     if (!els.size) return;
-    const dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaMode === 2 ? e.deltaY * 400 : e.deltaY;
+    const raw = e.deltaY || e.deltaX;      // Shift + wheel arrives as deltaX in Windows browsers (Shift = up)
+    const dy = e.deltaMode === 1 ? raw * 33 : e.deltaMode === 2 ? raw * 400 : raw;
     zoomAt(e.clientX, e.clientY, dy);
   }, { capture: true, passive: false });
   viewport.addEventListener('pointerdown', (e) => {
-    if (e.target === renderer.domElement && e.pointerType === 'mouse' && els.size) pivotToCursorDepth(e);
+    if (e.target !== renderer.domElement || e.pointerType !== 'mouse' || !els.size) return;
+    if (e.button === 0 && !e.altKey && !state.measure) {    // left-drag = look; OrbitControls sits this one out
+      lookStart(e);
+      renderer.domElement.setPointerCapture(e.pointerId);
+    } else pivotToCursorDepth(e);                           // right = pan, middle / Alt + left = orbit, at grab depth
   }, { capture: true });
+  renderer.domElement.addEventListener('pointermove', lookMove);
+  for (const t of ['pointerup', 'pointercancel', 'lostpointercapture']) renderer.domElement.addEventListener(t, lookEnd);
+  renderer.domElement.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch') touches.add(e.pointerId); });
+  for (const t of ['pointerup', 'pointercancel']) renderer.domElement.addEventListener(t, (e) => touches.delete(e.pointerId));
+  if (!document.fullscreenEnabled) $('[data-act="full"]')?.remove();
   $('#clash-mode-btn').addEventListener('click', ACTIONS.clash);
   $('#views').addEventListener('click', (e) => {
     const b = e.target.closest('[data-view]');
@@ -1691,16 +1763,28 @@ function wireUI() {
   });
   cv.addEventListener('dblclick', (e) => { if (e.pointerType !== 'touch') focusAt(e); });
   addEventListener('keydown', (e) => {
-    if (e.ctrlKey || e.metaKey || e.altKey || e.target.closest?.('input[type="text"], input[type="search"], textarea, select, [contenteditable]')) return;
-    const k = e.key.toLowerCase();
-    if (MOVE_KEYS[k] || k === 'shift') {   // held keys drive stepFly() every frame until released
-      if (els.size && !state.measure) { held.add(k); e.preventDefault(); }
+    if (e.target.closest?.('input[type="text"], input[type="search"], textarea, select, [contenteditable]')) return;
+    if (MOVE[e.code] || e.code === BOOST) {   // held keys drive stepFly() every frame until released, Ctrl included
+      if (els.size && !state.measure) { held.add(e.code); lastMoveT = performance.now(); e.preventDefault(); }
       return;
     }
-    const act = KEYS[k];
+    if (e.ctrlKey || e.metaKey || e.altKey) {  // Ctrl = down: keep Ctrl+S / D / F / P ... from firing mid-flight
+      if (held.size) e.preventDefault();
+      return;
+    }
+    const k = e.key.toLowerCase(), act = KEYS[k];
     if (act && els.size) { e.preventDefault(); if (k === 'escape') toggleKeyHelp(false); act(); }
   });
-  addEventListener('keyup', (e) => held.delete(e.key.toLowerCase()));
+  addEventListener('keyup', (e) => { if (held.delete(e.code) && e.code === BOOST) e.preventDefault(); });
+  // Ctrl (down) + W (forward) is also the browser's close-tab key, which no page can cancel: while you are flying
+  // the browser asks first. In full screen the keyboard is locked (Chrome / Edge) and Ctrl+W stays in the viewer.
+  addEventListener('beforeunload', (e) => {
+    if (performance.now() - lastMoveT < 2000) { e.preventDefault(); e.returnValue = ''; }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) navigator.keyboard?.unlock?.();
+    $('[data-act="full"]')?.setAttribute('aria-pressed', !!document.fullscreenElement);
+  });
   addEventListener('blur', () => held.clear());                       // no stuck keys after alt-tab
   document.addEventListener('visibilitychange', () => held.clear());
   new ResizeObserver(resize).observe(viewport);
@@ -1757,6 +1841,7 @@ renderer.setAnimationLoop((t) => {
   stepTween(t);
   stepFly(dt, t);
   stepGlide();
+  stepPinch();
   controls.update();
   updateNearFar();
   updateMarkers(t);
