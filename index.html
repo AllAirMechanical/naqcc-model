@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>NAQCC - Heather Farm Park - HVAC Coordination Model</title>
-<meta name="description" content="Federated coordination model (architecture, structure, HVAC, plumbing, fire protection, electrical, technology, pool) with HVAC clash review for The New Aquatic &amp; Community Center at Heather Farm Park.">
+<title>NAQCC - Heather Farm Park - Coordination Model</title>
+<meta name="description" content="Federated coordination model (architecture, structure, HVAC, plumbing, fire protection, electrical, technology, pool) with clash review across all trades for The New Aquatic &amp; Community Center at Heather Farm Park.">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="NAQCC - HVAC Coordination Model">
-<meta property="og:description" content="3D coordination model of The New Aquatic &amp; Community Center at Heather Farm Park: structure, architecture and HVAC, with the clash review.">
+<meta property="og:title" content="NAQCC - Coordination Model">
+<meta property="og:description" content="Federated 3D coordination model of The New Aquatic &amp; Community Center at Heather Farm Park: structure, architecture, HVAC, plumbing, fire sprinkler, electrical, technology and pool, with the clash review and who moves.">
 <meta property="og:image" content="https://allairmechanical.github.io/naqcc-model/preview.png">
 <meta property="og:url" content="https://allairmechanical.github.io/naqcc-model/">
 <meta name="twitter:card" content="summary_large_image">
@@ -100,7 +100,7 @@ button { cursor: pointer; }
 /* ---------------------------------------------------------------- panels */
 .panel { background: var(--surface); min-height: 0; display: flex; flex-direction: column; }
 #panel-model { grid-area: left; border-right: 1px solid var(--line); overflow-y: auto; }
-#panel-clash { grid-area: right; border-left: 1px solid var(--line); overflow: hidden; }
+#panel-clash { grid-area: right; border-left: 1px solid var(--line); overflow: hidden; }   /* the summary and the list scroll, each on its own */
 .sec { padding: 14px 16px 16px; border-bottom: 1px solid var(--line); }
 .sec h2 {
   display: flex; align-items: center; gap: 8px; margin: 0 0 11px;
@@ -203,6 +203,7 @@ button { cursor: pointer; }
 .sev-minor { --c: var(--minor); }
 .sev-info { --c: var(--info); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.scope-chips { margin-bottom: 8px; }
 .chip {
   display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px;
   border: 1px solid var(--line-2); background: var(--surface-2); color: var(--ink); font-size: 11.5px;
@@ -210,18 +211,36 @@ button { cursor: pointer; }
 .chip span { color: var(--ink-3); font-size: 10.5px; }
 .chip[aria-pressed="false"] { color: var(--ink-3); background: transparent; text-decoration: line-through; text-decoration-color: rgba(255, 255, 255, .25); }
 .chip:hover { border-color: #3a4c60; }
-.list-head { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 11.5px; color: var(--ink-3); }
+.list-head { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-bottom: 1px solid var(--line); font-size: 11.5px; color: var(--ink-3); }
 .list-head .sort { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .list-head select {
   height: 28px; padding: 0 8px; border-radius: 7px; border: 1px solid var(--line-2);
   background: var(--surface-2); color: var(--ink); font-size: 12px;
 }
-.clash-sum { flex: none; }
-.issues { list-style: none; margin: 0; padding: 8px 10px 16px; overflow-y: auto; flex: 1; min-height: 0; }
-.issues li + li { margin-top: 6px; }
+/* V1: the summary never takes more than ~34 % of the panel (it scrolls); the list gets the rest and always shows */
+.clash-sum { flex: 0 1 auto; max-height: 34%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.issues { list-style: none; margin: 0; padding: 8px 10px 16px; overflow-y: auto; flex: 1 1 0; min-height: 160px;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+.clash-q {
+  width: 100%; height: 32px; margin: 0 0 10px; padding: 0 10px; border-radius: 7px; border: 1px solid var(--line-2);
+  background: var(--surface-2); color: var(--ink); font: inherit; font-size: 12.5px;
+}
+.clash-q:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.chip-help { margin: 10px 0 0; font-size: 10.5px; }
+.fgroup > .fg-head { display: flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; }
+.fgroup > summary.fg-head::-webkit-details-marker { display: none; }
+.fgroup > summary.fg-head::before { content: "▸"; color: var(--ink-3); font-size: 10px; margin-top: 6px; }
+.fgroup[open] > summary.fg-head::before { content: "▾"; }
+.fg-head .sub { margin-right: auto; }
+.fg-head .sub span { letter-spacing: 0; }
+.fg-btn { height: 22px; margin-top: 6px; padding: 0 8px; border-radius: 6px; border: 1px solid var(--line-2); background: none; color: var(--ink-2); font-size: 10.5px; }
+.fg-btn:hover { color: var(--ink); border-color: #3a4c60; }
+.fchips { max-height: 132px; overflow-y: auto; overscroll-behavior: contain; padding: 1px; }
+.issues .more { padding: 10px 8px; color: var(--ink-3); text-align: center; font-size: 11px; }
+.issues li + li { margin-top: 5px; }
 .issues .empty { padding: 18px 8px; color: var(--ink-3); text-align: center; }
 .issue {
-  width: 100%; display: grid; gap: 3px; padding: 9px 11px 10px 12px; text-align: left;
+  width: 100%; display: grid; gap: 2px; padding: 7px 10px 8px 12px; min-width: 0; text-align: left;
   border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: 8px; background: var(--surface-2);
 }
 .issue:hover { background: var(--surface-3); border-color: var(--line-2); border-left-color: var(--c); }
@@ -230,8 +249,9 @@ button { cursor: pointer; }
 .i-sev { font-size: 9.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--c); }
 .i-id { font-size: 11.5px; color: var(--ink); font-weight: 600; }
 .i-pen { margin-left: auto; font-size: 11.5px; color: var(--ink); }
-.i-title { font-size: 12.5px; line-height: 1.35; color: var(--ink); font-weight: 500; }
-.i-meta { font-size: 10.5px; color: var(--ink-3); line-height: 1.5; }
+.i-title { font-size: 12.5px; line-height: 1.35; color: var(--ink); font-weight: 500;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }   /* full title in the card */
+.i-meta { font-size: 10.5px; color: var(--ink-3); line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .conf-assumed { color: var(--assumed); }
 .conf-derived { color: var(--derived); }
 .conf-measured { color: var(--measured); }
@@ -443,6 +463,10 @@ body.has-sel #props { display: flex; }
   #tabs button[aria-selected="true"] { color: var(--accent); box-shadow: inset 0 2px 0 var(--accent); }
   #tabs b { font-size: 11px; padding: 1px 6px; border-radius: 9px; background: rgba(255, 77, 77, .16); color: var(--crit); }
   #tabs b:empty { display: none; }
+  .clash-sum { max-height: 27%; padding: 10px 14px 12px; }   /* phone: the list keeps most of the sheet */
+  .fchips { max-height: none; overflow: visible; }            /* one scroll (the summary), no nested ones */
+  .clash-sum .sub { margin: 10px 0 6px; }
+  .issues { min-height: 120px; }
   #tab-sel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sel); display: none; }
   body.has-sel #tab-sel-dot { display: inline-block; }
   .cl-card { width: 244px; padding: 9px 10px 10px; }
@@ -460,6 +484,23 @@ body.has-sel #props { display: flex; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* who moves (build/clash_responsibility.py) + A / B views (build/clash_views.py) in the clash card / list */
+.cl-resp { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 11.5px; line-height: 1.4; color: var(--ink-2); }
+.cl-resp > b, .cl-views > b { display: block; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
+.resp-tag { padding: 0 5px; border-radius: 3px; background: rgba(255, 255, 255, .08); color: var(--ink); }
+.resp-hvac .resp-tag, .i-resp.resp-hvac { background: #D620C8; color: #fff; }
+.resp-text { margin-top: 3px; color: var(--ink-3); }
+.resp-dq { margin-top: 3px; color: var(--accent); }
+.i-resp { display: inline-block; padding: 0 6px; white-space: nowrap; border-radius: 3px; font-size: 10px; background: rgba(255, 255, 255, .08); color: var(--ink-2); }
+.cl-views { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.cl-views > b { grid-column: 1 / -1; }
+.cl-thumb { display: block; text-decoration: none; color: var(--ink-3); font-size: 10px; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); transition: border-color .15s, transform .15s; }
+.cl-thumb:hover, .cl-thumb:focus-visible { border-color: var(--accent); transform: translateY(-1px); }
+.cl-thumb img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #fff; }
+.cl-thumb span { display: block; padding: 2px 5px; }
+.cl-card { width: 340px; max-height: min(46vh, calc(50vh - var(--hdr-h) - 64px)); overflow-y: auto; overscroll-behavior: contain; }   /* app.js fitCard() refines it on open */
+.cl-title + .cl-resp { margin-top: 6px; padding-top: 6px; }
 </style>
 <script type="importmap">
 { "imports": {
@@ -472,7 +513,7 @@ body.has-sel #props { display: flex; }
 <header class="topbar">
   <button class="tb-btn" id="tg-left" data-act="panel-left" aria-pressed="false" title="Model panel  [" aria-label="Model panel"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9.5 4.5v15"/></svg></button>
   <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 3.5 7.2v9.6L12 21.5l8.5-4.7V7.2z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 7.2 12 12l8.5-4.8M12 12v9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5 3.5 7.2 12 12l8.5-4.8z" fill="currentColor" opacity=".35"/></svg>
-  <h1><b>NAQCC</b><span class="sep"> - </span><span class="t2">Heather Farm Park</span><span class="sep"> - </span><span class="t3">HVAC Coordination Model</span></h1>
+  <h1><b>NAQCC</b><span class="sep"> - </span><span class="t2">Heather Farm Park</span><span class="sep"> - </span><span class="t3">Coordination Model</span></h1>
   <div class="hdr-meta mono" aria-live="polite"><span id="hdr-els">loading</span></div>
   <button class="tb-clash mono" data-act="panel-right" title="Clash list  ]"><span id="hdr-clashes"></span></button>
   <button class="tb-btn" id="tg-right" data-act="panel-right" aria-pressed="false" title="Clash list  ]" aria-label="Clash list"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M14.5 4.5v15"/></svg></button>
@@ -504,7 +545,7 @@ body.has-sel #props { display: flex; }
   </section>
   <section class="sec keys">
     <h2>Shortcuts</h2>
-    <dl><dt>WASD</dt><dd>Move (Q / E down / up, Shift faster)</dd><dt>Wheel</dt><dd>Zoom to the cursor</dd><dt>+ / -</dt><dd>Zoom in / out</dd><dt>Arrows</dt><dd>Pan</dd><dt>F</dt><dd>Frame clash / selection</dd><dt>H</dt><dd>Home view</dd><dt>[ ]</dt><dd>Model / clash panel</dd><dt>X</dt><dd>X-ray</dd><dt>C</dt><dd>Clash mode</dd><dt>B</dt><dd>Section box</dd><dt>G</dt><dd>Grids</dd><dt>M</dt><dd>Measure</dd><dt>Esc</dt><dd>Clear</dd></dl>
+    <dl><dt>WASD</dt><dd>Move (Q / E down / up, Shift faster)</dd><dt>Wheel</dt><dd>Zoom to the cursor</dd><dt>+ / -</dt><dd>Zoom in / out</dd><dt>Arrows</dt><dd>Pan</dd><dt>F</dt><dd>Frame clash / selection</dd><dt>H</dt><dd>Home view</dd><dt>[ ]</dt><dd>Model / clash panel</dd><dt>X</dt><dd>X-ray</dd><dt>C</dt><dd>Clash mode</dd><dt>B</dt><dd>Section box</dd><dt>G</dt><dd>Grids</dd><dt>T</dt><dd>Colour by trade</dd><dt>M</dt><dd>Measure</dd><dt>Esc</dt><dd>Clear</dd></dl>
   </section>
 </aside>
 
@@ -555,18 +596,25 @@ body.has-sel #props { display: flex; }
 <aside id="panel-clash" class="panel" aria-label="Clashes">
   <section class="sec clash-sum">
     <h2>Clash detection <span class="h-n mono" id="clash-total"></span><button class="btn small h-end" id="clash-mode-btn" aria-pressed="false" title="Ghost everything except clashing elements (C)">Clash mode</button></h2>
+    <input type="search" id="clash-q" class="clash-q" placeholder="Search ID, title, tag (CL-338 PLB), element ID" aria-label="Search clashes" autocomplete="off" spellcheck="false">
+    <div class="chips scope-chips" id="scope-chips" role="group" aria-label="Clash scope" hidden></div>
     <div class="sev-tiles" id="sev-tiles"></div>
-    <h3 class="sub">By type</h3>
-    <div class="chips" id="type-chips"></div>
-    <div class="list-head">
-      <span id="clash-count" class="mono"></span>
-      <label class="sort">Sort
-        <select id="clash-sort"><option value="severity">Severity</option><option value="penetration">Penetration</option><option value="elevation">Elevation</option><option value="type">Type</option><option value="id">ID</option></select>
-      </label>
-      <button id="sort-dir" class="icon-btn" aria-label="Reverse sort order" title="Reverse sort order">&#8645;</button>
-    </div>
+    <p class="chip-help muted">Chip: show only this · Ctrl / Alt-click: add or remove</p>
+    <div class="fgroup"><div class="fg-head"><h3 class="sub">Who moves</h3><button class="fg-btn" data-all="who">All</button><button class="fg-btn" data-none="who">None</button></div>
+      <div class="chips fchips" id="who-chips" role="group" aria-label="Who moves"></div></div>
+    <details class="fgroup" id="pair-box" open><summary class="fg-head"><h3 class="sub">Trade pair <span class="mono" id="pair-n"></span></h3><button class="fg-btn" data-all="pair">All</button><button class="fg-btn" data-none="pair">None</button></summary>
+      <div class="chips fchips" id="pair-chips" role="group" aria-label="Trade pair"></div></details>
+    <details class="fgroup" id="type-box"><summary class="fg-head"><h3 class="sub">By type <span class="mono" id="type-n"></span></h3><button class="fg-btn" data-all="type">All</button><button class="fg-btn" data-none="type">None</button></summary>
+      <div class="chips fchips" id="type-chips" role="group" aria-label="Issue type"></div></details>
     <p id="clash-note" class="note" hidden></p>
   </section>
+  <div class="list-head">
+    <span id="clash-count" class="mono"></span>
+    <label class="sort">Sort
+      <select id="clash-sort"><option value="severity">Severity</option><option value="penetration">Penetration</option><option value="elevation">Elevation</option><option value="type">Type</option><option value="id">ID</option></select>
+    </label>
+    <button id="sort-dir" class="icon-btn" aria-label="Reverse sort order" title="Reverse sort order">&#8645;</button>
+  </div>
   <ul id="clash-list" class="issues"></ul>
 </aside>
 
@@ -577,11 +625,12 @@ body.has-sel #props { display: flex; }
 </nav>
 <script type="module">
 // NAQCC coordination viewer - three.js r160 (pinned CDN via the page's importmap).
-// Inputs: model.glb (build/build_glb.py: one node per element, node.extras -> userData, Y-up metres,
-// world-space vertices), clashes.json (build/clash.py) and grids_viewer.json. build/package_viewer.py
-// inlines this file; the standalone page embeds the data in <script id="naqcc-glb|naqcc-clashes|naqcc-grids">.
-// Rendering: elements are merged into one mesh per (category, material) so 40k elements cost ~50 draw
-// calls; the per-element GLTF meshes are kept off-scene for picking and for highlight overlays.
+// Inputs: model.glb (build/build_glb.py format 2: batched + KHR_mesh_quantization, element table gzipped in the
+// root extras; format 1 = one node per element still loads), clashes.json (build/clash.py) and grids_viewer.json.
+// build/package_viewer.py inlines this file; the standalone page embeds the data in
+// <script id="naqcc-glb|naqcc-clashes|naqcc-grids">.
+// Rendering: the batch meshes are the model (one draw call per material + plan tile); each element is an
+// off-scene proxy Mesh sharing its batch's buffers with a draw range, used for picking and highlight overlays.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -595,7 +644,7 @@ const DISC_LABEL = { ARC: 'Architecture', STR: 'Structure', MEP: 'HVAC', PLB: 'P
   ELE: 'Electrical', TEL: 'Technology', POOL: 'Pool' };
 const DISC_ORDER = Object.keys(DISC_LABEL);
 const PLURAL = { canopy: 'Canopies', glazing: 'Glazing', trellis: 'Trellises', equipment: 'Equipment', vav: 'VAV boxes',
-  casework: 'Casework', fdc: 'FDCs', junction_box: 'Junction boxes', busway: 'Busways' };
+  casework: 'Casework', fdc: 'FDCs', junction_box: 'Junction boxes', busway: 'Busways', insulation: 'Insulation' };
 const SINGULAR = { vav: 'VAV box', fdc: 'FDC' };
 const PRIMARY = ['size', 'mark', 'service', 'system', 'tag'];
 const GLOW = /^(duct|duct_riser|duct_fitting|flex_duct|pipe)$/;
@@ -684,8 +733,23 @@ const SEL = hl(0x38d6ff), SELT = hl(0x38d6ff, { translucent: true });
 const state = {
   xray: false, clashMode: false, grids: true, measure: false, boxOn: false, cutOn: false, cut: 0,
   box: null, range: null, sel: null, issue: null, view: HOME,
-  sevOn: new Set(SEVS), typeOn: new Set(), sort: 'severity', sortDir: 1, sheet: '',
+  sevOn: new Set(SEVS), scopeOn: new Set(['hard', 'soft']), sort: 'severity', sortDir: 1, sheet: '',
+  f: { who: null, pair: null, type: null }, q: '',   // clash facets (null = all) + search text
+  // the 'Details' group (schema.detail_kind): joints (TDC, couplings), insulation, hangers, seismic braces, equipment
+  // supports (pads, strut frames), clearance zones (soft volumes: off until asked for)
+  // Braces / Supports / Insulation / Clearance zones start OFF (rule-based LOD 350 detail): the coordination view first
+  details: { joint: true, insulation: false, hanger: true, brace: false, support: false, zone: false },
 };
+const DETAIL_LABEL = { joint: 'Joints', insulation: 'Insulation', hanger: 'Hangers', brace: 'Braces', support: 'Supports',
+  zone: 'Clearance zones' };
+const DETAIL_SWATCH = { joint: '#7C858D', insulation: '#EDE6D2', hanger: '#454A50', brace: '#454A50', support: '#5A6068',
+  zone: '#A8E6B4' };
+/** A category is drawn when it is on and, for joints / hangers, its Details toggle is on too. */
+const isOn = (c) => !!c && c.on && (!c.detail || state.details[c.detail]);
+const flatMats = new Map();
+/** Highlight material for a geometry: a flat-shaded twin when the geometry has no normals (welded flat batches). */
+const forGeo = (mat, geo) => (geo.attributes.normal ? mat
+  : flatMats.get(mat) ?? flatMats.set(mat, Object.assign(mat.clone(), { flatShading: true, clippingPlanes: CLIP })).get(mat));
 const els = new Map();                   // element id -> { id, mesh, disc, cat, key, ud }
 const cats = new Map();                  // 'DISC/category' -> { key, disc, cat, n, on, meshes, color, svcs }
 const matSets = new Map();               // GLTF material -> { base, ghost, xray }
@@ -714,30 +778,36 @@ function materialSet(m, disc, cat) {
   return s;
 }
 
-function copyVec3(dst, attr, at) {
-  if (!attr.isInterleavedBufferAttribute && attr.array.length === attr.count * 3) return dst.set(attr.array, at * 3);
-  for (let k = 0; k < attr.count; k++) dst.set([attr.getX(k), attr.getY(k), attr.getZ(k)], (at + k) * 3);
+/** Copy `count` VEC3s of attr from vertex `from` into dst at vertex `at` (normalised / interleaved via getX). */
+function copyVec3(dst, attr, at, from = 0, count = attr.count) {
+  if (!attr.isInterleavedBufferAttribute && !attr.normalized && attr.array.length === attr.count * 3) {
+    return dst.set(attr.array.subarray(from * 3, (from + count) * 3), at * 3);
+  }
+  for (let k = 0; k < count; k++) dst.set([attr.getX(from + k), attr.getY(from + k), attr.getZ(from + k)], (at + k) * 3);
 }
 
-function mergeGeometries(meshes) {
+/** [first index, index count, first vertex, vertex count] of a geometry: its element range in a batch, or all of it. */
+const rangeOf = (g) => g.userData.range ?? [0, g.index ? g.index.count : g.attributes.position.count, 0, g.attributes.position.count];
+
+function mergeGeometries(meshes, flat = false) {
   let nv = 0, ni = 0, noNormals = false;
-  for (const { geometry: g } of meshes) { nv += g.attributes.position.count; ni += g.index ? g.index.count : g.attributes.position.count; }
+  for (const { geometry: g } of meshes) { const r = rangeOf(g); nv += r[3]; ni += r[1]; }
   const pos = new Float32Array(nv * 3), nor = new Float32Array(nv * 3), idx = new Uint32Array(ni);
   let v = 0, i = 0;
   for (const { geometry: g } of meshes) {
-    const p = g.attributes.position;
-    copyVec3(pos, p, v);
-    if (g.attributes.normal) copyVec3(nor, g.attributes.normal, v); else noNormals = true;
-    const ia = g.index?.array, n = ia ? ia.length : p.count;
-    for (let k = 0; k < n; k++) idx[i + k] = (ia ? ia[k] : k) + v;
+    const [i0, n, v0, c] = rangeOf(g);
+    copyVec3(pos, g.attributes.position, v, v0, c);
+    if (g.attributes.normal) copyVec3(nor, g.attributes.normal, v, v0, c); else noNormals = true;
+    const ia = g.index?.array;
+    for (let k = 0; k < n; k++) idx[i + k] = (ia ? ia[i0 + k] : i0 + k) - v0 + v;
     i += n;
-    v += p.count;
+    v += c;
   }
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  geo.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+  if (!flat) geo.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
   geo.setIndex(new THREE.BufferAttribute(idx, 1));
-  if (noNormals) geo.computeVertexNormals();
+  if (noNormals && !flat) geo.computeVertexNormals();
   geo.computeBoundingBox();
   geo.computeBoundingSphere();
   return geo;
@@ -753,11 +823,87 @@ function mergeLayer(list) {
   }
   return [...groups.values()].map(({ el, meshes }) => {
     const mats = materialSet(el.mesh.material, el.disc, el.cat);
-    const mesh = new THREE.Mesh(mergeGeometries(meshes), mats.base);
+    const mesh = new THREE.Mesh(mergeGeometries(meshes, !!el.mesh.material.flatShading), mats.base);
     mesh.matrixAutoUpdate = false;
     mesh.userData = { key: el.key, disc: el.disc, mats };
     return mesh;
   });
+}
+
+function addCat(key, disc, cat, detail) {
+  if (!cats.has(key)) cats.set(key, { key, disc, cat, detail, n: 0, on: true, meshes: [], svcs: new Map() });
+  return cats.get(key);
+}
+
+function addLayerMesh(m) {
+  const c = cats.get(m.userData.key), mat = m.userData.mats.base;
+  c.meshes.push(m);
+  c.color ??= `#${mat.color.getHexString()}`;
+  const svc = mat.name.split(' ')[1];
+  if (svc && !['joint', 'pad', 'frame'].includes(svc)) c.svcs.set(svc, `#${mat.color.getHexString()}`);   // service chips only
+  modelLayer.add(m);
+  modelBox.union(m.geometry.boundingBox);
+}
+
+/** The gunzipped element table of a format-2 GLB (root extras.naqcc.table), or null for a format-1 model. */
+async function readTable(gltf) {
+  const t = gltf.userData?.naqcc?.table;
+  if (!t) return null;
+  const buf = await gltf.parser.getDependency('bufferView', t.bufferView);
+  const stream = new Blob([new Uint8Array(buf, 0, t.byteLength)]).stream().pipeThrough(new DecompressionStream('gzip'));
+  return JSON.parse(await new Response(stream).text());
+}
+
+/** Format 2: batch meshes -> world-space float positions (the model layer); one proxy Mesh per element row that
+ *  shares its batch's attributes and index with a draw range (picking, overlays, boxes). */
+function buildBatched(gltf, rows) {
+  gltf.scene.updateMatrixWorld(true);
+  const batches = new Map(), v = new THREE.Vector3();
+  let gridObj = null, dups = 0;
+  gltf.scene.traverse((o) => {
+    if (o.isMesh && o.userData.batch !== undefined) batches.set(o.userData.batch, o);
+    else if (o.isLineSegments && !gridObj) gridObj = o;
+  });
+  for (const o of batches.values()) {
+    const g = o.geometry, p = g.attributes.position, out = new Float32Array(p.count * 3);
+    for (let i = 0; i < p.count; i++) v.fromBufferAttribute(p, i).applyMatrix4(o.matrixWorld).toArray(out, 3 * i);
+    g.setAttribute('position', new THREE.BufferAttribute(out, 3));   // uniform scale: the int8 normals stay valid
+    g.computeBoundingBox();
+    g.computeBoundingSphere();
+    o.removeFromParent();
+    o.matrix.identity();
+    o.matrixWorld.identity();
+    o.matrixAutoUpdate = false;
+    const [disc, cat] = String(o.userData.group).split('/'), det = o.userData.detail || null;
+    const key = det ? `${disc}/${cat}#${det}` : `${disc}/${cat}`;
+    addCat(key, disc, cat, det);
+    o.userData = { key, disc, mats: materialSet(o.material, disc, cat), batch: o.userData.batch };
+    o.material = o.userData.mats.base;
+  }
+  for (const r of rows) {
+    const o = batches.get(r.b);
+    if (!o || els.has(r.id)) { dups += !!o; continue; }
+    const [i0, ni, v0, nv] = r.r, src = o.geometry, pa = src.attributes.position.array;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', src.attributes.position);
+    if (src.attributes.normal) geo.setAttribute('normal', src.attributes.normal);
+    geo.setIndex(src.index);
+    geo.setDrawRange(i0, ni);
+    geo.userData.range = r.r;
+    const bb = new THREE.Box3();
+    for (let k = v0; k < v0 + nv; k++) bb.expandByPoint(v.fromArray(pa, 3 * k));
+    geo.boundingBox = bb;
+    geo.boundingSphere = bb.getBoundingSphere(new THREE.Sphere());
+    const mesh = new THREE.Mesh(geo, o.userData.mats.base);
+    mesh.matrixAutoUpdate = false;
+    mesh.userData.elId = r.id;
+    const key = o.userData.key, el = { id: r.id, mesh, disc: String(r.discipline), cat: String(r.category), key, ud: r };
+    els.set(r.id, el);
+    cats.get(key).n += 1;
+  }
+  for (const o of batches.values()) addLayerMesh(o);
+  if (dups) console.warn(`NAQCC viewer: ${dups} duplicate element ids skipped`);
+  return gridObj;
 }
 
 function buildModel(gltf) {
@@ -773,19 +919,10 @@ function buildModel(gltf) {
       u.elId = id;
       const el = { id, mesh: o, disc: String(u.discipline), cat: String(u.category), key: `${u.discipline}/${u.category}`, ud: u };
       els.set(id, el);
-      if (!cats.has(el.key)) cats.set(el.key, { key: el.key, disc: el.disc, cat: el.cat, n: 0, on: true, meshes: [], svcs: new Map() });
-      cats.get(el.key).n += 1;
+      addCat(el.key, el.disc, el.cat, null).n += 1;
     } else if (o.isLineSegments && !gridObj) gridObj = o;
   });
-  for (const m of mergeLayer([...els.values()])) {
-    const c = cats.get(m.userData.key), mat = m.userData.mats.base;
-    c.meshes.push(m);
-    c.color ??= `#${mat.color.getHexString()}`;
-    const svc = mat.name.split(' ')[1];
-    if (svc) c.svcs.set(svc, `#${mat.color.getHexString()}`);
-    modelLayer.add(m);
-    modelBox.union(m.geometry.boundingBox);
-  }
+  for (const m of mergeLayer([...els.values()])) addLayerMesh(m);
   if (dups) console.warn(`NAQCC viewer: ${dups} duplicate element ids skipped`);
   return gridObj;
 }
@@ -855,36 +992,43 @@ function refresh() {
   const ghost = ghosting();
   for (const c of cats.values()) {
     for (const m of c.meshes) {
-      m.visible = c.on;
+      m.visible = isOn(c);
       m.material = ghost ? m.userData.mats.ghost : state.xray && c.disc === 'ARC' ? m.userData.mats.xray : m.userData.mats.base;
     }
   }
   if (state.clashMode && clashDirty) rebuildClashLayer();
   clashLayer.visible = state.clashMode;
-  for (const m of clashLayer.children) m.visible = cats.get(m.userData.key).on;
+  for (const m of clashLayer.children) m.visible = isOn(cats.get(m.userData.key));
   const want = new Map();
   if (state.issue) {
     const sev = state.issue.severity, hasMep = state.issue.elements.some((id) => els.get(id)?.disc === 'MEP');
-    for (const id of state.issue.elements) {
+    for (const id of [...state.issue.elements, ...(state.issue.joints ?? [])]) {   // + its folded joints
       const el = els.get(id);
-      if (el) want.set(id, (el.disc === 'ARC' ? HLT : el.disc === 'MEP' || !hasMep ? HL : HL2)[sev]);
+      if (el) want.set(id, (el.disc === 'ARC' || el.cat === 'clearance_zone' ? HLT : el.disc === 'MEP' || !hasMep ? HL : HL2)[sev]);
+    }
+    const zones = zonesOf(state.issue);
+    if (zones.length) {       // soft: the intruder see-through, the zone's own equipment solid
+      for (const id of state.issue.elements) if (!zones.includes(id) && els.has(id)) want.set(id, HLT[sev]);
+      for (const h of zones.map(hostOf)) if (h) want.set(h, HL2[sev]);
     }
   }
+  setZoneEdges(state.issue ? zonesOf(state.issue) : []);
   if (state.sel) want.set(state.sel.id, state.sel.disc === 'ARC' && (ghost || state.xray) ? SELT : SEL);
   for (const [id, m] of overlays) if (!want.has(id)) { overlayLayer.remove(m); overlays.delete(id); }
   for (const [id, mat] of want) {
     const el = els.get(id);
     let m = overlays.get(id);
     if (!m) {
-      m = new THREE.Mesh(el.mesh.geometry, mat);
+      m = new THREE.Mesh(el.mesh.geometry, forGeo(mat, el.mesh.geometry));
       m.matrixAutoUpdate = false;
       m.renderOrder = 2;
       m.userData.elId = id;
       overlayLayer.add(m);
       overlays.set(id, m);
     }
-    m.material = mat;
-    m.visible = cats.get(el.key).on;
+    m.material = forGeo(mat, el.mesh.geometry);
+    // a soft clash shows its clearance zone even while the Clearance zones toggle is off (the default)
+    m.visible = isOn(cats.get(el.key)) || (el.cat === 'clearance_zone' && !!state.issue?.elements.includes(id));
   }
   for (const m of [mk.core, mk.ring]) if (m) m.visible = state.clashMode;
   for (const [act, on] of [['xray', state.xray], ['clash', state.clashMode], ['box', state.boxOn], ['grids', state.grids], ['measure', state.measure]]) {
@@ -895,6 +1039,33 @@ function refresh() {
   document.body.classList.toggle('has-issue', !!state.issue);
   document.body.classList.toggle('measuring', state.measure);
   setHint();
+}
+
+// The outline of a soft issue's clearance zone, drawn on top so it reads through the equipment inside it.
+let zoneEdges = null;
+function setZoneEdges(ids) {
+  const key = ids.join('|');
+  if (zoneEdges?.userData.key === key) return;
+  if (zoneEdges) { overlayLayer.remove(zoneEdges); zoneEdges.geometry.dispose(); zoneEdges.material.dispose(); zoneEdges = null; }
+  if (!ids.length) return;
+  // Each proxy shares its whole batch's buffers (only the draw range differs) and EdgesGeometry ignores the draw
+  // range, so the edges come from the element's own slice of the index.
+  const geos = ids.map((id) => {
+    const src = els.get(id).mesh.geometry, r = src.drawRange;
+    const sub = new THREE.BufferGeometry().setAttribute('position', src.attributes.position)
+      .setIndex(Array.from(src.index.array.subarray(r.start, r.start + r.count)));
+    const e = new THREE.EdgesGeometry(sub, 25);
+    sub.dispose();
+    return e;
+  });
+  const pos = geos.flatMap((g) => [...g.attributes.position.array]);
+  geos.forEach((g) => g.dispose());
+  const g = new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  zoneEdges = new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: SEV_HEX[state.issue.severity], depthTest: false, transparent: true, opacity: 0.95 }));
+  zoneEdges.renderOrder = 11;
+  zoneEdges.matrixAutoUpdate = false;
+  zoneEdges.userData.key = key;
+  overlayLayer.add(zoneEdges);
 }
 
 function rebuildClashLayer() {
@@ -938,7 +1109,7 @@ function declutterBubbles() {
 // ------------------------------------------------------------------ camera
 function visibleBox() {
   const b = new THREE.Box3();
-  for (const c of cats.values()) if (c.on) for (const m of c.meshes) b.union(m.geometry.boundingBox);
+  for (const c of cats.values()) if (isOn(c)) for (const m of c.meshes) b.union(m.geometry.boundingBox);
   if (b.isEmpty()) b.copy(modelBox);
   const s = b.clone().intersect(state.boxOn ? boxHelper.box : homeBox);   // the section box, else the main buildings
   return s.isEmpty() ? b : s;
@@ -1255,6 +1426,7 @@ function normIssue(r, k) {
     id: String(r?.id ?? `CL-${String(k + 1).padStart(3, '0')}`),
     title: String(r?.title ?? '(untitled clash)'),
     type: String(r?.type ?? 'Other'),
+    scope: r?.scope === 'soft' ? 'soft' : 'hard',   // clearance zones (soft) are never counted as clashes
     severity: SEVS.includes(r?.severity) ? r.severity : 'info',
     elements: Array.isArray(r?.elements) ? r.elements.map(String) : [],
     pos: pt ? fromModel(...pt) : null,
@@ -1268,37 +1440,140 @@ function normIssue(r, k) {
     confidence: String(r?.confidence ?? ''),
     resolution: String(r?.suggested_resolution ?? r?.resolution ?? ''),
     view: r?.view,
+    resp: r?.responsibility && typeof r.responsibility === 'object' ? r.responsibility : null,   // build/clash_responsibility.py
+    views: r?.views && r.views.A && r.views.B ? r.views : null,                                  // build/clash_views.py A / B PNGs
   };
+}
+/** Facet values + search text of an issue: id, title, responsibility tag, element ids, type, trades. */
+function withSearch(i) {
+  i.who = whoVals(i.resp);
+  i.hay = [i.id, i.title, i.resp?.tag, i.type, i.trades, ...i.elements].join(' ').toLowerCase();
+  return i;
+}
+
+const RESP_TRADE = { HVAC: 'AAM / HVAC', PLB: 'Plumbing', FP: 'Fire protection', ELE: 'Electrical', TEL: 'Technology',
+  POOL: 'Pool', STR: 'Structure', ARC: 'Architecture' };
+/** Short 'who moves' label of an issue: 'AAM / HVAC moves', 'Plumbing: opening', 'STR / GC enlarge', 'Design question'. */
+function respLabel(r) {
+  if (!r) return '';
+  const t = RESP_TRADE[r.moves_trade] || r.moves_trade || '';
+  if (r.action === 'design' || (!r.moves && !r.action)) return r.design_question ? 'Design question' : '';
+  if (r.action === 'enlarge') return 'STR / GC enlarge opening';
+  if (r.action === 'opening') return `${t}: opening / sleeve`;
+  return `${t} moves`;
+}
+/** Who-moves facet values: the mover label, plus 'Design question' whenever the issue carries one. */
+function whoVals(r) {
+  if (!r) return ['Not set'];
+  const l = respLabel(r), v = l && l !== 'Design question' ? [l] : [];
+  if (r.design_question || r.action === 'design') v.push('Design question');
+  return v.length ? v : ['Not set'];
+}
+function respHtml(iss) {
+  const r = iss.resp;
+  if (!r) return '';
+  const hv = r.hvac_moves ? ' resp-hvac' : '';
+  return `<div class="cl-resp${hv}"><b>Who moves</b><span class="resp-tag mono">${esc(r.tag || '')}</span> ${esc(respLabel(r))}
+    <div class="resp-text">${esc(r.text || '')}</div>${r.design_question ? `<div class="resp-dq"><b>Design question:</b> ${esc(r.design_question)}</div>` : ''}</div>`;
+}
+function wireThumbs(root) {
+  for (const a of root.querySelectorAll('a[data-link]')) a.href = a.dataset.link;
+  for (const im of root.querySelectorAll('img[data-img]')) {
+    im.addEventListener('error', () => { const v = im.closest('.cl-views'); if (v) v.hidden = true; }, { once: true });
+    im.src = im.dataset.img;      // views not delivered next to the page: the block hides itself
+  }
+}
+function viewsHtml(iss) {
+  const v = iss.views;
+  if (!v) return '';
+  // data-link / data-img, set by wireThumbs(): package_viewer.py refuses literal local src / href in the page
+  const img = (k, cap) => `<a class="cl-thumb" data-link="${esc(v[k])}" target="_blank" rel="noopener" title="Open view ${k} (${cap}) full size">
+      <img data-img="${esc(v[k])}" alt="${esc(v.group)} view ${k}: ${cap}" loading="lazy"><span>${k} · ${cap}</span></a>`;
+  return `<div class="cl-views" aria-label="A / B views of group ${esc(v.group)}"><b>Views ${esc(v.group)}</b>${img('A', 'plan locator')}${img('B', 'close-up')}</div>`;
 }
 
 function setClashes(raw) {
   const list = Array.isArray(raw?.issues) ? raw.issues : Array.isArray(raw) ? raw : [];
-  issues = list.map(normIssue);
+  issues = list.map((r, k) => withSearch(normIssue(r, k)));
   byElement.clear();
   for (const iss of issues) for (const id of iss.elements) { if (!byElement.has(id)) byElement.set(id, []); byElement.get(id).push(iss); }
-  state.typeOn = new Set(issues.map((i) => i.type));
-  const crit = issues.filter((i) => i.severity === 'critical').length;
-  $('#hdr-clashes').innerHTML = `${nf.format(issues.length)} clashes${crit ? ` · <span class="crit">${crit} critical</span>` : ''}`;
-  $('#clash-total').textContent = issues.length ? nf.format(issues.length) : '';
-  $('#tab-clash-n').textContent = crit || '';
+  state.f = { who: null, pair: null, type: null };
+  const hard = issues.filter((i) => i.scope === 'hard'), nSoft = issues.length - hard.length;
+  const crit = hard.filter((i) => i.severity === 'critical').length;
+  $('#hdr-clashes').innerHTML = `${nf.format(hard.length)} clashes${nSoft ? ` + ${nf.format(nSoft)} clearance` : ''}${crit ? ` · <span class="crit">${crit} critical</span>` : ''}`;
+  $('#clash-total').textContent = issues.length ? nf.format(hard.length) + (nSoft ? ` + ${nf.format(nSoft)}` : '') : '';
+  $('#tab-clash-n').textContent = crit ? `${crit} crit` : issues.length ? nf.format(issues.length) : '';
+  $('#tab-clash-n').closest('button').title = `${nf.format(hard.length)} clashes + ${nf.format(nSoft)} clearance zones; ${crit} critical`;
   const missing = issues.filter((i) => i.elements.some((id) => !els.has(id))).length;
   const note = !raw ? 'No clash data loaded (clashes.json).' : missing ? `${missing} issue(s) reference elements that are not in this model.` : '';
   $('#clash-note').hidden = !note;
   $('#clash-note').textContent = note;
-  renderSummary();
   onFilter();
+  flushMarkers();
 }
+
+// Facets: a chip click shows only that value (again: all), Ctrl / Alt / Shift / Cmd-click adds or removes it.
+const FACETS = {
+  who: { el: '#who-chips', get: (i) => i.who, first: ['AAM / HVAC moves', 'Design question'] },
+  pair: { el: '#pair-chips', get: (i) => [i.trades || '(no trades)'], hvacFirst: true },
+  type: { el: '#type-chips', get: (i) => [i.type] },
+};
+let curList = [];                                   // issues passing every filter (refreshed by onFilter)
+
+function searchFn() {
+  const q = state.q.trim().toLowerCase();
+  if (!q) return null;
+  const words = q.split(/\s+/);
+  if (/^(cl|sc)-\d+$/.test(words[0])) {             // leads with an issue id ('CL-100 HVAC'): that issue only
+    const id = words.shift();
+    return (i) => i.id.toLowerCase() === id && words.every((w) => i.hay.includes(w));
+  }
+  return (i) => words.every((w) => i.hay.includes(w));
+}
+/** Does an issue pass the filters; `skip` leaves one facet out (for that facet's own chip counts). */
+function passes(i, skip, sf) {
+  if (!state.scopeOn.has(i.scope) || (skip !== 'sev' && !state.sevOn.has(i.severity))) return false;
+  for (const k in FACETS) if (k !== skip && state.f[k] && !FACETS[k].get(i).some((v) => state.f[k].has(v))) return false;
+  return !sf || sf(i);
+}
+function facetValues(k) { return new Set(issues.filter((i) => state.scopeOn.has(i.scope)).flatMap(FACETS[k].get)); }
 
 function renderSummary() {
-  const sev = Object.fromEntries(SEVS.map((s) => [s, 0])), types = new Map();
-  for (const i of issues) { sev[i.severity] += 1; types.set(i.type, (types.get(i.type) || 0) + 1); }
+  const sf = searchFn(), sev = Object.fromEntries(SEVS.map((s) => [s, 0])), nScope = { hard: 0, soft: 0 };
+  const cnt = Object.fromEntries(Object.keys(FACETS).map((k) => [k, new Map()]));
+  for (const i of issues) {
+    nScope[i.scope] += 1;
+    if (!state.scopeOn.has(i.scope)) continue;      // tiles + chips follow the scope filter
+    if (passes(i, 'sev', sf)) sev[i.severity] += 1;
+    for (const k in FACETS) {
+      const ok = passes(i, k, sf);
+      for (const v of FACETS[k].get(i)) cnt[k].set(v, (cnt[k].get(v) || 0) + (ok ? 1 : 0));
+    }
+  }
+  $('#scope-chips').hidden = !nScope.soft;
+  $('#scope-chips').innerHTML = [['hard', 'Hard clashes'], ['soft', 'Clearance zones (soft)']]
+    .map(([k, t]) => `<button class="chip" data-scope="${k}" aria-pressed="${state.scopeOn.has(k)}">${t} <span class="mono">${nScope[k]}</span></button>`).join('');
   $('#sev-tiles').innerHTML = SEVS.map((s) => `<button class="sev-tile sev-${s}" data-sev="${s}" aria-pressed="${state.sevOn.has(s)}" title="Show / hide ${s}"><b class="mono">${sev[s]}</b><span>${s}</span></button>`).join('');
-  $('#type-chips').innerHTML = [...types].sort((a, b) => b[1] - a[1])
-    .map(([t, n]) => `<button class="chip" data-type="${esc(t)}" aria-pressed="${state.typeOn.has(t)}">${esc(t)} <span class="mono">${n}</span></button>`).join('')
-    || '<span class="muted">No clash data</span>';
+  for (const [k, F] of Object.entries(FACETS)) {
+    const rank = (v) => (F.first?.includes(v) ? F.first.indexOf(v) - 10 : F.hvacFirst && v.startsWith('HVAC') ? -1 : 0);
+    const vals = [...cnt[k]].sort((a, b) => rank(a[0]) - rank(b[0]) || b[1] - a[1] || a[0].localeCompare(b[0]));
+    $(F.el).innerHTML = vals.map(([v, n]) => `<button class="chip${v.startsWith('AAM / HVAC') ? ' resp-hvac' : ''}" data-f="${k}" data-v="${esc(v)}" aria-pressed="${!state.f[k] || state.f[k].has(v)}">${esc(v)} <span class="mono">${n}</span></button>`).join('')
+      || '<span class="muted">No clash data</span>';
+  }
+  const shown = (k) => (state.f[k] ? `${state.f[k].size} / ${cnt[k].size}` : `${cnt[k].size}`);
+  $('#pair-n').textContent = shown('pair');
+  $('#type-n').textContent = shown('type');
 }
 
-function filteredIssues() { return issues.filter((i) => state.sevOn.has(i.severity) && state.typeOn.has(i.type)); }
+function pickFacet(k, v, add) {
+  const all = facetValues(k);
+  let cur = state.f[k] ? new Set(state.f[k]) : new Set(all);
+  if (add) { if (cur.has(v)) cur.delete(v); else cur.add(v); }
+  else cur = state.f[k]?.size === 1 && state.f[k].has(v) ? all : new Set([v]);   // 'only this'; again = all
+  state.f[k] = [...all].every((x) => cur.has(x)) ? null : cur;
+}
+
+function filteredIssues() { return curList; }
 
 const sevRank = (i) => SEVS.indexOf(i.severity);
 const idCmp = (a, b) => a.id.localeCompare(b.id, undefined, { numeric: true });
@@ -1311,26 +1586,54 @@ const SORTS = {
 };
 
 function penText(i) {
+  if (i.scope === 'soft') return i.pen > 0 ? `in zone ${inches(i.pen)}` : i.pen === 0 ? 'touches the zone' : '-';
   if (i.pen > 0) return `${inches(i.pen)} penetration`;
   if (i.clear !== null) return `${inches(i.clear)} clearance`;
   return i.pen === 0 ? 'contact' : '-';
 }
 
-function renderList() {
-  const list = filteredIssues().sort((a, b) => SORTS[state.sort](a, b) * state.sortDir);
-  $('#clash-count').textContent = `${list.length} of ${issues.length}`;
-  $('#clash-list').innerHTML = list.map((i) => `<li><button class="issue sev-${i.severity}${i === state.issue ? ' active' : ''}" data-id="${esc(i.id)}">
-      <span class="i-top"><span class="i-sev">${i.severity}</span><b class="i-id mono">${esc(i.id)}</b><span class="i-pen mono">${i.pen > 0 ? inches(i.pen) : i.clear !== null ? `${inches(i.clear)} clr` : ''}</span></span>
+const LIST_CHUNK = 200;
+const list = { rows: [], shown: 0, idle: 0 };
+function rowHtml(i) {
+  const pen = i.pen > 0 ? (i.scope === 'soft' ? `in zone ${inches(i.pen)}` : inches(i.pen)) : i.clear !== null ? `${inches(i.clear)} clr` : '';
+  return `<li><button class="issue sev-${i.severity}${i === state.issue ? ' active' : ''}" data-id="${esc(i.id)}">
+      <span class="i-top"><span class="i-sev">${i.severity}</span><b class="i-id mono">${esc(i.id)}</b>${i.resp ? `<span class="i-resp${i.resp.hvac_moves ? ' resp-hvac' : ''}">${esc(respLabel(i.resp))}</span>` : ''}<span class="i-pen mono">${pen}</span></span>
       <span class="i-title">${esc(i.title)}</span>
-      <span class="i-meta mono">${esc(i.type)} · ${esc(i.grid || 'no grid')} · EL ${esc(i.elevation || '-')}${i.confidence && i.confidence !== 'measured' ? ` · <span class="conf-${esc(i.confidence)}">${esc(i.confidence)}</span>` : ''}</span>
-    </button></li>`).join('') || `<li class="empty">${issues.length ? 'No issues match the filters.' : 'No clash data loaded.'}</li>`;
+      <span class="i-meta mono" title="${esc(i.type)}">${esc(i.type)} · ${esc(i.grid || 'no grid')} · EL ${esc(i.elevation || '-')}${i.confidence && i.confidence !== 'measured' ? ` · <span class="conf-${esc(i.confidence)}">${esc(i.confidence)}</span>` : ''}</span>
+    </button></li>`;
+}
+/** Append rows up to index n (the first 200 at once, the rest on scroll and in idle time). */
+function renderMore(n = list.shown + LIST_CHUNK) {
+  const ul = $('#clash-list'), to = Math.min(n, list.rows.length);
+  if (to <= list.shown) return;
+  ul.querySelector('.more')?.remove();
+  ul.insertAdjacentHTML('beforeend', list.rows.slice(list.shown, to).map(rowHtml).join('')
+    + (to < list.rows.length ? `<li class="more">${nf.format(list.rows.length - to)} more below</li>` : ''));
+  list.shown = to;
+}
+function renderList() {
+  clearTimeout(list.idle);
+  list.rows = [...curList].sort((a, b) => SORTS[state.sort](a, b) * state.sortDir);
+  list.shown = 0;
+  $('#clash-count').textContent = `${nf.format(list.rows.length)} of ${nf.format(issues.length)}`;
+  const ul = $('#clash-list');
+  ul.innerHTML = list.rows.length ? '' : `<li class="empty">${issues.length ? 'No issues match the filters.' : 'No clash data loaded.'}</li>`;
+  ul.scrollTop = 0;
+  renderMore(LIST_CHUNK);
+  // ponytail: the rest fills in, 400 rows per idle step, so every row exists for find-in-page / QA clicks
+  const fill = () => { if (list.shown < list.rows.length) { renderMore(list.shown + 400); list.idle = setTimeout(fill, 250); } };
+  list.idle = setTimeout(fill, 600);
 }
 
+let mkTimer = 0;
+function flushMarkers() { clearTimeout(mkTimer); clashDirty = true; buildMarkers(); refresh(); }
 function onFilter() {
-  clashDirty = true;
+  const sf = searchFn();
+  curList = issues.filter((i) => passes(i, null, sf));
+  renderSummary();
   renderList();
-  buildMarkers();
-  refresh();
+  clearTimeout(mkTimer);
+  mkTimer = setTimeout(flushMarkers, 160);  // V6: one marker / clash-layer rebuild per burst of filter clicks
 }
 
 const issueById = (id) => issues.find((i) => i.id === id);
@@ -1342,6 +1645,8 @@ function activateIssue(iss) {
   renderProps(null);
   refresh();
   showClashLabel(iss);
+  const at = list.rows.indexOf(iss);
+  if (at >= list.shown) renderMore(at + 1);
   for (const b of $$('#clash-list .issue')) b.classList.toggle('active', b.dataset.id === iss.id);
   $(`#clash-list .issue[data-id="${CSS.escape(iss.id)}"]`)?.scrollIntoView({ block: 'nearest' });
   if (isMobile()) setSheet('');
@@ -1367,9 +1672,27 @@ function issueCenter(iss) {
   return b.isEmpty() ? null : b.getCenter(new THREE.Vector3());
 }
 
+/** The equipment a clearance zone belongs to (props.detail_of), when it is in the model. */
+function hostOf(id) {
+  const d = els.get(id)?.ud?.props?.detail_of, h = Array.isArray(d) ? d[0] : d;
+  return typeof h === 'string' && els.has(h) ? h : null;
+}
+const zonesOf = (iss) => (iss.scope === 'soft' ? iss.elements.filter((id) => els.get(id)?.cat === 'clearance_zone') : []);
+
 function flyToIssue(iss) {
   const p = issueCenter(iss);
   if (!p) return;
+  const zones = zonesOf(iss);
+  if (zones.length) {         // V5: frame the zone + its equipment (the intruder shows see-through inside it)
+    const box = elementsBox([...zones, ...zones.map(hostOf).filter(Boolean)]);
+    if (!box.isEmpty()) {
+      const off = camera.position.clone().sub(controls.target).normalize();
+      const dir = new THREE.Vector3(off.x, 0, off.z).normalize().multiplyScalar(Math.cos(0.6)).setY(Math.sin(0.6)).normalize();
+      const c = box.getCenter(new THREE.Vector3());
+      flyTo(c.clone().addScaledVector(dir, fitDistance(box, dir) * 1.5), c);
+      return;
+    }
+  }
   const off = camera.position.clone().sub(controls.target);
   const az = Math.atan2(off.x, off.z), el = THREE.MathUtils.degToRad(iss.view === 'below' ? -22 : 32);
   const dist = isMobile() ? 10 : 7.5;
@@ -1387,8 +1710,24 @@ clashLabel.element.addEventListener('click', (e) => {
   if (!chip) return;
   const open = chip.getAttribute('aria-expanded') !== 'true';
   chip.setAttribute('aria-expanded', open);
-  clashLabel.element.querySelector('.cl-card').hidden = !open;
+  const card = clashLabel.element.querySelector('.cl-card');
+  card.hidden = !open;
+  if (open) fitCard(card, chip);
 });
+
+// The card grows up from its chip: cap it so its header row clears the top bar (scroll inside for the rest).
+function fitCard(card, chip) {
+  const hdr = document.querySelector('.topbar')?.getBoundingClientRect().bottom ?? 0;
+  card.style.maxHeight = `${Math.max(140, chip.getBoundingClientRect().top - hdr - 14)}px`;
+  // V3: keep the card left of the phone's vertical toolbar (right edge) and inside the screen, close button included
+  card.style.transform = card.style.width = '';
+  const tb = $('#toolbar')?.getBoundingClientRect(), vw = innerWidth;
+  const right = tb && tb.width && tb.left > vw / 2 && tb.top < chip.getBoundingClientRect().top ? tb.left - 8 : vw - 8;
+  if (card.offsetWidth > right - 8) card.style.width = `${right - 8}px`;
+  const r = card.getBoundingClientRect();
+  const dx = r.right > right ? right - r.right : r.left < 8 ? 8 - r.left : 0;
+  if (dx) card.style.transform = `translateX(${Math.round(dx)}px)`;
+}
 clashLabel.element.addEventListener('pointerdown', (e) => e.stopPropagation());
 
 function showClashLabel(iss) {
@@ -1404,11 +1743,14 @@ function showClashLabel(iss) {
     <div class="cl-card" role="dialog" aria-label="Clash ${esc(iss.id)}" hidden>
     <div class="cl-head"><span class="i-sev">${iss.severity}</span><b class="mono">${esc(iss.id)}</b><span class="cl-type">${esc(iss.type)}</span><button class="cl-x" aria-label="Close clash">&times;</button></div>
     <div class="cl-title">${esc(iss.title)}</div>
-    <dl class="kv">${iss.trades ? `<dt>Trades</dt><dd>${esc(iss.trades)}</dd>` : ''}<dt>Penetration</dt><dd class="mono">${penText(iss)}</dd><dt>Grid</dt><dd class="mono">${esc(iss.grid || '-')}</dd>
+    ${respHtml(iss)}
+    ${viewsHtml(iss)}
+    <dl class="kv">${iss.trades ? `<dt>Trades</dt><dd>${esc(iss.trades)}</dd>` : ''}<dt>${iss.scope === 'soft' ? 'Intrusion' : 'Penetration'}</dt><dd class="mono">${penText(iss)}</dd><dt>Grid</dt><dd class="mono">${esc(iss.grid || '-')}</dd>
       <dt>Elevation</dt><dd class="mono">${esc(iss.elevation || '-')}${iss.level ? ` · ${esc(iss.level)}` : ''}</dd><dt>Confidence</dt><dd>${conf}</dd></dl>
     <div class="cl-res"><b>Suggested resolution</b>${esc(iss.resolution || '-')}</div>
     ${missing.length ? `<div class="cl-missing">Not in this model: ${missing.map(esc).join(', ')}</div>` : ''}
   </div>`;
+  wireThumbs(clashLabel.element);
 }
 
 // Pulsing markers at every clash point: two InstancedMeshes (core + expanding ring), always on top.
@@ -1457,9 +1799,9 @@ function updateMarkers(t) {
 const raycaster = new THREE.Raycaster();
 
 function pickables() {
-  if (!ghosting()) return [...els.values()].filter((el) => cats.get(el.key).on).map((el) => el.mesh);
+  if (!ghosting()) return [...els.values()].filter((el) => isOn(cats.get(el.key))).map((el) => el.mesh);
   const ids = new Set([...overlays.keys(), ...(state.clashMode ? filteredIssues().flatMap((i) => i.elements) : [])]);
-  return [...ids].map((id) => els.get(id)).filter((el) => el && cats.get(el.key).on).map((el) => el.mesh);
+  return [...ids].map((id) => els.get(id)).filter((el) => el && isOn(cats.get(el.key))).map((el) => el.mesh);
 }
 
 function rayAt(x, y) {
@@ -1579,7 +1921,7 @@ function screenshot() {
   g.fillStyle = '#0b1219';
   g.fillRect(0, 0, c.width, c.height);
   g.drawImage(src, 0, 0);
-  const text = `NAQCC - Heather Farm Park - HVAC Coordination Model  |  ${state.issue ? `${state.issue.id} ${state.issue.title}` : `view ${state.view}`}  |  ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`;
+  const text = `NAQCC - Heather Farm Park - Coordination Model  |${state.issue ? `${state.issue.id} ${state.issue.title}` : `view ${state.view}`}  |  ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`;
   g.fillStyle = 'rgba(8, 12, 17, .86)';
   g.fillRect(0, c.height - 30 * k, c.width, 30 * k);
   g.fillStyle = '#e2e9f1';
@@ -1596,23 +1938,29 @@ function screenshot() {
 
 // ------------------------------------------------------------------ UI wiring
 function buildTree() {
-  const discs = [...new Set([...DISC_ORDER, ...[...cats.values()].map((c) => c.disc)])].filter((d) => [...cats.values()].some((c) => c.disc === d));
+  const discs = [...new Set([...DISC_ORDER, ...[...cats.values()].map((c) => c.disc)])];   // all eight trades, even empty
   $('#el-count').textContent = nf.format(els.size);
+  const dets = Object.keys(DETAIL_LABEL).map((d) => [d, [...cats.values()].filter((c) => c.detail === d).reduce((s, c) => s + c.n, 0)]);
   $('#disc-tree').innerHTML = discs.map((d) => {
-    const cs = [...cats.values()].filter((c) => c.disc === d).sort((a, b) => b.n - a.n);
-    return `<div class="disc" data-disc="${esc(d)}">
-      <div class="disc-row"><label class="switch"><input type="checkbox" data-disc="${esc(d)}" checked aria-label="${esc(DISC_LABEL[d] ?? d)}"><span></span></label>
+    const cs = [...cats.values()].filter((c) => c.disc === d).sort((a, b) => b.n - a.n), empty = !cs.length;
+    return `<div class="disc${empty ? ' empty collapsed' : ''}" data-disc="${esc(d)}">
+      <div class="disc-row"><label class="switch"><input type="checkbox" data-disc="${esc(d)}" ${empty ? 'disabled' : 'checked'} aria-label="${esc(DISC_LABEL[d] ?? d)}"><span></span></label>
         <button class="disc-name" data-expand aria-expanded="true">${esc(DISC_LABEL[d] ?? d)}<svg viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
         <span class="n mono">${nf.format(cs.reduce((s, c) => s + c.n, 0))}</span></div>
-      <ul class="cats">${cs.map((c) => `<li><label class="cat"><input type="checkbox" data-cat="${esc(c.key)}" checked><i class="sw" style="--c:${c.color}"></i><span class="cat-name">${esc(catName(c.cat))}</span><span class="n mono">${nf.format(c.n)}</span>${c.svcs.size ? `<span class="svcs">${[...c.svcs].map(([s, hex]) => `<span class="svc" style="--c:${hex}">${esc(s)}</span>`).join('')}</span>` : ''}</label></li>`).join('')}</ul>
+      <ul class="cats">${cs.map((c) => `<li><label class="cat"><input type="checkbox" data-cat="${esc(c.key)}" checked><i class="sw" style="--c:${c.color}"></i><span class="cat-name">${esc(catName(c.cat))}${c.detail && c.cat !== c.detail ? ` <small>(${esc(DETAIL_LABEL[c.detail].toLowerCase())})</small>` : ''}</span><span class="n mono">${nf.format(c.n)}</span>${c.svcs.size ? `<span class="svcs">${[...c.svcs].map(([s, hex]) => `<span class="svc" style="--c:${hex}">${esc(s)}</span>`).join('')}</span>` : ''}</label></li>`).join('')}</ul>
     </div>`;
-  }).join('');
+  }).join('') + `<div class="disc details" data-details>
+      <div class="disc-row"><span class="disc-name">Details</span><span class="n mono">${nf.format(dets.reduce((s, [, n]) => s + n, 0))}</span></div>
+      <ul class="cats">${dets.map(([d, n]) => `<li><label class="cat"><input type="checkbox" data-detail="${d}" ${!n ? 'disabled' : state.details[d] ? 'checked' : ''}><i class="sw" style="--c:${DETAIL_SWATCH[d]}"></i><span class="cat-name">${DETAIL_LABEL[d]}</span><span class="n mono">${nf.format(n)}</span></label></li>`).join('')}</ul>
+    </div>`;
 }
 
 function syncTree() {
   for (const box of $$('#disc-tree input[data-cat]')) box.checked = cats.get(box.dataset.cat).on;
+  for (const box of $$('#disc-tree input[data-detail]')) box.checked = state.details[box.dataset.detail];
   for (const box of $$('#disc-tree input[data-disc]')) {
     const cs = [...cats.values()].filter((c) => c.disc === box.dataset.disc), on = cs.filter((c) => c.on).length;
+    if (!cs.length) continue;
     box.checked = on > 0;
     box.indeterminate = on > 0 && on < cs.length;
   }
@@ -1695,6 +2043,7 @@ function wireUI() {
   });
   $('#disc-tree').addEventListener('change', (e) => {
     const t = e.target;
+    if (t.dataset.detail) state.details[t.dataset.detail] = t.checked;
     for (const c of cats.values()) if (c.disc === t.dataset.disc || c.key === t.dataset.cat) c.on = t.checked;
     syncTree();
     refresh();
@@ -1723,13 +2072,32 @@ function wireUI() {
     b.setAttribute('aria-pressed', state.sevOn.has(b.dataset.sev));
     onFilter();
   });
-  $('#type-chips').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-type]');
+  $('#scope-chips').addEventListener('click', (e) => {   // scope stays a two-way toggle (trades_viewer_qa relies on it)
+    const b = e.target.closest('[data-scope]');
     if (!b) return;
-    state.typeOn.has(b.dataset.type) ? state.typeOn.delete(b.dataset.type) : state.typeOn.add(b.dataset.type);
-    b.setAttribute('aria-pressed', state.typeOn.has(b.dataset.type));
+    state.scopeOn.has(b.dataset.scope) ? state.scopeOn.delete(b.dataset.scope) : state.scopeOn.add(b.dataset.scope);
     onFilter();
   });
+  $('#panel-clash').addEventListener('click', (e) => {
+    const all = e.target.closest('[data-all]'), none = e.target.closest('[data-none]'), c = e.target.closest('[data-f]');
+    if (all || none) {                     // e.preventDefault(): the button sits in a <summary>, do not fold it
+      e.preventDefault();
+      state.f[all ? all.dataset.all : none.dataset.none] = all ? null : new Set();
+      onFilter();
+      return;
+    }
+    if (!c) return;
+    pickFacet(c.dataset.f, c.dataset.v, e.ctrlKey || e.metaKey || e.altKey || e.shiftKey);
+    onFilter();
+  });
+  let qTimer = 0;
+  const search = (v) => { clearTimeout(qTimer); state.q = v; onFilter(); };
+  $('#clash-q').addEventListener('input', (e) => { clearTimeout(qTimer); qTimer = setTimeout(() => search(e.target.value), 180); });
+  $('#clash-q').addEventListener('keydown', (e) => { if (e.key === 'Enter') search(e.target.value); });
+  $('#clash-list').addEventListener('scroll', (e) => {
+    const ul = e.currentTarget;
+    if (ul.scrollTop + ul.clientHeight > ul.scrollHeight - 600) renderMore();
+  }, { passive: true });
   $('#clash-sort').addEventListener('change', (e) => { state.sort = e.target.value; renderList(); });
   $('#sort-dir').addEventListener('click', () => { state.sortDir *= -1; renderList(); });
   $('#clash-list').addEventListener('click', (e) => { const b = e.target.closest('[data-id]'); if (b) activateIssue(issueById(b.dataset.id)); });
@@ -1859,6 +2227,9 @@ renderer.setAnimationLoop((t) => {
 
 // Read-only handle for scripted QA (viewer/qa/qa.cjs); screenOf takes model feet (X east, Y north, Z up).
 window.__naqcc = { ready: false, fps: 0, state, els, cats, overlays, camera, controls, clashLabel, homeBox, issues: () => issues,
+  // rebuild hook for add-ons (trade_colors.js): mark the clash layer stale and redraw (rebuilt now in clash mode)
+  rebuildClashLayer: () => { clashDirty = true; refresh(); },
+  zoneEdges: () => zoneEdges, zonesOf: (i) => zonesOf(i),
   tweening: () => !!tween, markers: () => (state.clashMode ? mk.list.length : 0), drawCalls: () => renderer.info.render.calls,
   screenOf: (X, Y, Z) => {
     const p = fromModel(X, Y, Z).project(camera), r = renderer.domElement.getBoundingClientRect();
@@ -1872,9 +2243,11 @@ async function main() {
   progress(0.03, 'Reading clash and grid data');
   const [clashData, gridData] = await Promise.all([readData('naqcc-clashes', SRC.clashes), readData('naqcc-grids', SRC.grids)]);
   const gltf = await loadModel();
-  progress(0.92, 'Building scene');
+  progress(0.9, 'Reading the element table');
+  const rows = await readTable(gltf);
+  progress(0.93, 'Building scene');
   await tick();
-  const gridObj = buildModel(gltf);
+  const gridObj = rows ? buildBatched(gltf, rows) : buildModel(gltf);
   if (!els.size) throw new Error('The model has no element nodes (node extras with a "discipline").');
   $('#hdr-els').textContent = `${nf.format(els.size)} elements`;
   homeBox.copy(mainBox());
@@ -1901,6 +2274,173 @@ main().catch((err) => {
   $('#ld-msg').textContent = `${err?.message || err}${fileHint}`;
   console.error('NAQCC viewer:', err);
 });
+</script>
+<!-- optional add-on (wave 2A): 'colour by trade'; build/package_viewer.py inlines it, or drops this tag when absent -->
+<script type="module">
+// NAQCC viewer add-on: 'colour by trade' (reference BEP trade colours) for the batched GLB (build_glb.py format 2).
+// Loads as its own module after app.js; reads window.__naqcc (cats -> batch meshes, els -> element rows). Adds a
+// toolbar button "Trades" + key T. On first use it writes one uint8 vertex-colour attribute per batch geometry from
+// the element table (each element's vertex range r[2]..r[2]+r[3] gets its trade colour), then swaps every batch
+// mesh's material set {base, ghost, xray} for vertex-coloured twins; off restores the originals. Each element proxy
+// (el.mesh, what app.js merges into the clash-mode layer) gets a solid trade-coloured twin of its material, and the
+// clash layer is rebuilt, so clash-mode highlights are trade-coloured too. Issue / selection overlays keep their own
+// materials. Palette mirrors build/clash_responsibility.py TRADE_COLORS.
+import * as THREE from 'three';
+
+export const TRADE_COLORS = {
+  fp: '#E0282E', hvac_duct: '#D620C8', hvac_pipe: '#F28C28', plb_pressure: '#8EE07A', plb_gravity: '#1F7A3A',
+  ele: '#1F5FD6', tel: '#7A4FE0', pool: '#12C8E0', arc: '#CFCBC3', str: '#8F949A',
+};
+const LABEL = {
+  fp: 'Fire protection', hvac_duct: 'HVAC duct / equipment', hvac_pipe: 'HVAC piping', plb_pressure: 'Plumbing pressure',
+  plb_gravity: 'Plumbing gravity', ele: 'Electrical', tel: 'Technology', pool: 'Pool', arc: 'Architecture', str: 'Structure',
+};
+const GRAVITY_SVC = new Set(['SS', 'W', 'V', 'SD', 'OD', 'GW', 'CD', 'AW', 'OF', 'SAN', 'VTR', 'RD', 'ORD', 'GRW', 'IW']);   // IW = INDIRECT WASTE (P0.01 legend): gravity
+const GRAVITY_CATS = new Set(['floor_drain', 'roof_drain', 'cleanout']);
+const HVAC_PIPE = new Set(['pipe', 'pipe_fitting', 'valve', 'vent']);
+const DETAIL = new Set(['insulation', 'hanger', 'brace', 'duct_joint', 'pipe_fitting', 'fitting', 'flex_drop', 'clearance_zone']);
+const DISC_KEY = { FP: 'fp', ELE: 'ele', TEL: 'tel', POOL: 'pool', ARC: 'arc', STR: 'str' };
+const KEY_STORE = 'naqcc.tradeColors';
+
+const svcOf = (p) => String(p?.service ?? '').trim().toUpperCase().split(/\s+/)[0] || '';
+
+/** Trade key of an element row {discipline, category, props}; details follow their host (props.detail_of). */
+export function tradeKey(row, rows, depth = 0) {
+  const d = String(row.discipline), c = String(row.category), p = row.props || {};
+  if (DETAIL.has(c) && depth < 3) {
+    const h = Array.isArray(p.detail_of) ? p.detail_of[0] : p.detail_of;
+    const host = typeof h === 'string' ? rows.get(h) : null;
+    if (host && host !== row) return tradeKey(host, rows, depth + 1);
+  }
+  if (d === 'MEP') return HVAC_PIPE.has(c) ? 'hvac_pipe' : 'hvac_duct';
+  if (d === 'PLB') return GRAVITY_CATS.has(c) || GRAVITY_SVC.has(svcOf(p)) ? 'plb_gravity' : 'plb_pressure';
+  return DISC_KEY[d] ?? 'arc';
+}
+
+/** Trade key of a whole batch from its material name "<DISC>/<category>[ <service>]" (fallback, format-1 models). */
+function batchKey(mat) {
+  const [dc, s] = String(mat.name || '').split(' ');
+  const [d, c] = dc.split('/');
+  return tradeKey({ discipline: d, category: c, props: { service: s } }, new Map());
+}
+
+const linear8 = (hex) => {           // sRGB hex -> linear uint8 triple (vertex colours are linear in three.js)
+  const c = new THREE.Color(hex);    // ColorManagement on: stored linear
+  return [c.r, c.g, c.b].map((v) => Math.round(Math.min(1, Math.max(0, v)) * 255));
+};
+const RGB = Object.fromEntries(Object.entries(TRADE_COLORS).map(([k, h]) => [k, linear8(h)]));
+
+let built = false, on = false;
+const swaps = [];                    // { mesh, orig: {base, ghost, xray}, trade: {...} }
+const proxies = [];                  // { el, orig: material, trade: solid trade-coloured twin }
+
+function buildColours(N) {
+  const meshes = [...N.cats.values()].flatMap((c) => c.meshes);
+  const byPos = new Map(meshes.map((m) => [m.geometry.attributes.position, m]));
+  const rows = new Map([...N.els.values()].map((el) => [el.id, el.ud]));
+  const attr = new Map();
+  for (const m of meshes) {
+    const n = m.geometry.attributes.position.count, a = new Uint8Array(n * 3), rgb = RGB[batchKey(m.userData.mats.base)];
+    for (let i = 0; i < n; i++) a.set(rgb, 3 * i);
+    attr.set(m, a);
+  }
+  const batchSet = new Set(meshes);
+  const solid = new Map();                  // '<material uuid>|<trade>' -> solid twin (one per pair, not per element)
+  for (const el of N.els.values()) {
+    const key = tradeKey(el.ud, rows), orig = el.mesh.material, sk = `${orig.uuid}|${key}`;
+    if (!solid.has(sk)) {
+      const t = orig.clone();
+      Object.assign(t, { clippingPlanes: orig.clippingPlanes, vertexColors: false });
+      t.color.set(TRADE_COLORS[key]);
+      t.emissive?.setScalar(0);
+      solid.set(sk, t);
+    }
+    if (!batchSet.has(el.mesh)) proxies.push({ el, orig, trade: solid.get(sk) });   // format 1: el.mesh is the batch
+    // format 2: the element's own vertex range in its batch
+    const g = el.mesh.geometry, r = g.userData?.range, m = r && byPos.get(g.attributes.position);
+    if (!m) continue;
+    const rgb = RGB[key], a = attr.get(m);
+    for (let k = r[2]; k < r[2] + r[3]; k++) a.set(rgb, 3 * k);
+  }
+  for (const m of meshes) {
+    m.geometry.setAttribute('color', new THREE.BufferAttribute(attr.get(m), 3, true));
+    const orig = m.userData.mats, twin = (mat) => {
+      const t = mat.clone();
+      Object.assign(t, { vertexColors: true, clippingPlanes: mat.clippingPlanes });   // keep the shared section planes
+      t.color.set(0xffffff);
+      t.emissive?.setScalar(0);
+      t.needsUpdate = true;
+      return t;
+    };
+    swaps.push({ mesh: m, orig, trade: { base: twin(orig.base), ghost: twin(orig.ghost), xray: twin(orig.xray) } });
+  }
+  built = true;
+}
+
+function apply(N, want) {
+  if (want && !built) buildColours(N);
+  on = want;
+  for (const s of swaps) {
+    const from = on ? s.orig : s.trade, to = on ? s.trade : s.orig;
+    const v = Object.keys(from).find((k) => from[k] === s.mesh.material);
+    s.mesh.userData.mats = to;               // app.js refresh() picks base / ghost / xray from here
+    if (v) s.mesh.material = to[v];
+  }
+  for (const p of proxies) p.el.mesh.material = on ? p.trade : p.orig;   // app.js mergeLayer() reads this
+  rebuildClashLayer();
+  btn?.setAttribute('aria-pressed', String(on));
+  legend.hidden = !on;
+  try { localStorage.setItem(KEY_STORE, on ? '1' : '0'); } catch { /* storage blocked: per-session only */ }
+}
+
+const legend = document.createElement('div');
+legend.id = 'trade-legend';
+legend.hidden = true;
+legend.setAttribute('aria-label', 'Trade colours');
+legend.style.cssText = 'position:fixed;left:calc(var(--left-w,288px) + 16px);bottom:48px;z-index:20;padding:8px 10px;'
+  + 'background:var(--surface-2,#131b24);border:1px solid var(--line-2,#293746);border-radius:var(--r,10px);'
+  + 'box-shadow:var(--shadow);font:500 11px/1.55 var(--font-ui,system-ui);color:var(--ink-2,#a3b1c1);pointer-events:none';
+legend.innerHTML = Object.entries(LABEL).map(([k, t]) =>
+  `<div><i style="display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px;background:${TRADE_COLORS[k]}"></i>${t}</div>`).join('');
+document.body.append(legend);
+
+// app.js caches the clash layer until a filter changes; its rebuild hook (window.__naqcc.rebuildClashLayer) marks
+// it stale and redraws, so the clash-mode highlights pick up the swapped proxy materials.
+function rebuildClashLayer() {
+  window.__naqcc?.rebuildClashLayer?.();
+}
+
+let btn = null;
+function addButton(N) {
+  const bar = document.getElementById('toolbar');
+  if (!bar) return;
+  btn = document.createElement('button');
+  btn.id = 'trade-colors-btn';                // no data-act: app.js's toolbar handler ignores it
+  btn.title = 'Colour by trade (T)';
+  btn.setAttribute('aria-pressed', 'false');
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.5"/><circle cx="16" cy="8" r="3.5"/><circle cx="12" cy="15.5" r="3.5"/></svg><span>Trades</span>';
+  btn.addEventListener('click', () => apply(N, !on));
+  const shot = bar.querySelector('[data-act="shot"]');
+  bar.insertBefore(btn, shot);
+  addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() !== 't' || e.ctrlKey || e.metaKey || e.altKey || e.target.closest?.('input, textarea, select')) return;
+    e.preventDefault();
+    apply(N, !on);
+  });
+}
+
+(function waitReady(t0 = performance.now()) {
+  const N = window.__naqcc;
+  if (!N?.ready) {
+    if (performance.now() - t0 < 120000) setTimeout(() => waitReady(t0), 250);
+    return;
+  }
+  addButton(N);
+  let saved = '0';
+  try { saved = localStorage.getItem(KEY_STORE) ?? '0'; } catch { /* storage blocked */ }
+  if (saved === '1') apply(N, true);
+  N.tradeColors = { set: (v) => apply(N, !!v), on: () => on, key: tradeKey };   // scripted QA handle
+})();
 </script>
 </body>
 </html>
